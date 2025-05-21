@@ -59,16 +59,28 @@ pip install -r requirements.txt
 ```
 *(Note, that for CUDA support, you should install appropriate `pytorch` version)*
 
+### Python Usage
+
+* To build .pyd:
+  * Install python `nuitka` library.
+  * Go to the rood directory for Open_VO project
+  * Run `python -m nuitka --module Open_VO --output-dir=dist`.
+* To build .whl run `python setup.py bdist_wheel`.
+
+
+* To use .pyd use `import Open_VO` in python scripts.
+* To install .whl run 'pip install <.whl>'
+
 ### CPP Usage
 
 * A C11 compatible C++ Compiler:
     * Windows:
       * MinGW-w64 (often installed via MSYS2 or Nuitka can prompt for it). 
       * Microsoft Visual C++ (MSVC) from Visual Studio Build Tools (e.g., VS 2019, VS 2022). 
-    * Linux: GCC (e.g., g++ version 9 or newer). 
-    * macOS: Clang (from Xcode command-line tools).
+    * Linux: GCC (e.g., g++ version 9 or newer).
 
 For cpp usage make sure that you adjust your environment with installed OpenCV and Torch packages with dependencies:
+* opencv_world4100.lib
 * asmjit.lib
 * c10.lib
 * cpuinfo.lib
