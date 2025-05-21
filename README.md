@@ -96,6 +96,11 @@ For cpp usage make sure that you adjust your environment with installed OpenCV a
 * torch_cpu.lib
 * XNNPACK.lib
 
+### Documentation
+
+You can use documentation to navigate between project classes and functionality and look for objects description.
+Run 'documantation/html/index.html' to open web documentation.
+
 -----------------------------------------------
 
 ### This library has been created with FASIE support. Contract number "48ГУКодИИС13-D7/94521" ###
