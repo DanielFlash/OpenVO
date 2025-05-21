@@ -1,0 +1,83 @@
+\doxysection{Base\+Trainer\+DQN Class Reference}
+\hypertarget{class_base_trainer_d_q_n}{}\label{class_base_trainer_d_q_n}\index{BaseTrainerDQN@{BaseTrainerDQN}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_trainer_d_q_n_abeb498139445e6be803f3ade17d56889}{Base\+Trainer\+DQN}} (\mbox{\hyperlink{class_base_model_d_q_n}{Base\+Model\+DQN}} \texorpdfstring{$\ast$}{*}model, const double gamma, torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*}optimizer\+Adam, torch\+::\+Device \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_trainer_d_q_n_a7608d91c3ffb130c55e07339ebab66fa}{train\+Step}} (std\+::vector$<$ std\+::vector$<$ int $>$ $>$ state, std\+::vector$<$ std\+::vector$<$ int $>$ $>$ action, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ reward, std\+::vector$<$ std\+::vector$<$ int $>$ $>$ next\+State, std\+::vector$<$ bool $>$ done)
+\begin{DoxyCompactList}\small\item\em Train iteration method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_trainer_d_q_n_accdf4e9a51e9ecd7aa40c014c16595e3}\label{class_base_trainer_d_q_n_accdf4e9a51e9ecd7aa40c014c16595e3} 
+const double {\bfseries m\+\_\+gamma}
+\begin{DoxyCompactList}\small\item\em Base DQN trainer class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_trainer_d_q_n_a97d7e63a04e12ea2f99f4ef522b02bfd}\label{class_base_trainer_d_q_n_a97d7e63a04e12ea2f99f4ef522b02bfd} 
+torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+optimizer\+Adam}
+\item 
+\Hypertarget{class_base_trainer_d_q_n_aa2612c3294372085db5116891e0e8a13}\label{class_base_trainer_d_q_n_aa2612c3294372085db5116891e0e8a13} 
+\mbox{\hyperlink{class_base_model_d_q_n}{Base\+Model\+DQN}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Model}
+\item 
+\Hypertarget{class_base_trainer_d_q_n_a36c08e2f682daa40bccc17700ad437d4}\label{class_base_trainer_d_q_n_a36c08e2f682daa40bccc17700ad437d4} 
+torch\+::\+Device \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+device}
+\item 
+\Hypertarget{class_base_trainer_d_q_n_ae4605b6134787b580ec19d66cc992b33}\label{class_base_trainer_d_q_n_ae4605b6134787b580ec19d66cc992b33} 
+bool {\bfseries m\+\_\+cuda\+Enabled}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_trainer_d_q_n_abeb498139445e6be803f3ade17d56889}\index{BaseTrainerDQN@{BaseTrainerDQN}!BaseTrainerDQN@{BaseTrainerDQN}}
+\index{BaseTrainerDQN@{BaseTrainerDQN}!BaseTrainerDQN@{BaseTrainerDQN}}
+\doxysubsubsection{\texorpdfstring{BaseTrainerDQN()}{BaseTrainerDQN()}}
+{\footnotesize\ttfamily \label{class_base_trainer_d_q_n_abeb498139445e6be803f3ade17d56889} 
+Base\+Trainer\+DQN\+::\+Base\+Trainer\+DQN (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_model_d_q_n}{Base\+Model\+DQN}} \texorpdfstring{$\ast$}{*}}]{model}{, }\item[{const double}]{gamma}{, }\item[{torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*}}]{optimizer\+Adam}{, }\item[{torch\+::\+Device \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & NN model\\
+\hline
+{\em gamma} & discount coefficient\\
+\hline
+{\em optimizer\+Adam} & optimizer\\
+\hline
+{\em device} & device\+: CPU or GPU\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_trainer_d_q_n_a7608d91c3ffb130c55e07339ebab66fa}\index{BaseTrainerDQN@{BaseTrainerDQN}!trainStep@{trainStep}}
+\index{trainStep@{trainStep}!BaseTrainerDQN@{BaseTrainerDQN}}
+\doxysubsubsection{\texorpdfstring{trainStep()}{trainStep()}}
+{\footnotesize\ttfamily \label{class_base_trainer_d_q_n_a7608d91c3ffb130c55e07339ebab66fa} 
+void Base\+Trainer\+DQN\+::train\+Step (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{state}{, }\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{action}{, }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$}]{reward}{, }\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{next\+State}{, }\item[{std\+::vector$<$ bool $>$}]{done}{}\end{DoxyParamCaption})}
+
+
+
+Train iteration method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & state\\
+\hline
+{\em action} & action\\
+\hline
+{\em reward} & reward\\
+\hline
+{\em next\+State} & nest state\\
+\hline
+{\em done} & whether episode is done\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Trainer\+DQN.\+h\item 
+Base\+Trainer\+DQN.\+cpp\end{DoxyCompactItemize}

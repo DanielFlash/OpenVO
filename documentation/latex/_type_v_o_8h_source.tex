@@ -1,0 +1,117 @@
+\doxysection{Type\+VO.\+h}
+\hypertarget{_type_v_o_8h_source}{}\label{_type_v_o_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*Copyright\ (c)\ <2024>\ <OOO\ "{}ORIS"{}>}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),}}
+\DoxyCodeLine{00003\ \textcolor{comment}{to\ deal\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,}}
+\DoxyCodeLine{00004\ \textcolor{comment}{and/or\ sell\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00007\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00008\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS}}
+\DoxyCodeLine{00009\ \textcolor{comment}{IN\ THE\ SOFTWARE.*/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_surface_img_data}{SurfaceImgData}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_surface_img_data_ae4c3c27a49403531f4fd0c20b26431f4}{imgName}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ imgW;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ imgH;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{double}\ imgTopLeftX;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{double}\ imgTopLeftY;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ imgBotRightX;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{double}\ imgBotRightY;}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_surface_obj_data}{SurfaceObjData}}\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_surface_obj_data_ae2edd0a8756865f17ddff2d1968d6187}{imgName}};}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ imgW;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ imgH;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{double}\ imgTopLeftX;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{double}\ imgTopLeftY;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{double}\ imgBotRightX;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{double}\ imgBotRightY;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ objLabel;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ bbX;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ bbY;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ bbW;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ bbH;}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_surface_data}{SurfaceData}}\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_surface_data_a8b2ee1ff0d50863d75da4e3a75391e4b}{imgName}};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ imgW;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{int}\ imgH;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{double}\ imgTopLeftX;}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{double}\ imgTopLeftY;}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{double}\ imgBotRightX;}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{double}\ imgBotRightY;}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ objId;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{int}\ objLabel;}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{int}\ bbX;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{int}\ bbY;}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{int}\ bbW;}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{int}\ bbH;}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{double}\ objCoordX;}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{double}\ objCoordY;}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{int}\ mappedTo\{\ -\/1\ \};}
+\DoxyCodeLine{00100\ \};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_local_data}{LocalData}}\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_local_data_a5f8a888957a43093a404eae2a505fb94}{overlapLevel}}\{\ 0\ \};}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{int}\ mappedTo\{\ -\/1\ \};}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{int}\ objId\{\ -\/1\ \};}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{int}\ objLabel\{\ -\/1\ \};}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{double}\ objCoordX;}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{double}\ objCoordY;}
+\DoxyCodeLine{00118\ \};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_map_edges}{MapEdges}}\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_map_edges_a6c0502e6031bef0b47a919179ac2ecad}{topLeftX}};}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{double}\ topLeftY;}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{double}\ botRightX;}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{double}\ botRightY;}
+\DoxyCodeLine{00132\ \};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_detection}{Detection}}\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_detection_ad83942fdc49d92291671fccfb59fa0aa}{class\_id}}\{\ 0\ \};}
+\DoxyCodeLine{00146\ \ \ \ \ std::string\ className\{\};}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{float}\ confidence\{\ 0.0\ \};}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{int}\ x\{\ 0\ \};}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{int}\ y\{\ 0\ \};}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{int}\ w\{\ 0\ \};}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{int}\ h\{\ 0\ \};}
+\DoxyCodeLine{00152\ \};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_object_dist}{ObjectDist}}\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{struct_local_data}{LocalData}}*\ \mbox{\hyperlink{struct_object_dist_ac39e71d58ffd76b3b253260bcfa86fe1}{localData}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{struct_surface_data}{SurfaceData}}*\ surfaceData\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{double}\ dist;}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{double}\ deltaX;}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{double}\ deltaY;}
+\DoxyCodeLine{00168\ \};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_memory_cell}{MemoryCell}}\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{struct_memory_cell_aee55501ab61399dde2f06d146cf39c3f}{state}}\{\};}
+\DoxyCodeLine{00181\ \ \ \ \ std::vector<int>\ action\{\};}
+\DoxyCodeLine{00182\ \ \ \ \ std::vector<int>\ nextState\{\};}
+\DoxyCodeLine{00183\ \ \ \ \ std::vector<int>\ nextAction\{\};}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{double}\ reward;}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{bool}\ done;}
+\DoxyCodeLine{00186\ \};}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_action_result}{ActionResult}}\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_action_result_ac34f60ee03763ecad869025fac83ef82}{reward}};}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{bool}\ done;}
+\DoxyCodeLine{00196\ \};}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_p_p_o_memory_cell}{PPOMemoryCell}}\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{struct_p_p_o_memory_cell_a82b6bf55f6edae032bc657319540a1c5}{state}}\{\};}
+\DoxyCodeLine{00208\ \ \ \ \ std::vector<int>\ action\{\};}
+\DoxyCodeLine{00209\ \ \ \ \ std::vector<float>\ logits\{\};}
+\DoxyCodeLine{00210\ \ \ \ \ std::vector<float>\ logProbs\{\};}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordtype}{double}\ reward;}
+\DoxyCodeLine{00212\ \};}
+
+\end{DoxyCode}

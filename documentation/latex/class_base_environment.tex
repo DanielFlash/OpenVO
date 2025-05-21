@@ -1,0 +1,128 @@
+\doxysection{Base\+Environment Class Reference}
+\hypertarget{class_base_environment}{}\label{class_base_environment}\index{BaseEnvironment@{BaseEnvironment}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_environment_afcbfe3895d23dd1e94c1b095edc7974f}\label{class_base_environment_afcbfe3895d23dd1e94c1b095edc7974f} 
+{\bfseries Base\+Environment} ()
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_environment_a1c50dc4fc751c2a423c3455b39e5fc48}\label{class_base_environment_a1c50dc4fc751c2a423c3455b39e5fc48} 
+void {\bfseries define\+Obstacles} ()
+\begin{DoxyCompactList}\small\item\em Method to define obstacles. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_environment_a4b5d2577330471112a8b8fd9e9963740}\label{class_base_environment_a4b5d2577330471112a8b8fd9e9963740} 
+void {\bfseries place\+Goal} ()
+\begin{DoxyCompactList}\small\item\em Method to place a goal. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_environment_a0a9844cb493fcbb64c7dd26baf6e8924}\label{class_base_environment_a0a9844cb493fcbb64c7dd26baf6e8924} 
+void {\bfseries reset} ()
+\begin{DoxyCompactList}\small\item\em Method to reset an episode. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_base_environment_a7cc5e4a4244c6b6a7dcc92ee14def455}{get\+State}} ()
+\begin{DoxyCompactList}\small\item\em Method to get an environment state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_environment_ac49af59bf4df8686417f37e3ccf89d7c}{move}} (std\+::vector$<$ int $>$ action)
+\begin{DoxyCompactList}\small\item\em Method to make agent action steps. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_base_environment_a75e34205c26e37efde997decbc5cc381}{set\+Reward}} ()
+\begin{DoxyCompactList}\small\item\em Method to calculate a reward for an applied action. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_base_environment_addbfdd502cd0a37a252fdf21f59fa2c2}{is\+Collision}} ()
+\begin{DoxyCompactList}\small\item\em Method to check collisions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_base_environment_a8bd69e3655d5171e3ca8b73f83b1ba72}{reach\+Goal}} ()
+\begin{DoxyCompactList}\small\item\em Method to check if goal is reached. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_action_result}{Action\+Result}} \mbox{\hyperlink{class_base_environment_aae3178aa50644ad4a57c714235a3c4ed}{make\+Action}} (std\+::vector$<$ int $>$ action)
+\begin{DoxyCompactList}\small\item\em Method to make an action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_environment_aae84cd565280ac5a9d5b6df353e80386}\label{class_base_environment_aae84cd565280ac5a9d5b6df353e80386} 
+int {\bfseries m\+\_\+episode\+Iteration} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em Base class for environment implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_environment_a7cc5e4a4244c6b6a7dcc92ee14def455}\index{BaseEnvironment@{BaseEnvironment}!getState@{getState}}
+\index{getState@{getState}!BaseEnvironment@{BaseEnvironment}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily \label{class_base_environment_a7cc5e4a4244c6b6a7dcc92ee14def455} 
+std\+::vector$<$ int $>$ Base\+Environment\+::get\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method to get an environment state. 
+
+\begin{DoxyReturn}{Returns}
+environment state
+\end{DoxyReturn}
+\Hypertarget{class_base_environment_addbfdd502cd0a37a252fdf21f59fa2c2}\index{BaseEnvironment@{BaseEnvironment}!isCollision@{isCollision}}
+\index{isCollision@{isCollision}!BaseEnvironment@{BaseEnvironment}}
+\doxysubsubsection{\texorpdfstring{isCollision()}{isCollision()}}
+{\footnotesize\ttfamily \label{class_base_environment_addbfdd502cd0a37a252fdf21f59fa2c2} 
+bool Base\+Environment\+::is\+Collision (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method to check collisions. 
+
+\begin{DoxyReturn}{Returns}
+whether a collision took place
+\end{DoxyReturn}
+\Hypertarget{class_base_environment_aae3178aa50644ad4a57c714235a3c4ed}\index{BaseEnvironment@{BaseEnvironment}!makeAction@{makeAction}}
+\index{makeAction@{makeAction}!BaseEnvironment@{BaseEnvironment}}
+\doxysubsubsection{\texorpdfstring{makeAction()}{makeAction()}}
+{\footnotesize\ttfamily \label{class_base_environment_aae3178aa50644ad4a57c714235a3c4ed} 
+\mbox{\hyperlink{struct_action_result}{Action\+Result}} Base\+Environment\+::make\+Action (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{action}{}\end{DoxyParamCaption})}
+
+
+
+Method to make an action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & chosen agent action\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+action result
+\end{DoxyReturn}
+\Hypertarget{class_base_environment_ac49af59bf4df8686417f37e3ccf89d7c}\index{BaseEnvironment@{BaseEnvironment}!move@{move}}
+\index{move@{move}!BaseEnvironment@{BaseEnvironment}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily \label{class_base_environment_ac49af59bf4df8686417f37e3ccf89d7c} 
+void Base\+Environment\+::move (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{action}{}\end{DoxyParamCaption})}
+
+
+
+Method to make agent action steps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & chosen agent action\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_base_environment_a8bd69e3655d5171e3ca8b73f83b1ba72}\index{BaseEnvironment@{BaseEnvironment}!reachGoal@{reachGoal}}
+\index{reachGoal@{reachGoal}!BaseEnvironment@{BaseEnvironment}}
+\doxysubsubsection{\texorpdfstring{reachGoal()}{reachGoal()}}
+{\footnotesize\ttfamily \label{class_base_environment_a8bd69e3655d5171e3ca8b73f83b1ba72} 
+bool Base\+Environment\+::reach\+Goal (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method to check if goal is reached. 
+
+\begin{DoxyReturn}{Returns}
+whether a goal was reached
+\end{DoxyReturn}
+\Hypertarget{class_base_environment_a75e34205c26e37efde997decbc5cc381}\index{BaseEnvironment@{BaseEnvironment}!setReward@{setReward}}
+\index{setReward@{setReward}!BaseEnvironment@{BaseEnvironment}}
+\doxysubsubsection{\texorpdfstring{setReward()}{setReward()}}
+{\footnotesize\ttfamily \label{class_base_environment_a75e34205c26e37efde997decbc5cc381} 
+double Base\+Environment\+::set\+Reward (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method to calculate a reward for an applied action. 
+
+\begin{DoxyReturn}{Returns}
+calculated reward
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Environment.\+h\end{DoxyCompactItemize}

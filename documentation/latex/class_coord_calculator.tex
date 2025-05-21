@@ -1,0 +1,110 @@
+\doxysection{Coord\+Calculator Class Reference}
+\hypertarget{class_coord_calculator}{}\label{class_coord_calculator}\index{CoordCalculator@{CoordCalculator}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_surface_data}{Surface\+Data}} $>$ \mbox{\hyperlink{class_coord_calculator_a9b8d0689706ea8a56e1b79e24c5e9bac}{calc\+Obj\+Coords}} (const std\+::vector$<$ \mbox{\hyperlink{struct_surface_obj_data}{Surface\+Obj\+Data}} $>$ \&surface\+Obj\+Data\+List)
+\begin{DoxyCompactList}\small\item\em Class to repform object coodinates calculation. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_surface_data}{Surface\+Data}} $>$ \mbox{\hyperlink{class_coord_calculator_a5d90a2ba7ed9f0326f36686421a5dec2}{detect\+And\+Calc\+Obj\+Coords}} (const std\+::vector$<$ \mbox{\hyperlink{struct_surface_img_data}{Surface\+Img\+Data}} $>$ \&surface\+Img\+Data\+List, \mbox{\hyperlink{class_detector}{Detector}} \&detector, const char \texorpdfstring{$\ast$}{*}img\+Folder)
+\begin{DoxyCompactList}\small\item\em Method to process unlabeled satellite map images, detect objects and object coordinates calculation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_map_edges}{Map\+Edges}} \mbox{\hyperlink{class_coord_calculator_a9037e5965744892de73747fb85bffebe}{calc\+Map\+Edges}} (const std\+::vector$<$ \mbox{\hyperlink{struct_surface_data}{Surface\+Data}} $>$ \&surface\+Data\+List)
+\begin{DoxyCompactList}\small\item\em Method to calculate coordinates of satellite map extreme vertices. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_local_data}{Local\+Data}} $>$ \mbox{\hyperlink{class_coord_calculator_aaa2413164fdec351a09dd71c973a9f25}{calc\+Local\+Obj\+Coords}} (const std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ \&detections, const cv\+::\+Size2f \&img\+Shape, \mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} \&cam\+\_\+params, \mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} \&curr\+\_\+angles, \mbox{\hyperlink{struct_pos__d3}{Pos\+\_\+d3}} \&curr\+\_\+offset, \mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \&meter\+\_\+in\+\_\+pixel)
+\begin{DoxyCompactList}\small\item\em Method to calculate coordinates of local detected objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_coord_calculator_aaa2413164fdec351a09dd71c973a9f25}\index{CoordCalculator@{CoordCalculator}!calcLocalObjCoords@{calcLocalObjCoords}}
+\index{calcLocalObjCoords@{calcLocalObjCoords}!CoordCalculator@{CoordCalculator}}
+\doxysubsubsection{\texorpdfstring{calcLocalObjCoords()}{calcLocalObjCoords()}}
+{\footnotesize\ttfamily \label{class_coord_calculator_aaa2413164fdec351a09dd71c973a9f25} 
+std\+::vector$<$ \mbox{\hyperlink{struct_local_data}{Local\+Data}} $>$ Coord\+Calculator\+::calc\+Local\+Obj\+Coords (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ \&}]{detections}{, }\item[{const cv\+::\+Size2f \&}]{img\+Shape}{, }\item[{\mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} \&}]{cam\+\_\+params}{, }\item[{\mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} \&}]{curr\+\_\+angles}{, }\item[{\mbox{\hyperlink{struct_pos__d3}{Pos\+\_\+d3}} \&}]{curr\+\_\+offset}{, }\item[{\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \&}]{meter\+\_\+in\+\_\+pixel}{}\end{DoxyParamCaption})}
+
+
+
+Method to calculate coordinates of local detected objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em detections} & detection list\\
+\hline
+{\em img\+Shape} & image shape\\
+\hline
+{\em cam\+\_\+params} & camera parameters\\
+\hline
+{\em curr\+\_\+angles} & current angles\\
+\hline
+{\em curr\+\_\+offset} & current offset\\
+\hline
+{\em meter\+\_\+in\+\_\+pixel} & number of meters in pixel\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+processed local detected objects list
+\end{DoxyReturn}
+\Hypertarget{class_coord_calculator_a9037e5965744892de73747fb85bffebe}\index{CoordCalculator@{CoordCalculator}!calcMapEdges@{calcMapEdges}}
+\index{calcMapEdges@{calcMapEdges}!CoordCalculator@{CoordCalculator}}
+\doxysubsubsection{\texorpdfstring{calcMapEdges()}{calcMapEdges()}}
+{\footnotesize\ttfamily \label{class_coord_calculator_a9037e5965744892de73747fb85bffebe} 
+\mbox{\hyperlink{struct_map_edges}{Map\+Edges}} Coord\+Calculator\+::calc\+Map\+Edges (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_surface_data}{Surface\+Data}} $>$ \&}]{surface\+Data\+List}{}\end{DoxyParamCaption})}
+
+
+
+Method to calculate coordinates of satellite map extreme vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em surface\+Data\+List} & processed satellite map images objects list\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+calculated coordinates
+\end{DoxyReturn}
+\Hypertarget{class_coord_calculator_a9b8d0689706ea8a56e1b79e24c5e9bac}\index{CoordCalculator@{CoordCalculator}!calcObjCoords@{calcObjCoords}}
+\index{calcObjCoords@{calcObjCoords}!CoordCalculator@{CoordCalculator}}
+\doxysubsubsection{\texorpdfstring{calcObjCoords()}{calcObjCoords()}}
+{\footnotesize\ttfamily \label{class_coord_calculator_a9b8d0689706ea8a56e1b79e24c5e9bac} 
+std\+::vector$<$ \mbox{\hyperlink{struct_surface_data}{Surface\+Data}} $>$ Coord\+Calculator\+::calc\+Obj\+Coords (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_surface_obj_data}{Surface\+Obj\+Data}} $>$ \&}]{surface\+Obj\+Data\+List}{}\end{DoxyParamCaption})}
+
+
+
+Class to repform object coodinates calculation. 
+
+Method to process labeled satellite map images and object coordinates calculation
+
+
+\begin{DoxyParams}{Parameters}
+{\em surface\+Obj\+Data\+List} & satellite map images objects list\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+processed satellite map images objects list
+\end{DoxyReturn}
+\Hypertarget{class_coord_calculator_a5d90a2ba7ed9f0326f36686421a5dec2}\index{CoordCalculator@{CoordCalculator}!detectAndCalcObjCoords@{detectAndCalcObjCoords}}
+\index{detectAndCalcObjCoords@{detectAndCalcObjCoords}!CoordCalculator@{CoordCalculator}}
+\doxysubsubsection{\texorpdfstring{detectAndCalcObjCoords()}{detectAndCalcObjCoords()}}
+{\footnotesize\ttfamily \label{class_coord_calculator_a5d90a2ba7ed9f0326f36686421a5dec2} 
+std\+::vector$<$ \mbox{\hyperlink{struct_surface_data}{Surface\+Data}} $>$ Coord\+Calculator\+::detect\+And\+Calc\+Obj\+Coords (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_surface_img_data}{Surface\+Img\+Data}} $>$ \&}]{surface\+Img\+Data\+List}{, }\item[{\mbox{\hyperlink{class_detector}{Detector}} \&}]{detector}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{img\+Folder}{}\end{DoxyParamCaption})}
+
+
+
+Method to process unlabeled satellite map images, detect objects and object coordinates calculation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em surface\+Img\+Data\+List} & satellite map images data list\\
+\hline
+{\em detector} & detector\\
+\hline
+{\em img\+Folder} & image folder\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+processed satellite map images objects list
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Coord\+Calculator.\+h\item 
+Coord\+Calculator.\+cpp\end{DoxyCompactItemize}

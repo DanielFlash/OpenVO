@@ -1,0 +1,131 @@
+\doxysection{Base\+Agent\+SARSA Class Reference}
+\hypertarget{class_base_agent_s_a_r_s_a}{}\label{class_base_agent_s_a_r_s_a}\index{BaseAgentSARSA@{BaseAgentSARSA}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_agent_s_a_r_s_a_a08d8f892903315d256c0323d93ba7483}{Base\+Agent\+SARSA}} (const int max\+Memory, const int batch\+Size, const int rand\+Coef, const int rand\+Range, \mbox{\hyperlink{class_base_model_s_a_r_s_a}{Base\+Model\+SARSA}} \texorpdfstring{$\ast$}{*}model, \mbox{\hyperlink{class_base_trainer_s_a_r_s_a}{Base\+Trainer\+SARSA}} \texorpdfstring{$\ast$}{*}trainer)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_agent_s_a_r_s_a_acf0ccbaccdeabeb3a27a6e999a76b623}{remember}} (\mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}} memory\+Cell)
+\begin{DoxyCompactList}\small\item\em Method to remember memory cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_agent_s_a_r_s_a_ae74d15e1708ed6339cdf088f30978b29}{train\+Short\+Memory}} (\mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}} memory\+Cell)
+\begin{DoxyCompactList}\small\item\em Method to train short-\/term memory. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_agent_s_a_r_s_a_abe01081ff7a9fa02f5cbcdb225f1a48d}\label{class_base_agent_s_a_r_s_a_abe01081ff7a9fa02f5cbcdb225f1a48d} 
+void {\bfseries train\+Long\+Memory} ()
+\begin{DoxyCompactList}\small\item\em Method to train long-\/term memory. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_base_agent_s_a_r_s_a_a04c30d46ffdcdb63dad62e5c6c68e3dd}{act}} (std\+::vector$<$ int $>$ state)
+\begin{DoxyCompactList}\small\item\em Method to choose agent action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_agent_s_a_r_s_a_a24978669fa77e8a71d6dafe957880077}\label{class_base_agent_s_a_r_s_a_a24978669fa77e8a71d6dafe957880077} 
+int {\bfseries m\+\_\+n\+Episode} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em Base SARSA agent class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_agent_s_a_r_s_a_afd0e1b82316a2b86d15a0ea3f409da1d}\label{class_base_agent_s_a_r_s_a_afd0e1b82316a2b86d15a0ea3f409da1d} 
+int {\bfseries m\+\_\+epsilon} \{ 0 \}
+\item 
+\Hypertarget{class_base_agent_s_a_r_s_a_a39b2f888f29f258cde3d3f8731660fe3}\label{class_base_agent_s_a_r_s_a_a39b2f888f29f258cde3d3f8731660fe3} 
+int {\bfseries m\+\_\+max\+Memory} \{\}
+\item 
+\Hypertarget{class_base_agent_s_a_r_s_a_aceffdea2979a733a8df195abe3aaa4ea}\label{class_base_agent_s_a_r_s_a_aceffdea2979a733a8df195abe3aaa4ea} 
+int {\bfseries m\+\_\+batch\+Size} \{\}
+\item 
+\Hypertarget{class_base_agent_s_a_r_s_a_ac29963266e7690380237acedbeefca4a}\label{class_base_agent_s_a_r_s_a_ac29963266e7690380237acedbeefca4a} 
+int {\bfseries m\+\_\+rand\+Coef} \{\}
+\item 
+\Hypertarget{class_base_agent_s_a_r_s_a_a5064aee95427c01fbe6cdc23a364dcba}\label{class_base_agent_s_a_r_s_a_a5064aee95427c01fbe6cdc23a364dcba} 
+int {\bfseries m\+\_\+rand\+Range} \{\}
+\item 
+\Hypertarget{class_base_agent_s_a_r_s_a_ada416647bc1107380bbec95f68dd0654}\label{class_base_agent_s_a_r_s_a_ada416647bc1107380bbec95f68dd0654} 
+std\+::deque$<$ \mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}} $>$ {\bfseries m\+\_\+memory} \{\}
+\item 
+\Hypertarget{class_base_agent_s_a_r_s_a_a8c843439a4c237f181551f22c0128abf}\label{class_base_agent_s_a_r_s_a_a8c843439a4c237f181551f22c0128abf} 
+\mbox{\hyperlink{class_base_model_s_a_r_s_a}{Base\+Model\+SARSA}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Model}
+\item 
+\Hypertarget{class_base_agent_s_a_r_s_a_a314e053b3ecf4970d5f0f0b802eddab6}\label{class_base_agent_s_a_r_s_a_a314e053b3ecf4970d5f0f0b802eddab6} 
+\mbox{\hyperlink{class_base_trainer_s_a_r_s_a}{Base\+Trainer\+SARSA}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Trainer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_agent_s_a_r_s_a_a08d8f892903315d256c0323d93ba7483}\index{BaseAgentSARSA@{BaseAgentSARSA}!BaseAgentSARSA@{BaseAgentSARSA}}
+\index{BaseAgentSARSA@{BaseAgentSARSA}!BaseAgentSARSA@{BaseAgentSARSA}}
+\doxysubsubsection{\texorpdfstring{BaseAgentSARSA()}{BaseAgentSARSA()}}
+{\footnotesize\ttfamily \label{class_base_agent_s_a_r_s_a_a08d8f892903315d256c0323d93ba7483} 
+Base\+Agent\+SARSA\+::\+Base\+Agent\+SARSA (\begin{DoxyParamCaption}\item[{const int}]{max\+Memory}{, }\item[{const int}]{batch\+Size}{, }\item[{const int}]{rand\+Coef}{, }\item[{const int}]{rand\+Range}{, }\item[{\mbox{\hyperlink{class_base_model_s_a_r_s_a}{Base\+Model\+SARSA}} \texorpdfstring{$\ast$}{*}}]{model}{, }\item[{\mbox{\hyperlink{class_base_trainer_s_a_r_s_a}{Base\+Trainer\+SARSA}} \texorpdfstring{$\ast$}{*}}]{trainer}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Memory} & max memory size\\
+\hline
+{\em batch\+Size} & batch size\\
+\hline
+{\em rand\+Coef} & random actions threshold\\
+\hline
+{\em rand\+Range} & random action ranage; if rand(0, rand\+Range) \texorpdfstring{$<$}{<} (rand\+Coef -\/ num\+\_\+episode) =\texorpdfstring{$>$}{>} create a random action\\
+\hline
+{\em model} & NN model\\
+\hline
+{\em trainer} & trainer module\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_agent_s_a_r_s_a_a04c30d46ffdcdb63dad62e5c6c68e3dd}\index{BaseAgentSARSA@{BaseAgentSARSA}!act@{act}}
+\index{act@{act}!BaseAgentSARSA@{BaseAgentSARSA}}
+\doxysubsubsection{\texorpdfstring{act()}{act()}}
+{\footnotesize\ttfamily \label{class_base_agent_s_a_r_s_a_a04c30d46ffdcdb63dad62e5c6c68e3dd} 
+std\+::vector$<$ int $>$ Base\+Agent\+SARSA\+::act (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Method to choose agent action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & environment state\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+chosen action
+\end{DoxyReturn}
+\Hypertarget{class_base_agent_s_a_r_s_a_acf0ccbaccdeabeb3a27a6e999a76b623}\index{BaseAgentSARSA@{BaseAgentSARSA}!remember@{remember}}
+\index{remember@{remember}!BaseAgentSARSA@{BaseAgentSARSA}}
+\doxysubsubsection{\texorpdfstring{remember()}{remember()}}
+{\footnotesize\ttfamily \label{class_base_agent_s_a_r_s_a_acf0ccbaccdeabeb3a27a6e999a76b623} 
+void Base\+Agent\+SARSA\+::remember (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}}}]{memory\+Cell}{}\end{DoxyParamCaption})}
+
+
+
+Method to remember memory cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em memory\+Cell} & memory cell\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_base_agent_s_a_r_s_a_ae74d15e1708ed6339cdf088f30978b29}\index{BaseAgentSARSA@{BaseAgentSARSA}!trainShortMemory@{trainShortMemory}}
+\index{trainShortMemory@{trainShortMemory}!BaseAgentSARSA@{BaseAgentSARSA}}
+\doxysubsubsection{\texorpdfstring{trainShortMemory()}{trainShortMemory()}}
+{\footnotesize\ttfamily \label{class_base_agent_s_a_r_s_a_ae74d15e1708ed6339cdf088f30978b29} 
+void Base\+Agent\+SARSA\+::train\+Short\+Memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}}}]{memory\+Cell}{}\end{DoxyParamCaption})}
+
+
+
+Method to train short-\/term memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em memory\+Cell} & memory cell\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Agent\+SARSA.\+h\item 
+Base\+Agent\+SARSA.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,288 @@
+\doxysection{Map\+Analysis Class Reference}
+\hypertarget{class_map_analysis}{}\label{class_map_analysis}\index{MapAnalysis@{MapAnalysis}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_map_analysis_a2d5b7c8e25603dd66dffe173721b100c}{Map\+Analysis}} (const char \texorpdfstring{$\ast$}{*}input\+File, const char \texorpdfstring{$\ast$}{*}img\+Folder, const char \texorpdfstring{$\ast$}{*}output\+File, const char \texorpdfstring{$\ast$}{*}labels\+File, const char \texorpdfstring{$\ast$}{*}model\+Path, bool cuda\+Enabled, int imgW, int imgH, float sc\+Thres, float nms\+Thres, int maxD, const char \texorpdfstring{$\ast$}{*}gl\+Model\+Path, bool gl\+Cuda\+Enabled, int gl\+ImgW, int gl\+ImgH, float gl\+Sc\+Thres, float gl\+Nms\+Thres, int gl\+MaxD)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_map_analysis_af4bffea431701d140d4591ef5a625747}{Map\+Analysis}} (const char \texorpdfstring{$\ast$}{*}input\+File, const char \texorpdfstring{$\ast$}{*}img\+Folder, const char \texorpdfstring{$\ast$}{*}output\+File, const char \texorpdfstring{$\ast$}{*}labels\+File, const char \texorpdfstring{$\ast$}{*}model\+Path, bool cuda\+Enabled, int imgW, int imgH, float sc\+Thres, float nms\+Thres, int maxD)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_analysis_a3d47e0c556085f40f036c8f12b22be00}\label{class_map_analysis_a3d47e0c556085f40f036c8f12b22be00} 
+void {\bfseries load\+Raw\+Data} ()
+\begin{DoxyCompactList}\small\item\em Method to read unlabeled satellite map images objects. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_analysis_a79eac9218838cf41f2e4e0bb66f1e860}\label{class_map_analysis_a79eac9218838cf41f2e4e0bb66f1e860} 
+void {\bfseries load\+Raw\+Labeled\+Data} ()
+\begin{DoxyCompactList}\small\item\em Method to read labeled satellite map images objects. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_analysis_aee5bae355af26c81c1bdcf01f3aad42d}\label{class_map_analysis_aee5bae355af26c81c1bdcf01f3aad42d} 
+void {\bfseries load\+Processed\+Data} ()
+\begin{DoxyCompactList}\small\item\em Method to read processed satellite map image objects. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_analysis_a16dcb292f5f83cd17d91636141aa1396}\label{class_map_analysis_a16dcb292f5f83cd17d91636141aa1396} 
+void {\bfseries save\+Processed\+Data} ()
+\begin{DoxyCompactList}\small\item\em Method to save processed satellite map data. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_analysis_a236ee8be77bbe7b2b6758dc1ff1cb41e}\label{class_map_analysis_a236ee8be77bbe7b2b6758dc1ff1cb41e} 
+void {\bfseries process\+Raw\+Data} ()
+\begin{DoxyCompactList}\small\item\em Method to process satellite map data and calculate objects coordinates. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_analysis_a2edd12b66d3b48b1ad3b1d3a37d18463}\label{class_map_analysis_a2edd12b66d3b48b1ad3b1d3a37d18463} 
+void {\bfseries calculate\+Map\+Objects} ()
+\begin{DoxyCompactList}\small\item\em Method to read satellite map data and calculate objects coordinates. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_analysis_a4cfe2027658d4c596f575f1fa38db5d4}\label{class_map_analysis_a4cfe2027658d4c596f575f1fa38db5d4} 
+void {\bfseries load\+Map\+Objects} ()
+\begin{DoxyCompactList}\small\item\em Method to read processed satellite map data. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_analysis_a80a1c20dc7e6d410450b122b50d96f92}\label{class_map_analysis_a80a1c20dc7e6d410450b122b50d96f92} 
+void {\bfseries calc\+Map\+Edges} ()
+\begin{DoxyCompactList}\small\item\em Method to calculate coordinates of satellite map extreme vertices. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_analysis_a2468c7873e4b0652a4f6f958ab0eac98}{location\+Verification}} (const double currX, const double currY, const double FOVX, const double FOVY, const double delta\+FOV)
+\begin{DoxyCompactList}\small\item\em Method to check position inside satellite map. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ \mbox{\hyperlink{class_map_analysis_a0cca2439ca56ca83a405a604098e3b6c}{object\+Detection}} (const cv\+::\+Mat \&image)
+\begin{DoxyCompactList}\small\item\em Method to detect object. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_local_data}{Local\+Data}} $>$ \mbox{\hyperlink{class_map_analysis_af35997a27fc6698b1fa7e2cda25777a2}{object\+Coord\+Proc}} (const std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ \&detections, const cv\+::\+Size2f \&img\+Shape, \mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} \&cam\+\_\+params, \mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} \&curr\+\_\+angles, \mbox{\hyperlink{struct_pos__d3}{Pos\+\_\+d3}} \&curr\+\_\+offset, \mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \&meter\+\_\+in\+\_\+pixel)
+\begin{DoxyCompactList}\small\item\em Method to calculate local detected object\textquotesingle{}s coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_analysis_a8dbd74ba8e709562185744be171cf310}{object\+Verification}} (std\+::vector$<$ \mbox{\hyperlink{struct_local_data}{Local\+Data}} $>$ \&local\+Data\+List, const int identity\+Delta)
+\begin{DoxyCompactList}\small\item\em Method for local objects verification\+: adds new objects or updates existing ones. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_analysis_a885d411007144e8f1656ea5b8f0e66f5}{calculate\+Local\+Objects}} (const cv\+::\+Mat \&image, const int identity\+Delta, \mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} \&cam\+\_\+params, \mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} \&curr\+\_\+angles, \mbox{\hyperlink{struct_pos__d3}{Pos\+\_\+d3}} \&curr\+\_\+offset, \mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \&meter\+\_\+in\+\_\+pixel)
+\begin{DoxyCompactList}\small\item\em Method to local object detection and processing. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_map_analysis_a7bd6aa3ee2dd472b6bca08e6ca83823d}{object\+Matcher}} (const double currX, const double currY, const double FOVX, const double FOVY, const double delta\+FOV, const double delta\+Offset, const int match\+Delta, const int conf\+Overlap, const int obj\+Per\+Class, const double scale)
+\begin{DoxyCompactList}\small\item\em Method for local and satellite objects matching, bias calculation and local object\textquotesingle{}s coordinates update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_map_analysis_a2d5b7c8e25603dd66dffe173721b100c}\index{MapAnalysis@{MapAnalysis}!MapAnalysis@{MapAnalysis}}
+\index{MapAnalysis@{MapAnalysis}!MapAnalysis@{MapAnalysis}}
+\doxysubsubsection{\texorpdfstring{MapAnalysis()}{MapAnalysis()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_map_analysis_a2d5b7c8e25603dd66dffe173721b100c} 
+Map\+Analysis\+::\+Map\+Analysis (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{input\+File}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{img\+Folder}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+File}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{labels\+File}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{model\+Path}{, }\item[{bool}]{cuda\+Enabled}{, }\item[{int}]{imgW}{, }\item[{int}]{imgH}{, }\item[{float}]{sc\+Thres}{, }\item[{float}]{nms\+Thres}{, }\item[{int}]{maxD}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{gl\+Model\+Path}{, }\item[{bool}]{gl\+Cuda\+Enabled}{, }\item[{int}]{gl\+ImgW}{, }\item[{int}]{gl\+ImgH}{, }\item[{float}]{gl\+Sc\+Thres}{, }\item[{float}]{gl\+Nms\+Thres}{, }\item[{int}]{gl\+MaxD}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+File} & txt file with saved satellite map data\\
+\hline
+{\em img\+Folder} & image folder\\
+\hline
+{\em output\+File} & txt file with saved processed satellite map image objects\\
+\hline
+{\em labels\+File} & txt file with object labels\\
+\hline
+{\em model\+Path} & NN model file for local object detection\\
+\hline
+{\em cuda\+Enabled} & device\+: CPU or GPU; for local model\\
+\hline
+{\em imgW} & input image width; for local model\\
+\hline
+{\em imgH} & input image height; for local model\\
+\hline
+{\em sc\+Thres} & model score threshold; for local model\\
+\hline
+{\em nms\+Thres} & model IoU threshold; for local model\\
+\hline
+{\em maxD} & max detections per image; for local model\\
+\hline
+{\em gl\+Model\+Path} & NN model file for satellite map object detection\\
+\hline
+{\em gl\+Cuda\+Enabled} & device\+: CPU or GPU; for satellite map model\\
+\hline
+{\em gl\+ImgW} & input image width; for satellite map model\\
+\hline
+{\em gl\+ImgH} & input image height; for satellite map model\\
+\hline
+{\em gl\+Sc\+Thres} & model score threshold; for satellite map model\\
+\hline
+{\em gl\+Nms\+Thres} & model IoU threshold; for satellite map model\\
+\hline
+{\em gl\+MaxD} & max detections per image; for satellite map model\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_map_analysis_af4bffea431701d140d4591ef5a625747}\index{MapAnalysis@{MapAnalysis}!MapAnalysis@{MapAnalysis}}
+\index{MapAnalysis@{MapAnalysis}!MapAnalysis@{MapAnalysis}}
+\doxysubsubsection{\texorpdfstring{MapAnalysis()}{MapAnalysis()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_map_analysis_af4bffea431701d140d4591ef5a625747} 
+Map\+Analysis\+::\+Map\+Analysis (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{input\+File}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{img\+Folder}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+File}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{labels\+File}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{model\+Path}{, }\item[{bool}]{cuda\+Enabled}{, }\item[{int}]{imgW}{, }\item[{int}]{imgH}{, }\item[{float}]{sc\+Thres}{, }\item[{float}]{nms\+Thres}{, }\item[{int}]{maxD}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+File} & txt file with saved satellite map data\\
+\hline
+{\em img\+Folder} & image folder\\
+\hline
+{\em output\+File} & txt file with saved processed satellite map image objects\\
+\hline
+{\em labels\+File} & txt file with object labels\\
+\hline
+{\em model\+Path} & NN model file for local object detection\\
+\hline
+{\em cuda\+Enabled} & device\+: CPU or GPU; for local model\\
+\hline
+{\em imgW} & input image width; for local model\\
+\hline
+{\em imgH} & input image height; for local model\\
+\hline
+{\em sc\+Thres} & model score threshold; for local model\\
+\hline
+{\em nms\+Thres} & model IoU threshold; for local model\\
+\hline
+{\em maxD} & max detections per image; for local model\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_map_analysis_a885d411007144e8f1656ea5b8f0e66f5}\index{MapAnalysis@{MapAnalysis}!calculateLocalObjects@{calculateLocalObjects}}
+\index{calculateLocalObjects@{calculateLocalObjects}!MapAnalysis@{MapAnalysis}}
+\doxysubsubsection{\texorpdfstring{calculateLocalObjects()}{calculateLocalObjects()}}
+{\footnotesize\ttfamily \label{class_map_analysis_a885d411007144e8f1656ea5b8f0e66f5} 
+void Map\+Analysis\+::calculate\+Local\+Objects (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{image}{, }\item[{const int}]{identity\+Delta}{, }\item[{\mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} \&}]{cam\+\_\+params}{, }\item[{\mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} \&}]{curr\+\_\+angles}{, }\item[{\mbox{\hyperlink{struct_pos__d3}{Pos\+\_\+d3}} \&}]{curr\+\_\+offset}{, }\item[{\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \&}]{meter\+\_\+in\+\_\+pixel}{}\end{DoxyParamCaption})}
+
+
+
+Method to local object detection and processing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & input image\\
+\hline
+{\em identity\+Delta} & threshold for object reidentification\\
+\hline
+{\em cam\+\_\+params} & camera parameters\\
+\hline
+{\em curr\+\_\+angles} & current angles\\
+\hline
+{\em curr\+\_\+offset} & current offset\\
+\hline
+{\em meter\+\_\+in\+\_\+pixel} & number of meters in pixel\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_map_analysis_a2468c7873e4b0652a4f6f958ab0eac98}\index{MapAnalysis@{MapAnalysis}!locationVerification@{locationVerification}}
+\index{locationVerification@{locationVerification}!MapAnalysis@{MapAnalysis}}
+\doxysubsubsection{\texorpdfstring{locationVerification()}{locationVerification()}}
+{\footnotesize\ttfamily \label{class_map_analysis_a2468c7873e4b0652a4f6f958ab0eac98} 
+bool Map\+Analysis\+::location\+Verification (\begin{DoxyParamCaption}\item[{const double}]{currX}{, }\item[{const double}]{currY}{, }\item[{const double}]{FOVX}{, }\item[{const double}]{FOVY}{, }\item[{const double}]{delta\+FOV}{}\end{DoxyParamCaption})}
+
+
+
+Method to check position inside satellite map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em currX} & current position X\\
+\hline
+{\em currY} & current position Y\\
+\hline
+{\em FOVX} & OX camera FOV\\
+\hline
+{\em FOVY} & OY camera FOV\\
+\hline
+{\em delta\+FOV} & FOV delta\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if position is inside satellite map; false otherwise
+\end{DoxyReturn}
+\Hypertarget{class_map_analysis_af35997a27fc6698b1fa7e2cda25777a2}\index{MapAnalysis@{MapAnalysis}!objectCoordProc@{objectCoordProc}}
+\index{objectCoordProc@{objectCoordProc}!MapAnalysis@{MapAnalysis}}
+\doxysubsubsection{\texorpdfstring{objectCoordProc()}{objectCoordProc()}}
+{\footnotesize\ttfamily \label{class_map_analysis_af35997a27fc6698b1fa7e2cda25777a2} 
+std\+::vector$<$ \mbox{\hyperlink{struct_local_data}{Local\+Data}} $>$ Map\+Analysis\+::object\+Coord\+Proc (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ \&}]{detections}{, }\item[{const cv\+::\+Size2f \&}]{img\+Shape}{, }\item[{\mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} \&}]{cam\+\_\+params}{, }\item[{\mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} \&}]{curr\+\_\+angles}{, }\item[{\mbox{\hyperlink{struct_pos__d3}{Pos\+\_\+d3}} \&}]{curr\+\_\+offset}{, }\item[{\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \&}]{meter\+\_\+in\+\_\+pixel}{}\end{DoxyParamCaption})}
+
+
+
+Method to calculate local detected object\textquotesingle{}s coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em detections} & detection list\\
+\hline
+{\em img\+Shape} & input image shape\\
+\hline
+{\em cam\+\_\+params} & camera parameters\\
+\hline
+{\em curr\+\_\+angles} & current angles\\
+\hline
+{\em curr\+\_\+offset} & current offset\\
+\hline
+{\em meter\+\_\+in\+\_\+pixel} & number of meters in pixel\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+processed local objects list
+\end{DoxyReturn}
+\Hypertarget{class_map_analysis_a0cca2439ca56ca83a405a604098e3b6c}\index{MapAnalysis@{MapAnalysis}!objectDetection@{objectDetection}}
+\index{objectDetection@{objectDetection}!MapAnalysis@{MapAnalysis}}
+\doxysubsubsection{\texorpdfstring{objectDetection()}{objectDetection()}}
+{\footnotesize\ttfamily \label{class_map_analysis_a0cca2439ca56ca83a405a604098e3b6c} 
+std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ Map\+Analysis\+::object\+Detection (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{image}{}\end{DoxyParamCaption})}
+
+
+
+Method to detect object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & input image\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+detection list
+\end{DoxyReturn}
+\Hypertarget{class_map_analysis_a7bd6aa3ee2dd472b6bca08e6ca83823d}\index{MapAnalysis@{MapAnalysis}!objectMatcher@{objectMatcher}}
+\index{objectMatcher@{objectMatcher}!MapAnalysis@{MapAnalysis}}
+\doxysubsubsection{\texorpdfstring{objectMatcher()}{objectMatcher()}}
+{\footnotesize\ttfamily \label{class_map_analysis_a7bd6aa3ee2dd472b6bca08e6ca83823d} 
+std\+::vector$<$ double $>$ Map\+Analysis\+::object\+Matcher (\begin{DoxyParamCaption}\item[{const double}]{currX}{, }\item[{const double}]{currY}{, }\item[{const double}]{FOVX}{, }\item[{const double}]{FOVY}{, }\item[{const double}]{delta\+FOV}{, }\item[{const double}]{delta\+Offset}{, }\item[{const int}]{match\+Delta}{, }\item[{const int}]{conf\+Overlap}{, }\item[{const int}]{obj\+Per\+Class}{, }\item[{const double}]{scale}{}\end{DoxyParamCaption})}
+
+
+
+Method for local and satellite objects matching, bias calculation and local object\textquotesingle{}s coordinates update. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em currX} & current position X\\
+\hline
+{\em currY} & current position Y\\
+\hline
+{\em FOVX} & OX camera FOV\\
+\hline
+{\em FOVY} & OY camera FOV\\
+\hline
+{\em delta\+FOV} & FOV delta\\
+\hline
+{\em delta\+Offset} & extra width for local and satellite map\textquotesingle{}s masks comparison\\
+\hline
+{\em match\+Delta} & threshold for objects matching on masks\\
+\hline
+{\em conf\+Overlap} & minimal local object reidentification level (number of overlap)\\
+\hline
+{\em obj\+Per\+Class} & minimal number of objects per class for performing masks matching\\
+\hline
+{\em scale} & number of meters in pixel\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_map_analysis_a8dbd74ba8e709562185744be171cf310}\index{MapAnalysis@{MapAnalysis}!objectVerification@{objectVerification}}
+\index{objectVerification@{objectVerification}!MapAnalysis@{MapAnalysis}}
+\doxysubsubsection{\texorpdfstring{objectVerification()}{objectVerification()}}
+{\footnotesize\ttfamily \label{class_map_analysis_a8dbd74ba8e709562185744be171cf310} 
+void Map\+Analysis\+::object\+Verification (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_local_data}{Local\+Data}} $>$ \&}]{local\+Data\+List}{, }\item[{const int}]{identity\+Delta}{}\end{DoxyParamCaption})}
+
+
+
+Method for local objects verification\+: adds new objects or updates existing ones. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em local\+Data\+List} & local detected objects list\\
+\hline
+{\em identity\+Delta} & threshold for object reidentification\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Map\+Analysis.\+h\item 
+Map\+Analysis.\+cpp\end{DoxyCompactItemize}

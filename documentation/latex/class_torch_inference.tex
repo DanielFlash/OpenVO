@@ -1,0 +1,81 @@
+\doxysection{Torch\+Inference Class Reference}
+\hypertarget{class_torch_inference}{}\label{class_torch_inference}\index{TorchInference@{TorchInference}}
+Inheritance diagram for Torch\+Inference\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_torch_inference}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_torch_inference_ad9dd62dfd7654283ca2d6d5420237834}{Torch\+Inference}} (const std\+::string \&torch\+Model\+Path, const std\+::map$<$ int, std\+::string $>$ \&model\+Classes, const int imgW=640, const int imgH=640, const bool \&run\+With\+Cuda=true, const float score\+Thresh=0.\+45, const float nms\+Thresh=0.\+50, const int max\+Det=100)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+\Hypertarget{class_torch_inference_a51d5a592982866f1fc1040ec422f6440}\label{class_torch_inference_a51d5a592982866f1fc1040ec422f6440} 
+void {\bfseries load\+Torch\+Network} ()
+\begin{DoxyCompactList}\small\item\em Method to load model. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ \mbox{\hyperlink{class_torch_inference_a38d39820b46089da49c7cb3709ff5911}{run\+Inference}} (const cv\+::\+Mat \&input) override final
+\begin{DoxyCompactList}\small\item\em Method to run inference. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_torch_inference_ad9dd62dfd7654283ca2d6d5420237834}\index{TorchInference@{TorchInference}!TorchInference@{TorchInference}}
+\index{TorchInference@{TorchInference}!TorchInference@{TorchInference}}
+\doxysubsubsection{\texorpdfstring{TorchInference()}{TorchInference()}}
+{\footnotesize\ttfamily \label{class_torch_inference_ad9dd62dfd7654283ca2d6d5420237834} 
+Torch\+Inference\+::\+Torch\+Inference (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{torch\+Model\+Path}{, }\item[{const std\+::map$<$ int, std\+::string $>$ \&}]{model\+Classes}{, }\item[{const int}]{imgW}{ = {\ttfamily 640}, }\item[{const int}]{imgH}{ = {\ttfamily 640}, }\item[{const bool \&}]{run\+With\+Cuda}{ = {\ttfamily true}, }\item[{const float}]{score\+Thresh}{ = {\ttfamily 0.45}, }\item[{const float}]{nms\+Thresh}{ = {\ttfamily 0.50}, }\item[{const int}]{max\+Det}{ = {\ttfamily 100}}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em torch\+Model\+Path} & torch model file\\
+\hline
+{\em model\+Classes} & txt file with object labels\\
+\hline
+{\em imgW} & input image width\\
+\hline
+{\em imgH} & input image height\\
+\hline
+{\em run\+With\+Cuda} & device\+: CPU or GPU\\
+\hline
+{\em score\+Thresh} & model score threshold\\
+\hline
+{\em nms\+Thresh} & model IoU threshold\\
+\hline
+{\em max\+Det} & max detections per image\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_torch_inference_a38d39820b46089da49c7cb3709ff5911}\index{TorchInference@{TorchInference}!runInference@{runInference}}
+\index{runInference@{runInference}!TorchInference@{TorchInference}}
+\doxysubsubsection{\texorpdfstring{runInference()}{runInference()}}
+{\footnotesize\ttfamily \label{class_torch_inference_a38d39820b46089da49c7cb3709ff5911} 
+std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ Torch\+Inference\+::run\+Inference (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{input}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to run inference. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & input frame\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+detection list
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_base_inference_ad9d4cc62db82d1316ab6dad9945cdadc}{Base\+Inference}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+torch\+Inferencer.\+h\item 
+torch\+Inferencer.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,45 @@
+\doxysection{Base\+Inference Class Reference}
+\hypertarget{class_base_inference}{}\label{class_base_inference}\index{BaseInference@{BaseInference}}
+Inheritance diagram for Base\+Inference\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_base_inference}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ \mbox{\hyperlink{class_base_inference_ad9d4cc62db82d1316ab6dad9945cdadc}{run\+Inference}} (const cv\+::\+Mat \&input)
+\begin{DoxyCompactList}\small\item\em Base class for detector implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_inference_ad9d4cc62db82d1316ab6dad9945cdadc}\index{BaseInference@{BaseInference}!runInference@{runInference}}
+\index{runInference@{runInference}!BaseInference@{BaseInference}}
+\doxysubsubsection{\texorpdfstring{runInference()}{runInference()}}
+{\footnotesize\ttfamily \label{class_base_inference_ad9d4cc62db82d1316ab6dad9945cdadc} 
+virtual std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ Base\+Inference\+::run\+Inference (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{input}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Base class for detector implementation. 
+
+Base method for detector implementation
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & input frame\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+detection list
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_onnx_inference_aa24877b8c0dd9bda61f30ed1d0a0d8df}{Onnx\+Inference}}, and \mbox{\hyperlink{class_torch_inference_a38d39820b46089da49c7cb3709ff5911}{Torch\+Inference}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+base\+Inferencer.\+h\end{DoxyCompactItemize}

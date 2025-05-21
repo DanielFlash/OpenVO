@@ -1,0 +1,105 @@
+\doxysection{RANSAC Class Reference}
+\hypertarget{class_r_a_n_s_a_c}{}\label{class_r_a_n_s_a_c}\index{RANSAC@{RANSAC}}
+
+
+\doxylink{class_r_a_n_s_a_c}{RANSAC} filter class.  
+
+
+
+
+{\ttfamily \#include $<$Ransac.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_r_a_n_s_a_c_a306e77c6e4ed843b473ccf577fae2743}\label{class_r_a_n_s_a_c_a306e77c6e4ed843b473ccf577fae2743} 
+{\bfseries RANSAC} (double threshold, int max\+Iteration, int count\+Rand\+Points)
+\item 
+void \mbox{\hyperlink{class_r_a_n_s_a_c_aa2b1abc989aabeba35a586e1f1235969}{set}} (double threshold, int max\+Iterations, int count\+Rand\+Points)
+\begin{DoxyCompactList}\small\item\em Set filter parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrix}{Matrix}} \mbox{\hyperlink{class_r_a_n_s_a_c_ab183e68d118309106438c12ab22598f2}{calc}} (std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ src, std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ dst, Find\+Tranform\+Matrix\+Func get\+Transform, Calc\+Delta\+Tranformed\+Point\+Func get\+Delta)
+\begin{DoxyCompactList}\small\item\em Calculate the best transformation matrix given two unsorted keypoint vectors and a \doxylink{struct_match}{Match} vector. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrix}{Matrix}} \mbox{\hyperlink{class_r_a_n_s_a_c_a4a7d4e654f722b1ad7c5f6b23bd81671}{calc}} (std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ src, std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ dst, std\+::vector$<$ \mbox{\hyperlink{struct_match}{Match}} $>$ matches, Find\+Tranform\+Matrix\+Func get\+Transform, Calc\+Delta\+Tranformed\+Point\+No\+Sort\+Func get\+Delta)
+\begin{DoxyCompactList}\small\item\em Calculate the best transformation matrix given two unsorted keypoint vectors and a \doxylink{struct_match}{Match} vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_r_a_n_s_a_c}{RANSAC} filter class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_r_a_n_s_a_c_ab183e68d118309106438c12ab22598f2}\index{RANSAC@{RANSAC}!calc@{calc}}
+\index{calc@{calc}!RANSAC@{RANSAC}}
+\doxysubsubsection{\texorpdfstring{calc()}{calc()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_r_a_n_s_a_c_ab183e68d118309106438c12ab22598f2} 
+\mbox{\hyperlink{class_matrix}{Matrix}} RANSAC\+::calc (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$}]{src}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$}]{dst}{, }\item[{Find\+Tranform\+Matrix\+Func}]{get\+Transform}{, }\item[{Calc\+Delta\+Tranformed\+Point\+Func}]{get\+Delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate the best transformation matrix given two unsorted keypoint vectors and a \doxylink{struct_match}{Match} vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & Unsorted source keypoint vector\\
+\hline
+{\em dst} & Unsorted target keypoint vector\\
+\hline
+{\em matches} & \doxylink{struct_match}{Match} vector\\
+\hline
+{\em get\+Transform} & Transformation matrix calculation method\\
+\hline
+{\em get\+Delta} & Transformation matrix error calculation method\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_matrix}{Matrix} best transformation matrix. Zero if an error occurred
+\end{DoxyReturn}
+\Hypertarget{class_r_a_n_s_a_c_a4a7d4e654f722b1ad7c5f6b23bd81671}\index{RANSAC@{RANSAC}!calc@{calc}}
+\index{calc@{calc}!RANSAC@{RANSAC}}
+\doxysubsubsection{\texorpdfstring{calc()}{calc()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_r_a_n_s_a_c_a4a7d4e654f722b1ad7c5f6b23bd81671} 
+\mbox{\hyperlink{class_matrix}{Matrix}} RANSAC\+::calc (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$}]{src}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$}]{dst}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_match}{Match}} $>$}]{matches}{, }\item[{Find\+Tranform\+Matrix\+Func}]{get\+Transform}{, }\item[{Calc\+Delta\+Tranformed\+Point\+No\+Sort\+Func}]{get\+Delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate the best transformation matrix given two unsorted keypoint vectors and a \doxylink{struct_match}{Match} vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & Unsorted source keypoint vector\\
+\hline
+{\em dst} & Unsorted target keypoint vector\\
+\hline
+{\em matches} & \doxylink{struct_match}{Match} vector\\
+\hline
+{\em get\+Transform} & Transformation matrix calculation method\\
+\hline
+{\em get\+Delta} & Transformation matrix error calculation method\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_matrix}{Matrix} best transformation matrix. Zero if an error occurred
+\end{DoxyReturn}
+\Hypertarget{class_r_a_n_s_a_c_aa2b1abc989aabeba35a586e1f1235969}\index{RANSAC@{RANSAC}!set@{set}}
+\index{set@{set}!RANSAC@{RANSAC}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily \label{class_r_a_n_s_a_c_aa2b1abc989aabeba35a586e1f1235969} 
+void RANSAC\+::set (\begin{DoxyParamCaption}\item[{double}]{threshold}{, }\item[{int}]{max\+Iterations}{, }\item[{int}]{count\+Rand\+Points}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set filter parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em threshold} & Maximum allowed reprojection error for treating a point pair as a source\\
+\hline
+{\em max\+Iterations} & Maximum number of iterations\\
+\hline
+{\em count\+Rand\+Points} & Number of keypoint pairs to calculate the transformation matrix\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Ransac.\+h\end{DoxyCompactItemize}

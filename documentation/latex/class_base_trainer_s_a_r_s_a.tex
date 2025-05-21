@@ -1,0 +1,85 @@
+\doxysection{Base\+Trainer\+SARSA Class Reference}
+\hypertarget{class_base_trainer_s_a_r_s_a}{}\label{class_base_trainer_s_a_r_s_a}\index{BaseTrainerSARSA@{BaseTrainerSARSA}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_trainer_s_a_r_s_a_a48c664d3e720431090bd112715a3a575}{Base\+Trainer\+SARSA}} (\mbox{\hyperlink{class_base_model_s_a_r_s_a}{Base\+Model\+SARSA}} \texorpdfstring{$\ast$}{*}model, const double gamma, torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*}optimizer\+Adam, torch\+::\+Device \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_trainer_s_a_r_s_a_af7672388e52f4f5149da2339d234429e}{train\+Step}} (std\+::vector$<$ std\+::vector$<$ int $>$ $>$ state, std\+::vector$<$ std\+::vector$<$ int $>$ $>$ action, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ reward, std\+::vector$<$ std\+::vector$<$ int $>$ $>$ next\+State, std\+::vector$<$ std\+::vector$<$ int $>$ $>$ next\+Action, std\+::vector$<$ bool $>$ done)
+\begin{DoxyCompactList}\small\item\em Train iteration method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_trainer_s_a_r_s_a_ac0caebc210ae6c3e73444369b7bb81c2}\label{class_base_trainer_s_a_r_s_a_ac0caebc210ae6c3e73444369b7bb81c2} 
+const double {\bfseries m\+\_\+gamma}
+\begin{DoxyCompactList}\small\item\em Base SARSA tainer class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_trainer_s_a_r_s_a_a94a5094c4997ba6a3301daee6db38b02}\label{class_base_trainer_s_a_r_s_a_a94a5094c4997ba6a3301daee6db38b02} 
+torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+optimizer\+Adam}
+\item 
+\Hypertarget{class_base_trainer_s_a_r_s_a_a061693232c5893193a18974f6f32e39f}\label{class_base_trainer_s_a_r_s_a_a061693232c5893193a18974f6f32e39f} 
+\mbox{\hyperlink{class_base_model_s_a_r_s_a}{Base\+Model\+SARSA}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Model}
+\item 
+\Hypertarget{class_base_trainer_s_a_r_s_a_a65b6a0c43239cdc08521d480b75c124a}\label{class_base_trainer_s_a_r_s_a_a65b6a0c43239cdc08521d480b75c124a} 
+torch\+::\+Device \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+device}
+\item 
+\Hypertarget{class_base_trainer_s_a_r_s_a_addca02656384a4842b5fffeab6e9159a}\label{class_base_trainer_s_a_r_s_a_addca02656384a4842b5fffeab6e9159a} 
+bool {\bfseries m\+\_\+cuda\+Enabled}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_trainer_s_a_r_s_a_a48c664d3e720431090bd112715a3a575}\index{BaseTrainerSARSA@{BaseTrainerSARSA}!BaseTrainerSARSA@{BaseTrainerSARSA}}
+\index{BaseTrainerSARSA@{BaseTrainerSARSA}!BaseTrainerSARSA@{BaseTrainerSARSA}}
+\doxysubsubsection{\texorpdfstring{BaseTrainerSARSA()}{BaseTrainerSARSA()}}
+{\footnotesize\ttfamily \label{class_base_trainer_s_a_r_s_a_a48c664d3e720431090bd112715a3a575} 
+Base\+Trainer\+SARSA\+::\+Base\+Trainer\+SARSA (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_model_s_a_r_s_a}{Base\+Model\+SARSA}} \texorpdfstring{$\ast$}{*}}]{model}{, }\item[{const double}]{gamma}{, }\item[{torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*}}]{optimizer\+Adam}{, }\item[{torch\+::\+Device \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & NN model\\
+\hline
+{\em gamma} & discount coefficient\\
+\hline
+{\em optimizer\+Adam} & optimizer\\
+\hline
+{\em device} & device\+: CPU or GPU\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_trainer_s_a_r_s_a_af7672388e52f4f5149da2339d234429e}\index{BaseTrainerSARSA@{BaseTrainerSARSA}!trainStep@{trainStep}}
+\index{trainStep@{trainStep}!BaseTrainerSARSA@{BaseTrainerSARSA}}
+\doxysubsubsection{\texorpdfstring{trainStep()}{trainStep()}}
+{\footnotesize\ttfamily \label{class_base_trainer_s_a_r_s_a_af7672388e52f4f5149da2339d234429e} 
+void Base\+Trainer\+SARSA\+::train\+Step (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{state}{, }\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{action}{, }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$}]{reward}{, }\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{next\+State}{, }\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{next\+Action}{, }\item[{std\+::vector$<$ bool $>$}]{done}{}\end{DoxyParamCaption})}
+
+
+
+Train iteration method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & state\\
+\hline
+{\em action} & action\\
+\hline
+{\em reward} & reward\\
+\hline
+{\em next\+State} & nest state\\
+\hline
+{\em next\+Action} & next action\\
+\hline
+{\em done} & whether episode is done\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Trainer\+SARSA.\+h\item 
+Base\+Trainer\+SARSA.\+cpp\end{DoxyCompactItemize}

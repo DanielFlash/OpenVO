@@ -1,0 +1,120 @@
+\doxysection{Map\+Analysis.\+h}
+\hypertarget{_map_analysis_8h_source}{}\label{_map_analysis_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*Copyright\ (c)\ <2024>\ <OOO\ "{}ORIS"{}>}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),}}
+\DoxyCodeLine{00003\ \textcolor{comment}{to\ deal\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,}}
+\DoxyCodeLine{00004\ \textcolor{comment}{and/or\ sell\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00007\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00008\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS}}
+\DoxyCodeLine{00009\ \textcolor{comment}{IN\ THE\ SOFTWARE.*/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}SurfaceDataReader.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}SurfaceDataWriter.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}CoordCalculator.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Detector.h"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_map_analysis_a2d5b7c8e25603dd66dffe173721b100c}{MapAnalysis}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m\_inputFile;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m\_imgFolder;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m\_outputFile;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m\_labelsFile;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m\_globalModelPath;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_glCudaEnabled\{\};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_glImgW\{\};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_glImgH\{\};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_glScoreThresh\{\ 0.45\ \};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_glNmsThresh\{\ 0.50\ \};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_glMaxDet\{\ 100\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m\_modelPath;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_cudaEnabled\{\};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_imgW\{\};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_imgH\{\};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_scoreThresh\{\ 0.45\ \};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_nmsThresh\{\ 0.50\ \};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_maxDet\{\ 100\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_surface_data_reader}{SurfaceDataReader}}\ m\_surfaceDataReader;}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_surface_data_writer}{SurfaceDataWriter}}\ m\_surfaceDataWriter;}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_coord_calculator}{CoordCalculator}}\ m\_coordCalculator;}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_detector}{Detector}}\ m\_detector;}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_detector}{Detector}}\ m\_glDetector;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ std::vector<SurfaceImgData>\ m\_surfaceImgDataList\{\};}
+\DoxyCodeLine{00054\ \ \ \ \ std::vector<SurfaceObjData>\ m\_surfaceObjDataList\{\};}
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<SurfaceData>\ m\_surfaceDataList\{\};}
+\DoxyCodeLine{00056\ \ \ \ \ std::vector<LocalData>\ m\_localDataList\{\};}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{struct_map_edges}{MapEdges}}\ m\_mapEdges\{\};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00076\ \ \ \ \ std::vector<double>\ calcDeltas(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ localMinX,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ localMaxY,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ globalMinX,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ globalMaxY,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lw,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lh,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gw,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gh,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ label,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ scale,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ matchDelta,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<LocalData*>\ properObjects,\ \textcolor{keyword}{const}\ std::vector<SurfaceData*>\ properSurfaceObj);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00088\ \ \ \ \ std::vector<ObjectDist>\ calcObjDist(\textcolor{keyword}{const}\ std::vector<double>\&\ deltas,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ label,}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<LocalData*>\ properObjects,\ \textcolor{keyword}{const}\ std::vector<SurfaceData*>\ properSurfaceObj);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ mapObjects(std::vector<ObjectDist>*\ bestCandidates);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ updateLocalDataCoord(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ deltaX,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ deltaY);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{class_map_analysis_a2d5b7c8e25603dd66dffe173721b100c}{MapAnalysis}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ inputFile,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ imgFolder,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ outputFile,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ labelsFile,}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ modelPath,\ \textcolor{keywordtype}{bool}\ cudaEnabled,\ \textcolor{keywordtype}{int}\ imgW,\ \textcolor{keywordtype}{int}\ imgH,\ \textcolor{keywordtype}{float}\ scThres,\ \textcolor{keywordtype}{float}\ nmsThres,\ \textcolor{keywordtype}{int}\ maxD,}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ glModelPath,\ \textcolor{keywordtype}{bool}\ glCudaEnabled,\ \textcolor{keywordtype}{int}\ glImgW,\ \textcolor{keywordtype}{int}\ glImgH,\ \textcolor{keywordtype}{float}\ glScThres,\ \textcolor{keywordtype}{float}\ glNmsThres,\ \textcolor{keywordtype}{int}\ glMaxD);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{class_map_analysis_a2d5b7c8e25603dd66dffe173721b100c}{MapAnalysis}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ inputFile,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ imgFolder,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ outputFile,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ labelsFile,}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ modelPath,\ \textcolor{keywordtype}{bool}\ cudaEnabled,\ \textcolor{keywordtype}{int}\ imgW,\ \textcolor{keywordtype}{int}\ imgH,\ \textcolor{keywordtype}{float}\ scThres,\ \textcolor{keywordtype}{float}\ nmsThres,\ \textcolor{keywordtype}{int}\ maxD);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{//\ Global\ map\ processing\ inner\ steps}}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_analysis_a3d47e0c556085f40f036c8f12b22be00}{loadRawData}}();}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_analysis_a79eac9218838cf41f2e4e0bb66f1e860}{loadRawLabeledData}}();}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_analysis_aee5bae355af26c81c1bdcf01f3aad42d}{loadProcessedData}}();}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_analysis_a16dcb292f5f83cd17d91636141aa1396}{saveProcessedData}}();}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_analysis_a236ee8be77bbe7b2b6758dc1ff1cb41e}{processRawData}}();}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{comment}{//\ Global\ map\ processing\ steps\ (either)}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_analysis_a2edd12b66d3b48b1ad3b1d3a37d18463}{calculateMapObjects}}();}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_analysis_a4cfe2027658d4c596f575f1fa38db5d4}{loadMapObjects}}();}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{comment}{//\ Position\ verification}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_analysis_a80a1c20dc7e6d410450b122b50d96f92}{calcMapEdges}}();}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_map_analysis_a2468c7873e4b0652a4f6f958ab0eac98}{locationVerification}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ currX,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ currY,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ FOVX,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ FOVY,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ deltaFOV);}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{comment}{//\ Local\ obj\ processing\ inner\ steps}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00211\ \ \ \ \ std::vector<Detection>\ \mbox{\hyperlink{class_map_analysis_a0cca2439ca56ca83a405a604098e3b6c}{objectDetection}}(\textcolor{keyword}{const}\ cv::Mat\&\ image);}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00223\ \ \ \ \ std::vector<LocalData>\ \mbox{\hyperlink{class_map_analysis_af35997a27fc6698b1fa7e2cda25777a2}{objectCoordProc}}(\textcolor{keyword}{const}\ std::vector<Detection>\&\ detections,\ \textcolor{keyword}{const}\ cv::Size2f\&\ imgShape,\ \mbox{\hyperlink{struct_camera__params}{Camera\_params}}\&\ cam\_params,\ \mbox{\hyperlink{struct_pos__angle}{Pos\_angle}}\&\ curr\_angles,\ \mbox{\hyperlink{struct_pos__d3}{Pos\_d3}}\&\ curr\_offset,\ \mbox{\hyperlink{struct_pos__f2}{Pos\_f2}}\&\ meter\_in\_pixel);}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_analysis_a8dbd74ba8e709562185744be171cf310}{objectVerification}}(std::vector<LocalData>\&\ localDataList,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ identityDelta);}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{comment}{//\ Local\ obj\ processing\ steps}}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_map_analysis_a885d411007144e8f1656ea5b8f0e66f5}{calculateLocalObjects}}(\textcolor{keyword}{const}\ cv::Mat\&\ image,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ identityDelta,\ \mbox{\hyperlink{struct_camera__params}{Camera\_params}}\&\ cam\_params,\ \mbox{\hyperlink{struct_pos__angle}{Pos\_angle}}\&\ curr\_angles,\ \mbox{\hyperlink{struct_pos__d3}{Pos\_d3}}\&\ curr\_offset,\ \mbox{\hyperlink{struct_pos__f2}{Pos\_f2}}\&\ meter\_in\_pixel);}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{comment}{//\ Object\ matching}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00260\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_map_analysis_a7bd6aa3ee2dd472b6bca08e6ca83823d}{objectMatcher}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ currX,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ currY,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ FOVX,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ FOVY,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ deltaFOV,}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ deltaOffset,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ matchDelta,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ confOverlap,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ objPerClass,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ scale);}
+\DoxyCodeLine{00262\ \};}
+
+\end{DoxyCode}

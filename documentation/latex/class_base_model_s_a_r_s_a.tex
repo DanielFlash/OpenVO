@@ -1,0 +1,79 @@
+\doxysection{Base\+Model\+SARSA Class Reference}
+\hypertarget{class_base_model_s_a_r_s_a}{}\label{class_base_model_s_a_r_s_a}\index{BaseModelSARSA@{BaseModelSARSA}}
+Inheritance diagram for Base\+Model\+SARSA\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_base_model_s_a_r_s_a}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_model_s_a_r_s_a_acc193edca8417ea529d239f1df8dda7e}{Base\+Model\+SARSA}} (const int64\+\_\+t input\+Size, const std\+::vector$<$ int64\+\_\+t $>$ \&hidden\+Sizes, const int64\+\_\+t num\+Classes)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+torch\+::\+Tensor \mbox{\hyperlink{class_base_model_s_a_r_s_a_a2207353bd0464db8f47628f763b81fa5}{forward}} (torch\+::\+Tensor x)
+\begin{DoxyCompactList}\small\item\em Model feedforward method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_model_s_a_r_s_a_a9c06930c5d7a0142ca09acb790e413af}\label{class_base_model_s_a_r_s_a_a9c06930c5d7a0142ca09acb790e413af} 
+std\+::vector$<$ int64\+\_\+t $>$ {\bfseries m\+\_\+hidden\+Sizes}
+\begin{DoxyCompactList}\small\item\em Base SARSA NN model class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_model_s_a_r_s_a_a5f5aefa68ef4af36497bbd127e302904}\label{class_base_model_s_a_r_s_a_a5f5aefa68ef4af36497bbd127e302904} 
+int64\+\_\+t {\bfseries m\+\_\+input\+Size}
+\item 
+\Hypertarget{class_base_model_s_a_r_s_a_ae8a15e4ed1a253b77651d50e6f1c06a2}\label{class_base_model_s_a_r_s_a_ae8a15e4ed1a253b77651d50e6f1c06a2} 
+int64\+\_\+t {\bfseries m\+\_\+num\+Classes}
+\item 
+\Hypertarget{class_base_model_s_a_r_s_a_a486dfcea7cc58ba61eeb743acc1231af}\label{class_base_model_s_a_r_s_a_a486dfcea7cc58ba61eeb743acc1231af} 
+std\+::vector$<$ torch\+::nn\+::\+Linear $>$ {\bfseries m\+\_\+fc\+Layers} \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_model_s_a_r_s_a_acc193edca8417ea529d239f1df8dda7e}\index{BaseModelSARSA@{BaseModelSARSA}!BaseModelSARSA@{BaseModelSARSA}}
+\index{BaseModelSARSA@{BaseModelSARSA}!BaseModelSARSA@{BaseModelSARSA}}
+\doxysubsubsection{\texorpdfstring{BaseModelSARSA()}{BaseModelSARSA()}}
+{\footnotesize\ttfamily \label{class_base_model_s_a_r_s_a_acc193edca8417ea529d239f1df8dda7e} 
+Base\+Model\+SARSA\+::\+Base\+Model\+SARSA (\begin{DoxyParamCaption}\item[{const int64\+\_\+t}]{input\+Size}{, }\item[{const std\+::vector$<$ int64\+\_\+t $>$ \&}]{hidden\+Sizes}{, }\item[{const int64\+\_\+t}]{num\+Classes}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Size} & input layer size\\
+\hline
+{\em hidden\+Sizes} & list of hidden layer sizes\\
+\hline
+{\em num\+Classes} & output layer size\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_model_s_a_r_s_a_a2207353bd0464db8f47628f763b81fa5}\index{BaseModelSARSA@{BaseModelSARSA}!forward@{forward}}
+\index{forward@{forward}!BaseModelSARSA@{BaseModelSARSA}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{class_base_model_s_a_r_s_a_a2207353bd0464db8f47628f763b81fa5} 
+torch\+::\+Tensor Base\+Model\+SARSA\+::forward (\begin{DoxyParamCaption}\item[{torch\+::\+Tensor}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Model feedforward method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & input tensor\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+predicted result
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Model\+SARSA.\+h\item 
+Base\+Model\+SARSA.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,290 @@
+\doxysection{Homography.\+h}
+\hypertarget{_homography_8h_source}{}\label{_homography_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*Copyright\ (c)\ <2024>\ <OOO\ "{}ORIS"{}>}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),}}
+\DoxyCodeLine{00003\ \textcolor{comment}{to\ deal\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,}}
+\DoxyCodeLine{00004\ \textcolor{comment}{and/or\ sell\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00007\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00008\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS}}
+\DoxyCodeLine{00009\ \textcolor{comment}{IN\ THE\ SOFTWARE.*/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}TypeVOext.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}MathFilters.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}SolverLinearEquations.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}math\_test.h"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }homography\_func}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ vector<Point>\ apply(vector<Point>\ points,\ Matrix<>\ H)}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ vector<Point>\ result;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (int32\_t\ i\ =\ 0;\ i\ <\ points.size();\ i++)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ Point\ point;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ point.x\ =\ (H[0][0]\ *\ points[i].x\ +\ H[0][1]\ *\ points[i].y\ +\ H[0][2])\ /}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (H[2][0]\ *\ points[i].x\ +\ H[2][1]\ *\ points[i].y\ +\ H[2][2]);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ point.y\ =\ (H[1][0]\ *\ points[i].x\ +\ H[1][1]\ *\ points[i].y\ +\ H[1][2])\ /}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (H[2][0]\ *\ points[i].x\ +\ H[2][1]\ *\ points[i].y\ +\ H[2][2]);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::isinf(point.x)\ ||\ std::isinf(point.y))}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vector<Point>();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ result.push\_back(point);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ apply(cv::Mat\ img,\ Matrix<>\ H,\ std::string\ additionName\ =\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{00058\ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ cv::Mat\ cv\_H\ =\ MatrixToMat(H);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ cv::Mat\ transformed\_image;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ cv::warpPerspective(img,\ transformed\_image,\ cv\_H,\ img.size());}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ cv::Mat\ combined;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ cv::hconcat(img,\ transformed\_image,\ combined);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ cv::imshow(\textcolor{stringliteral}{"{}Image\ comparison.\ "{}}\ +\ additionName,\ combined);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ cv::waitKey(0);}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00077\ pair<vector<vector<double>>,\ vector<double>>\ createMatrixEquation(vector<Point>\&\ src,}
+\DoxyCodeLine{00078\ \ \ \ \ vector<Point>\&\ dst)}
+\DoxyCodeLine{00079\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size\ =\ src.size();}
+\DoxyCodeLine{00081\ \ \ \ \ vector<vector<double>>\ A;}
+\DoxyCodeLine{00082\ \ \ \ \ vector<double>\ b;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ size;\ i++)}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x\ =\ src[i].x;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ y\ =\ src[i].y;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_x\ =\ dst[i].x;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_y\ =\ dst[i].y;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ vector<double>\ row\_A1(8);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ row\_A1[0]\ =\ x;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ row\_A1[1]\ =\ y;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ row\_A1[2]\ =\ 1;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ row\_A1[3]\ =\ 0;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ row\_A1[4]\ =\ 0;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ row\_A1[5]\ =\ 0;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ row\_A1[6]\ =\ -\/x\ *\ \_x;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ row\_A1[7]\ =\ -\/y\ *\ \_x;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ b.push\_back(\_x);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ A.push\_back(row\_A1);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ vector<double>\ row\_A2(8);}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ row\_A2[0]\ =\ 0;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ row\_A2[1]\ =\ 0;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ row\_A2[2]\ =\ 0;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ row\_A2[3]\ =\ x;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ row\_A2[4]\ =\ y;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ row\_A2[5]\ =\ 1;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ row\_A2[6]\ =\ -\/x\ *\ \_y;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ row\_A2[7]\ =\ -\/y\ *\ \_y;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ b.push\_back(\_y);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ A.push\_back(row\_A2);}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordflow}{return}\ pair<vector<vector<double>>,\ vector<double>>\{A,\ b\};}
+\DoxyCodeLine{00117\ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00126\ vector<double>\ createMatrixEquationSingular(vector<Point>\&\ src,\ vector<Point>\&\ dst)}
+\DoxyCodeLine{00127\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ rows\ =\ 2\ *\ src.size();}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ cols\ =\ 9;}
+\DoxyCodeLine{00130\ \ \ \ \ vector<double>\ A(rows\ *\ cols,\ 0.0);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ src.size();\ i++)}
+\DoxyCodeLine{00133\ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x1\ =\ src[i].x;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ y1\ =\ src[i].y;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x2\ =\ dst[i].x;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ y2\ =\ dst[i].y;}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i0\ =\ 2\ *\ i;\ \ \ \ \ \textcolor{comment}{//\ even\ line}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ A[i0\ *\ 9\ +\ 0]\ =\ x1;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ A[i0\ *\ 9\ +\ 1]\ =\ y1;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ A[i0\ *\ 9\ +\ 2]\ =\ 1.0;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ A[i0\ *\ 9\ +\ 3]\ =\ 0.0;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ A[i0\ *\ 9\ +\ 4]\ =\ 0.0;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ A[i0\ *\ 9\ +\ 5]\ =\ 0.0;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ A[i0\ *\ 9\ +\ 6]\ =\ -\/x2\ *\ x1;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ A[i0\ *\ 9\ +\ 7]\ =\ -\/x2\ *\ y1;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ A[i0\ *\ 9\ +\ 8]\ =\ -\/x2;}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i1\ =\ 2\ *\ i\ +\ 1;\ \textcolor{comment}{//\ odd}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ A[i1\ *\ 9\ +\ 0]\ =\ 0.0;}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ A[i1\ *\ 9\ +\ 1]\ =\ 0.0;}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ A[i1\ *\ 9\ +\ 2]\ =\ 0.0;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ A[i1\ *\ 9\ +\ 3]\ =\ x1;}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ A[i1\ *\ 9\ +\ 4]\ =\ y1;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ A[i1\ *\ 9\ +\ 5]\ =\ 1.0;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ A[i1\ *\ 9\ +\ 6]\ =\ -\/y2\ *\ x1;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ A[i1\ *\ 9\ +\ 7]\ =\ -\/y2\ *\ y1;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ A[i1\ *\ 9\ +\ 8]\ =\ -\/y2;}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordflow}{return}\ A;}
+\DoxyCodeLine{00163\ \}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00171\ \mbox{\hyperlink{class_matrix}{Matrix<>}}\ calc(vector<Point>\&\ src,\ vector<Point>\&\ dst)}
+\DoxyCodeLine{00172\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ pair<vector<vector<double>>,\ vector<double>>\ equation\ =\ createMatrixEquation(src,\ dst);}
+\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{class_lu_solver}{LuSolver}}\ solver;}
+\DoxyCodeLine{00176\ \ \ \ \ vector<double>\ x\ =\ solver.\mbox{\hyperlink{class_lu_solver_aecfeb3c03bd6d052ea7b25f5ede11306}{solve}}(equation.first,\ equation.second);}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ system\ has\ a\ solution}}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{if}\ (x.size()\ ==\ 0)}
+\DoxyCodeLine{00179\ \ \ \ \ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}The\ system\ of\ equations\ is\ degenerate\ and\ has\ no\ unique\ solution."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_matrix}{Matrix<>}}(0,\ 0);}
+\DoxyCodeLine{00182\ \ \ \ \ \}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00185\ \ \ \ \ \mbox{\hyperlink{class_matrix}{Matrix<>}}\ H(3,\ 3);}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 8;\ i++)}
+\DoxyCodeLine{00187\ \ \ \ \ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ H[i\ /\ 3][i\ \%\ 3]\ =\ x[i];}
+\DoxyCodeLine{00189\ \ \ \ \ \}}
+\DoxyCodeLine{00190\ \ \ \ \ H[2][2]\ =\ 1.0;}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordflow}{return}\ H;}
+\DoxyCodeLine{00193\ \}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00201\ \mbox{\hyperlink{class_matrix}{Matrix<>}}\ calcSingular(vector<Point>\ src,\ vector<Point>\ dst)}
+\DoxyCodeLine{00202\ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ countRowEquation\ =\ src.size()\ *\ 2;}
+\DoxyCodeLine{00204\ \ \ \ \ vector<double>\ equation\ =\ createMatrixEquationSingular(src,\ dst);}
+\DoxyCodeLine{00205\ \ \ \ \ \mbox{\hyperlink{class_svd_solver}{SvdSolver}}\ solver;}
+\DoxyCodeLine{00206\ \ \ \ \ vector<double>\ x\ =\ solver.\mbox{\hyperlink{class_svd_solver_a890065d87b2258b4bb611cb1b3c84b57}{solveHomogeneous}}(countRowEquation,\ 9,\ equation);}
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{comment}{//\ Checking\ if\ the\ system\ has\ a\ solution}}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordflow}{if}\ (x.size()\ ==\ 0)}
+\DoxyCodeLine{00209\ \ \ \ \ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}The\ system\ of\ equations\ is\ degenerate\ and\ has\ no\ unique\ solution.."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_matrix}{Matrix<>}}(0,\ 0);}
+\DoxyCodeLine{00212\ \ \ \ \ \}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00215\ \ \ \ \ \mbox{\hyperlink{class_matrix}{Matrix<>}}\ H(3,\ 3);}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 9;\ i++)}
+\DoxyCodeLine{00217\ \ \ \ \ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ H[i\ /\ 3][i\ \%\ 3]\ =\ x[i]\ /\ x[8];}
+\DoxyCodeLine{00219\ \ \ \ \ \}}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordflow}{return}\ H;}
+\DoxyCodeLine{00222\ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00230\ \mbox{\hyperlink{class_matrix}{Matrix<double>}}\ findMatrix(vector<Point>\ src,\ vector<Point>\ dst)}
+\DoxyCodeLine{00231\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordflow}{if}\ (src.size()\ ==\ 4)}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ calc(src,\ dst);}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ calcSingular(src,\ dst);}
+\DoxyCodeLine{00236\ \}}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00245\ vector<double>\ calcDeltaPoint(Points\ src,\ Points\ dst,\ \mbox{\hyperlink{class_matrix}{Matrix<>}}\ H)}
+\DoxyCodeLine{00246\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ Points\ projection\ =\ homography\_func::apply(src,\ H);}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordflow}{if}\ (projection.size()\ ==\ 0)}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vector<double>();}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ vector<double>\ vectorDelta;}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ src.size();\ i++)}
+\DoxyCodeLine{00253\ \ \ \ \ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ vectorDelta.push\_back(pow((projection[i].x\ -\/\ dst[i].x),\ 2)\ +}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ pow((projection[i].y\ -\/\ dst[i].y),\ 2));}
+\DoxyCodeLine{00256\ \ \ \ \ \}}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{return}\ vectorDelta;}
+\DoxyCodeLine{00259\ \}}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00268\ vector<double>\ calcDeltaMatch(Points\ src,\ Points\ dst,\ Matches\ matches,\ \mbox{\hyperlink{class_matrix}{Matrix<>}}\ H)}
+\DoxyCodeLine{00269\ \{}
+\DoxyCodeLine{00270\ \ \ \ \ Points\ projection\ =\ homography\_func::apply(src,\ H);}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordflow}{if}\ (projection.size()\ ==\ 0)}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vector<double>();}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ vector<double>\ vectorDelta;}
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ matches.size();\ i++)}
+\DoxyCodeLine{00276\ \ \ \ \ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ vectorDelta.push\_back(pow((projection[matches[i].src].x\ -\/\ dst[matches[i].dst].x),\ 2)\ +}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ pow((projection[matches[i].src].y\ -\/\ dst[matches[i].dst].y),\ 2));}
+\DoxyCodeLine{00279\ \ \ \ \ \}}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{return}\ vectorDelta;}
+\DoxyCodeLine{00282\ \}}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00294\ \mbox{\hyperlink{class_matrix}{Matrix<>}}\ findHomography(vector<Point>\ src,\ vector<Point>\ dst,\ Filters\ method,}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keywordtype}{double}\ threshold,\ \textcolor{keywordtype}{int}\ maxIteration\ =\ 1000,\ \textcolor{keywordtype}{int}\ countRandomPoints\ =\ 4)}
+\DoxyCodeLine{00296\ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordflow}{if}\ (src.size()\ <\ 4\ ||\ src.size()\ !=\ dst.size())}
+\DoxyCodeLine{00298\ \ \ \ \ \{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{stringliteral}{"{}Count\ points\ less\ min\ need\ for\ homography"{}};}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_matrix}{Matrix<>}}(0,\ 0);}
+\DoxyCodeLine{00301\ \ \ \ \ \}}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keywordflow}{if}\ (threshold\ <=\ 0)}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ threshold\ =\ 0.85;}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{keywordflow}{if}\ (maxIteration\ <=\ 0)}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ maxIteration\ =\ 1000;}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keywordflow}{if}\ (countRandomPoints\ <\ 4)}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ countRandomPoints\ =\ 4;}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00312\ \ \ \ \ \mbox{\hyperlink{class_matrix}{Matrix<>}}\ H;}
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{keywordflow}{if}\ (method\ ==\ Filters::RANSAC)}
+\DoxyCodeLine{00314\ \ \ \ \ \{}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_r_a_n_s_a_c}{RANSAC}}\ ransac(threshold,\ maxIteration,\ countRandomPoints);}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ H\ =\ ransac.calc(src,\ dst,\ findMatrix,\ calcDeltaPoint);}
+\DoxyCodeLine{00317\ \ \ \ \ \}}
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (method\ ==\ Filters::LMEDS)}
+\DoxyCodeLine{00319\ \ \ \ \ \{}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_l_m_e_d_s}{LMEDS}}\ lmeds(maxIteration,\ countRandomPoints);}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ H\ =\ lmeds.calc(src,\ dst,\ findMatrix,\ calcDeltaPoint);}
+\DoxyCodeLine{00322\ \ \ \ \ \}}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keywordflow}{return}\ H;}
+\DoxyCodeLine{00325\ \}}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00339\ \mbox{\hyperlink{class_matrix}{Matrix<>}}\ findHomography(vector<Point>\ src,\ vector<Point>\ dst,\ vector<Match>\ matches,}
+\DoxyCodeLine{00340\ \ \ \ \ Filters\ method,\ \textcolor{keywordtype}{double}\ threshold,\ \textcolor{keywordtype}{int}\ maxIteration\ =\ 1000,\ \textcolor{keywordtype}{int}\ countRandomPoints\ =\ 4)}
+\DoxyCodeLine{00341\ \{}
+\DoxyCodeLine{00342\ \ \ \ \ \textcolor{keywordflow}{if}\ (src.size()\ <\ 4\ ||\ src.size()\ !=\ dst.size()\ ||\ src.size()\ !=\ matches.size())}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_matrix}{Matrix<>}}(0,\ 0);}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keywordflow}{if}\ (threshold\ <=\ 0)}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ threshold\ =\ 0.85;}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordflow}{if}\ (maxIteration\ <=\ 0)}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ maxIteration\ =\ 1000;}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keywordflow}{if}\ (countRandomPoints\ <\ 4)}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ countRandomPoints\ =\ 4;}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00354\ \ \ \ \ \mbox{\hyperlink{class_matrix}{Matrix<>}}\ H;}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keywordflow}{if}\ (method\ ==\ Filters::RANSAC)}
+\DoxyCodeLine{00357\ \ \ \ \ \{}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_r_a_n_s_a_c}{RANSAC}}\ ransac(threshold,\ maxIteration,\ countRandomPoints);}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ H\ =\ ransac.calc(src,\ dst,\ matches,\ findMatrix,\ calcDeltaMatch);}
+\DoxyCodeLine{00360\ \ \ \ \ \}}
+\DoxyCodeLine{00361\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (method\ ==\ Filters::LMEDS)}
+\DoxyCodeLine{00362\ \ \ \ \ \{}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_l_m_e_d_s}{LMEDS}}\ lmeds(maxIteration,\ countRandomPoints);}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ H\ =\ lmeds.calc(src,\ dst,\ matches,\ findMatrix,\ calcDeltaMatch);}
+\DoxyCodeLine{00365\ \ \ \ \ \}}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00367\ \ \ \ \ \textcolor{keywordflow}{return}\ H;}
+\DoxyCodeLine{00368\ \}}
+
+\end{DoxyCode}

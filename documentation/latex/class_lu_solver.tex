@@ -1,0 +1,105 @@
+\doxysection{Lu\+Solver Class Reference}
+\hypertarget{class_lu_solver}{}\label{class_lu_solver}\index{LuSolver@{LuSolver}}
+
+
+Class of SLAE solution.  
+
+
+
+
+{\ttfamily \#include $<$Solver\+Linear\+Equations.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{class_lu_solver_aecfeb3c03bd6d052ea7b25f5ede11306}{solve}} (vector$<$ vector$<$ double $>$ $>$ A, vector$<$ double $>$ b)
+\begin{DoxyCompactList}\small\item\em Method of solving SLAE Format\+: A\texorpdfstring{$\ast$}{*}X = b. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lu_solver_adb2b16fbd32e41c170efd07c6bcb5f3f}{Full\+Pivot\+LUDecomposition}} (const vector$<$ vector$<$ double $>$ $>$ \&A, vector$<$ vector$<$ double $>$ $>$ \&L, vector$<$ vector$<$ double $>$ $>$ \&U, vector$<$ int $>$ \&P, vector$<$ int $>$ \&Q)
+\begin{DoxyCompactList}\small\item\em Function for LU decomposition with full pivot selection. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lu_solver_a182492124f683f63625989a2458347cc}{Solve\+Linear\+System}} (const vector$<$ vector$<$ double $>$ $>$ \&L, const vector$<$ vector$<$ double $>$ $>$ \&U, const vector$<$ int $>$ \&P, const vector$<$ int $>$ \&Q, const vector$<$ double $>$ \&b, vector$<$ double $>$ \&x)
+\begin{DoxyCompactList}\small\item\em Function for solving a system of linear equations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class of SLAE solution. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_lu_solver_adb2b16fbd32e41c170efd07c6bcb5f3f}\index{LuSolver@{LuSolver}!FullPivotLUDecomposition@{FullPivotLUDecomposition}}
+\index{FullPivotLUDecomposition@{FullPivotLUDecomposition}!LuSolver@{LuSolver}}
+\doxysubsubsection{\texorpdfstring{FullPivotLUDecomposition()}{FullPivotLUDecomposition()}}
+{\footnotesize\ttfamily \label{class_lu_solver_adb2b16fbd32e41c170efd07c6bcb5f3f} 
+bool Lu\+Solver\+::\+Full\+Pivot\+LUDecomposition (\begin{DoxyParamCaption}\item[{const vector$<$ vector$<$ double $>$ $>$ \&}]{A}{, }\item[{vector$<$ vector$<$ double $>$ $>$ \&}]{L}{, }\item[{vector$<$ vector$<$ double $>$ $>$ \&}]{U}{, }\item[{vector$<$ int $>$ \&}]{P}{, }\item[{vector$<$ int $>$ \&}]{Q}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function for LU decomposition with full pivot selection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Original matrix\\
+\hline
+{\em L} & Lower triangular matrix\\
+\hline
+{\em U} & Upper triangular matrix\\
+\hline
+{\em P} & Permutation matrix\\
+\hline
+{\em Q} & Permutation matrix\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of the solution
+\end{DoxyReturn}
+\Hypertarget{class_lu_solver_aecfeb3c03bd6d052ea7b25f5ede11306}\index{LuSolver@{LuSolver}!solve@{solve}}
+\index{solve@{solve}!LuSolver@{LuSolver}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily \label{class_lu_solver_aecfeb3c03bd6d052ea7b25f5ede11306} 
+vector$<$ double $>$ Lu\+Solver\+::solve (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ double $>$ $>$}]{A}{, }\item[{vector$<$ double $>$}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Method of solving SLAE Format\+: A\texorpdfstring{$\ast$}{*}X = b. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & Left side of equation A\texorpdfstring{$\ast$}{*}X\\
+\hline
+{\em b} & Right side of equation b\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_vector}{Vector} X is the solution of SLAE. Zero if no solution is found
+\end{DoxyReturn}
+\Hypertarget{class_lu_solver_a182492124f683f63625989a2458347cc}\index{LuSolver@{LuSolver}!SolveLinearSystem@{SolveLinearSystem}}
+\index{SolveLinearSystem@{SolveLinearSystem}!LuSolver@{LuSolver}}
+\doxysubsubsection{\texorpdfstring{SolveLinearSystem()}{SolveLinearSystem()}}
+{\footnotesize\ttfamily \label{class_lu_solver_a182492124f683f63625989a2458347cc} 
+bool Lu\+Solver\+::\+Solve\+Linear\+System (\begin{DoxyParamCaption}\item[{const vector$<$ vector$<$ double $>$ $>$ \&}]{L}{, }\item[{const vector$<$ vector$<$ double $>$ $>$ \&}]{U}{, }\item[{const vector$<$ int $>$ \&}]{P}{, }\item[{const vector$<$ int $>$ \&}]{Q}{, }\item[{const vector$<$ double $>$ \&}]{b}{, }\item[{vector$<$ double $>$ \&}]{x}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function for solving a system of linear equations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & Lower triangular matrix\\
+\hline
+{\em U} & Upper triangular matrix\\
+\hline
+{\em P} & Permutation matrix\\
+\hline
+{\em Q} & Permutation matrix\\
+\hline
+{\em b} & Right side of the equation\\
+\hline
+{\em x} & Left side of the equation\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of the solution
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Solver\+Linear\+Equations.\+h\end{DoxyCompactItemize}

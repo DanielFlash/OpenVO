@@ -1,0 +1,74 @@
+\doxysection{Base\+Model\+PPOValue Class Reference}
+\hypertarget{class_base_model_p_p_o_value}{}\label{class_base_model_p_p_o_value}\index{BaseModelPPOValue@{BaseModelPPOValue}}
+Inheritance diagram for Base\+Model\+PPOValue\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_base_model_p_p_o_value}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_model_p_p_o_value_a28a5691c33b0920e150a74a303c64d1e}{Base\+Model\+PPOValue}} (const int64\+\_\+t input\+Size, const std\+::vector$<$ int64\+\_\+t $>$ \&hidden\+Sizes)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+torch\+::\+Tensor \mbox{\hyperlink{class_base_model_p_p_o_value_a6567debf03a0b6af3976f29dcf7371c4}{forward}} (torch\+::\+Tensor x)
+\begin{DoxyCompactList}\small\item\em Model feedforward method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_model_p_p_o_value_ac074031e5676741c1273be4a60abcfea}\label{class_base_model_p_p_o_value_ac074031e5676741c1273be4a60abcfea} 
+std\+::vector$<$ int64\+\_\+t $>$ {\bfseries m\+\_\+hidden\+Sizes}
+\begin{DoxyCompactList}\small\item\em Base PPO NN value model class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_model_p_p_o_value_a1a7595c61ce1ffb33001c3625f4db7b7}\label{class_base_model_p_p_o_value_a1a7595c61ce1ffb33001c3625f4db7b7} 
+int64\+\_\+t {\bfseries m\+\_\+input\+Size}
+\item 
+\Hypertarget{class_base_model_p_p_o_value_ab9e6fa66f76b5555510bd702766d9438}\label{class_base_model_p_p_o_value_ab9e6fa66f76b5555510bd702766d9438} 
+std\+::vector$<$ torch\+::nn\+::\+Linear $>$ {\bfseries m\+\_\+fc\+Layers} \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_model_p_p_o_value_a28a5691c33b0920e150a74a303c64d1e}\index{BaseModelPPOValue@{BaseModelPPOValue}!BaseModelPPOValue@{BaseModelPPOValue}}
+\index{BaseModelPPOValue@{BaseModelPPOValue}!BaseModelPPOValue@{BaseModelPPOValue}}
+\doxysubsubsection{\texorpdfstring{BaseModelPPOValue()}{BaseModelPPOValue()}}
+{\footnotesize\ttfamily \label{class_base_model_p_p_o_value_a28a5691c33b0920e150a74a303c64d1e} 
+Base\+Model\+PPOValue\+::\+Base\+Model\+PPOValue (\begin{DoxyParamCaption}\item[{const int64\+\_\+t}]{input\+Size}{, }\item[{const std\+::vector$<$ int64\+\_\+t $>$ \&}]{hidden\+Sizes}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Size} & input layer size\\
+\hline
+{\em hidden\+Sizes} & list of hidden layer sizes\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_model_p_p_o_value_a6567debf03a0b6af3976f29dcf7371c4}\index{BaseModelPPOValue@{BaseModelPPOValue}!forward@{forward}}
+\index{forward@{forward}!BaseModelPPOValue@{BaseModelPPOValue}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{class_base_model_p_p_o_value_a6567debf03a0b6af3976f29dcf7371c4} 
+torch\+::\+Tensor Base\+Model\+PPOValue\+::forward (\begin{DoxyParamCaption}\item[{torch\+::\+Tensor}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Model feedforward method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & input tensor\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+predicted result
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Model\+PPOValue.\+h\item 
+Base\+Model\+PPOValue.\+cpp\end{DoxyCompactItemize}

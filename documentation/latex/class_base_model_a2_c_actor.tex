@@ -1,0 +1,79 @@
+\doxysection{Base\+Model\+A2\+CActor Class Reference}
+\hypertarget{class_base_model_a2_c_actor}{}\label{class_base_model_a2_c_actor}\index{BaseModelA2CActor@{BaseModelA2CActor}}
+Inheritance diagram for Base\+Model\+A2\+CActor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_base_model_a2_c_actor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_model_a2_c_actor_a9fa25a4d29d4c1d1ce63a3f4f4b3a82b}{Base\+Model\+A2\+CActor}} (const int64\+\_\+t input\+Size, const std\+::vector$<$ int64\+\_\+t $>$ \&hidden\+Sizes, const int64\+\_\+t num\+Classes)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+torch\+::\+Tensor \mbox{\hyperlink{class_base_model_a2_c_actor_af089483065c76c47e08f05c7f2aa3cab}{forward}} (torch\+::\+Tensor x)
+\begin{DoxyCompactList}\small\item\em Model feedforward method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_model_a2_c_actor_a86fb7dde624ba81c629e06df2f8ff56d}\label{class_base_model_a2_c_actor_a86fb7dde624ba81c629e06df2f8ff56d} 
+std\+::vector$<$ int64\+\_\+t $>$ {\bfseries m\+\_\+hidden\+Sizes}
+\begin{DoxyCompactList}\small\item\em Base A2C NN actor model class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_model_a2_c_actor_a89c54d80bbd040d8cb1c974a982465c1}\label{class_base_model_a2_c_actor_a89c54d80bbd040d8cb1c974a982465c1} 
+int64\+\_\+t {\bfseries m\+\_\+input\+Size}
+\item 
+\Hypertarget{class_base_model_a2_c_actor_ae047ad0c7f085284c6b8ecd83d061a4f}\label{class_base_model_a2_c_actor_ae047ad0c7f085284c6b8ecd83d061a4f} 
+int64\+\_\+t {\bfseries m\+\_\+num\+Classes}
+\item 
+\Hypertarget{class_base_model_a2_c_actor_a494e636f1dd7bb8c79724aa8abfd6aad}\label{class_base_model_a2_c_actor_a494e636f1dd7bb8c79724aa8abfd6aad} 
+std\+::vector$<$ torch\+::nn\+::\+Linear $>$ {\bfseries m\+\_\+fc\+Layers} \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_model_a2_c_actor_a9fa25a4d29d4c1d1ce63a3f4f4b3a82b}\index{BaseModelA2CActor@{BaseModelA2CActor}!BaseModelA2CActor@{BaseModelA2CActor}}
+\index{BaseModelA2CActor@{BaseModelA2CActor}!BaseModelA2CActor@{BaseModelA2CActor}}
+\doxysubsubsection{\texorpdfstring{BaseModelA2CActor()}{BaseModelA2CActor()}}
+{\footnotesize\ttfamily \label{class_base_model_a2_c_actor_a9fa25a4d29d4c1d1ce63a3f4f4b3a82b} 
+Base\+Model\+A2\+CActor\+::\+Base\+Model\+A2\+CActor (\begin{DoxyParamCaption}\item[{const int64\+\_\+t}]{input\+Size}{, }\item[{const std\+::vector$<$ int64\+\_\+t $>$ \&}]{hidden\+Sizes}{, }\item[{const int64\+\_\+t}]{num\+Classes}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Size} & input layer size\\
+\hline
+{\em hidden\+Sizes} & list of hidden layer sizes\\
+\hline
+{\em num\+Classes} & output layer size\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_model_a2_c_actor_af089483065c76c47e08f05c7f2aa3cab}\index{BaseModelA2CActor@{BaseModelA2CActor}!forward@{forward}}
+\index{forward@{forward}!BaseModelA2CActor@{BaseModelA2CActor}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{class_base_model_a2_c_actor_af089483065c76c47e08f05c7f2aa3cab} 
+torch\+::\+Tensor Base\+Model\+A2\+CActor\+::forward (\begin{DoxyParamCaption}\item[{torch\+::\+Tensor}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Model feedforward method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & input tensor\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+predicted result
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Model\+A2\+CActor.\+h\item 
+Base\+Model\+A2\+CActor.\+cpp\end{DoxyCompactItemize}

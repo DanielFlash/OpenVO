@@ -1,0 +1,327 @@
+\doxysection{Trajectory Class Reference}
+\hypertarget{class_trajectory}{}\label{class_trajectory}\index{Trajectory@{Trajectory}}
+
+
+OVO class\+::\+The trajectory includes methods for calculating the position in the local coordinate system, on a scale of meter to pixel, functions for calculating points on the frame in coordinates in meters, as well as accounting for the rotation of the device.  
+
+
+
+
+{\ttfamily \#include $<$Trajectory\+OVO.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_trajectory_afb7e6ece5323e7e3ca6e2fb014752d02}\label{class_trajectory_afb7e6ece5323e7e3ca6e2fb014752d02} 
+{\bfseries Trajectory} (\mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} \&pr)
+\item 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \mbox{\hyperlink{class_trajectory_acbb29ec332efbb687ea05ac010cc067e}{Get\+Interest\+Points\+Coordinates}} (\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}})
+\begin{DoxyCompactList}\small\item\em The function of converting pixel coordinates to coordinates in pixel from the calculation point ( start ) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \mbox{\hyperlink{class_trajectory_a73068e910093c00e4787996749aca8dc}{Get\+Interest\+Points\+Coordinates}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em The function of converting pixel coordinates to coordinates in pixel from the calculation point ( start ) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \mbox{\hyperlink{class_trajectory_a64187385d8b96236a7aee2076b8fac05}{Position\+From\+Decart\+To\+Lat\+Long}} (\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}})
+\begin{DoxyCompactList}\small\item\em The function of converting pixel coordinates to coordinates in WGS84. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \mbox{\hyperlink{class_trajectory_a7b34149fbcca894f4a9302d3efa49105}{Position\+From\+Decart\+To\+Lat\+Long}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em The function of converting pixel coordinates to coordinates in WGS84. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \mbox{\hyperlink{class_trajectory_ae664bdb59c6ee26a45fe3027f20a1568}{get\+Local\+Position}} (\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}}, \mbox{\hyperlink{struct_pos__i2}{Pos\+\_\+i2}} resolution)
+\begin{DoxyCompactList}\small\item\em Converting pixel coordinates of a point to coordinates in meters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} \mbox{\hyperlink{class_trajectory_ad9a599d7617a282d1056702ae409db97}{get\+Local\+Position}} (\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}}, int wigth, int higth)
+\begin{DoxyCompactList}\small\item\em Converting pixel coordinates of a point to coordinates in meters. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_trajectory_aee967460ef76aec97f4d81c5d5df0c56}{update\+Data\+From\+Affine\+Matrix}} (float \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}matrix2d, float alt)
+\begin{DoxyCompactList}\small\item\em The function of updating data by calculating the offset from the matrix of affine transformations between successive frames, taking into account camera parameters such as FoV, resolution. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_trajectory_ae70b33fe8dbc622a1a32723c6dda889d}{update\+Data\+From\+Affine\+Matrix}} (\mbox{\hyperlink{struct_affine__params}{Affine\+\_\+params}} \&params, float alt)
+\begin{DoxyCompactList}\small\item\em The function of updating data by calculating the offset from the matrix of affine transformations between successive frames, taking into account camera parameters such as FoV, resolution. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_trajectory_acf908e70c1333a23dc2ebb43b7eb5d74}{update\+Data\+From\+Pixel\+Point}} (int x, int y, float angle, float alt, float scale)
+\begin{DoxyCompactList}\small\item\em The function of updating data by calculating the offset from the custom parametrs between successive frames, taking into account camera parameters such as FoV, resolution. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_trajectory_a57d7ba4957a0550eb688dba044fee1a8}{calculate\+Position}} ()
+\begin{DoxyCompactList}\small\item\em the function calculates the position based on the data stored in the class returns True if the condition is successful \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_pos__d3}{Pos\+\_\+d3}} \mbox{\hyperlink{class_trajectory_ad808386ed612893bd2444d81e0e70c67}{get\+\_\+curr\+\_\+pos}} ()
+\begin{DoxyCompactList}\small\item\em GET function current position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} \mbox{\hyperlink{class_trajectory_a7f38465da79c3be9a34bf07d1b8f0d4e}{get\+\_\+curr\+\_\+angles}} ()
+\begin{DoxyCompactList}\small\item\em GET function current angles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_trajectory_a2175eefad1c2941d9e4dce92ca24812e}\label{class_trajectory_a2175eefad1c2941d9e4dce92ca24812e} 
+\mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} {\bfseries cam\+\_\+params}
+\begin{DoxyCompactList}\small\item\em Camera params. \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_a787e434d599a25b4b92e6babeb65c859}\label{class_trajectory_a787e434d599a25b4b92e6babeb65c859} 
+\mbox{\hyperlink{struct_pos__d3}{Pos\+\_\+d3}} {\bfseries curr\+\_\+pos}
+\begin{DoxyCompactList}\small\item\em current position observer \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_abae38c75c60b101825d344797f3786b7}\label{class_trajectory_abae38c75c60b101825d344797f3786b7} 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} {\bfseries curr\+\_\+offset}
+\begin{DoxyCompactList}\small\item\em current offset observer \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_aad86d7e7789dfbad78a9511e90a45f35}\label{class_trajectory_aad86d7e7789dfbad78a9511e90a45f35} 
+\mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} {\bfseries curr\+\_\+angles}
+\begin{DoxyCompactList}\small\item\em current angles observer \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_aee9cf245c3c36813ff7677f2f1b07772}\label{class_trajectory_aee9cf245c3c36813ff7677f2f1b07772} 
+\mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} {\bfseries prev\+\_\+angles}
+\begin{DoxyCompactList}\small\item\em position angles before last update \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_aacecdfb291991026bc31b08f8a807b8d}\label{class_trajectory_aacecdfb291991026bc31b08f8a807b8d} 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} {\bfseries meter\+\_\+in\+\_\+pixel}
+\begin{DoxyCompactList}\small\item\em pixel scale to meters \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_a4ddcc5c4097cbbc57b61adbe82ea7e31}\label{class_trajectory_a4ddcc5c4097cbbc57b61adbe82ea7e31} 
+\mbox{\hyperlink{struct_pos___w_g_s84}{Pos\+\_\+\+WGS84}} {\bfseries start\+\_\+pos}
+\begin{DoxyCompactList}\small\item\em start position in WGS 84 \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_afae61faa8f6ac86b9bdf2172604499d9}\label{class_trajectory_afae61faa8f6ac86b9bdf2172604499d9} 
+\mbox{\hyperlink{struct_pos__i2}{Pos\+\_\+i2}} {\bfseries video\+\_\+real\+\_\+size}
+\begin{DoxyCompactList}\small\item\em real size h and w \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_a92b5199431ec811df2ccdc302c741387}\label{class_trajectory_a92b5199431ec811df2ccdc302c741387} 
+\mbox{\hyperlink{struct_pos__i2}{Pos\+\_\+i2}} {\bfseries video\+\_\+custom\+\_\+size}
+\begin{DoxyCompactList}\small\item\em custom size h and w \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_a290bc3bb531b036612dd7d4d086d4ef8}\label{class_trajectory_a290bc3bb531b036612dd7d4d086d4ef8} 
+\mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} {\bfseries max\+\_\+angle\+\_\+speed}
+\begin{DoxyCompactList}\small\item\em max speed changing angle -\/ use when created dlc inertial filter \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_a2f32a6da27be25709021ba02d50cfc8f}\label{class_trajectory_a2f32a6da27be25709021ba02d50cfc8f} 
+\mbox{\hyperlink{struct_pos__f3}{Pos\+\_\+f3}} {\bfseries max\+\_\+speed}
+\begin{DoxyCompactList}\small\item\em max speed -\/ use when created dlc inertial filter \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_aea6c4efc1fc3e213d184cd91b86a0414}\label{class_trajectory_aea6c4efc1fc3e213d184cd91b86a0414} 
+\mbox{\hyperlink{struct_affine__params}{Affine\+\_\+params}} {\bfseries curr\+\_\+affine\+\_\+parameters}
+\begin{DoxyCompactList}\small\item\em affine parametrs about last pair frames \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_adcc8c1a531803c084cc90e3b7e3ededa}\label{class_trajectory_adcc8c1a531803c084cc90e3b7e3ededa} 
+int {\bfseries dt}
+\begin{DoxyCompactList}\small\item\em delta t -\/ use when created dls inertial filter \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_a7c58ae42fc264ebd6d3d67873a1a98e9}\label{class_trajectory_a7c58ae42fc264ebd6d3d67873a1a98e9} 
+int {\bfseries type\+\_\+\+Kallman}
+\begin{DoxyCompactList}\small\item\em type Kallman filter first(1),second(2) and third(3) order \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_a8373cef0a028d5ca989fcb40b3f056e1}\label{class_trajectory_a8373cef0a028d5ca989fcb40b3f056e1} 
+float {\bfseries k\+\_\+inert}
+\begin{DoxyCompactList}\small\item\em inertial scale \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_a4bf468d7da807bea7aeab0f71d654e19}\label{class_trajectory_a4bf468d7da807bea7aeab0f71d654e19} 
+float {\bfseries time\+\_\+since\+\_\+obj\+\_\+comparsion}
+\item 
+\Hypertarget{class_trajectory_a5bbbbf4b61516654b2a5b1fb8bbd8fbe}\label{class_trajectory_a5bbbbf4b61516654b2a5b1fb8bbd8fbe} 
+bool {\bfseries flag\+\_\+inertc}
+\begin{DoxyCompactList}\small\item\em on or off inertial dls ( future version ) \end{DoxyCompactList}\item 
+\Hypertarget{class_trajectory_afdf121beb57832d77125efa0cfc4c36b}\label{class_trajectory_afdf121beb57832d77125efa0cfc4c36b} 
+bool {\bfseries flag\+\_\+filter\+\_\+kallman}
+\begin{DoxyCompactList}\small\item\em on or off kallman filtration coordinates with dls ( future version ) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+OVO class\+::\+The trajectory includes methods for calculating the position in the local coordinate system, on a scale of meter to pixel, functions for calculating points on the frame in coordinates in meters, as well as accounting for the rotation of the device. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_trajectory_a57d7ba4957a0550eb688dba044fee1a8}\index{Trajectory@{Trajectory}!calculatePosition@{calculatePosition}}
+\index{calculatePosition@{calculatePosition}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{calculatePosition()}{calculatePosition()}}
+{\footnotesize\ttfamily \label{class_trajectory_a57d7ba4957a0550eb688dba044fee1a8} 
+bool Trajectory\+::calculate\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+the function calculates the position based on the data stored in the class returns True if the condition is successful 
+
+\begin{DoxyReturn}{Returns}
+True if succes update
+\end{DoxyReturn}
+\Hypertarget{class_trajectory_a7f38465da79c3be9a34bf07d1b8f0d4e}\index{Trajectory@{Trajectory}!get\_curr\_angles@{get\_curr\_angles}}
+\index{get\_curr\_angles@{get\_curr\_angles}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{get\_curr\_angles()}{get\_curr\_angles()}}
+{\footnotesize\ttfamily \label{class_trajectory_a7f38465da79c3be9a34bf07d1b8f0d4e} 
+\mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} Trajectory\+::get\+\_\+curr\+\_\+angles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+GET function current angles. 
+
+\begin{DoxyReturn}{Returns}
+current angles
+\end{DoxyReturn}
+\Hypertarget{class_trajectory_ad808386ed612893bd2444d81e0e70c67}\index{Trajectory@{Trajectory}!get\_curr\_pos@{get\_curr\_pos}}
+\index{get\_curr\_pos@{get\_curr\_pos}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{get\_curr\_pos()}{get\_curr\_pos()}}
+{\footnotesize\ttfamily \label{class_trajectory_ad808386ed612893bd2444d81e0e70c67} 
+\mbox{\hyperlink{struct_pos__d3}{Pos\+\_\+d3}} Trajectory\+::get\+\_\+curr\+\_\+pos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+GET function current position. 
+
+\begin{DoxyReturn}{Returns}
+current position
+\end{DoxyReturn}
+\Hypertarget{class_trajectory_a73068e910093c00e4787996749aca8dc}\index{Trajectory@{Trajectory}!GetInterestPointsCoordinates@{GetInterestPointsCoordinates}}
+\index{GetInterestPointsCoordinates@{GetInterestPointsCoordinates}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{GetInterestPointsCoordinates()}{GetInterestPointsCoordinates()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_trajectory_a73068e910093c00e4787996749aca8dc} 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} Trajectory\+::\+Get\+Interest\+Points\+Coordinates (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+The function of converting pixel coordinates to coordinates in pixel from the calculation point ( start ) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+position in pixel
+\end{DoxyReturn}
+\Hypertarget{class_trajectory_acbb29ec332efbb687ea05ac010cc067e}\index{Trajectory@{Trajectory}!GetInterestPointsCoordinates@{GetInterestPointsCoordinates}}
+\index{GetInterestPointsCoordinates@{GetInterestPointsCoordinates}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{GetInterestPointsCoordinates()}{GetInterestPointsCoordinates()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_trajectory_acbb29ec332efbb687ea05ac010cc067e} 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} Trajectory\+::\+Get\+Interest\+Points\+Coordinates (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}}}]{pos}{}\end{DoxyParamCaption})}
+
+
+
+The function of converting pixel coordinates to coordinates in pixel from the calculation point ( start ) 
+
+the pixel position of the point to translate
+
+\begin{DoxyReturn}{Returns}
+position in pixel
+\end{DoxyReturn}
+\Hypertarget{class_trajectory_ad9a599d7617a282d1056702ae409db97}\index{Trajectory@{Trajectory}!getLocalPosition@{getLocalPosition}}
+\index{getLocalPosition@{getLocalPosition}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{getLocalPosition()}{getLocalPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_trajectory_ad9a599d7617a282d1056702ae409db97} 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} Trajectory\+::get\+Local\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}}}]{offset\+\_\+obj}{, }\item[{int}]{wigth}{, }\item[{int}]{higth}{}\end{DoxyParamCaption})}
+
+
+
+Converting pixel coordinates of a point to coordinates in meters. 
+
+Pixel points coordinate
+
+
+\begin{DoxyParams}{Parameters}
+{\em wigth} & \\
+\hline
+{\em higth} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct with 2 varibalse float type in meter from local coordinate system 
+\end{DoxyReturn}
+\Hypertarget{class_trajectory_ae664bdb59c6ee26a45fe3027f20a1568}\index{Trajectory@{Trajectory}!getLocalPosition@{getLocalPosition}}
+\index{getLocalPosition@{getLocalPosition}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{getLocalPosition()}{getLocalPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_trajectory_ae664bdb59c6ee26a45fe3027f20a1568} 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} Trajectory\+::get\+Local\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}}}]{offset\+\_\+obj}{, }\item[{\mbox{\hyperlink{struct_pos__i2}{Pos\+\_\+i2}}}]{resolution}{}\end{DoxyParamCaption})}
+
+
+
+Converting pixel coordinates of a point to coordinates in meters. 
+
+Pixel points coordinate
+
+
+\begin{DoxyParams}{Parameters}
+{\em resolution} & resolution frame\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct with 2 varibalse float type in meter from local coordinate system 
+\end{DoxyReturn}
+\Hypertarget{class_trajectory_a7b34149fbcca894f4a9302d3efa49105}\index{Trajectory@{Trajectory}!PositionFromDecartToLatLong@{PositionFromDecartToLatLong}}
+\index{PositionFromDecartToLatLong@{PositionFromDecartToLatLong}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{PositionFromDecartToLatLong()}{PositionFromDecartToLatLong()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_trajectory_a7b34149fbcca894f4a9302d3efa49105} 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} Trajectory\+::\+Position\+From\+Decart\+To\+Lat\+Long (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+The function of converting pixel coordinates to coordinates in WGS84. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the pixel position of the point to translate Ox\\
+\hline
+{\em y} & the pixel position of the point to translate Oy\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+WGS84 lat and long
+\end{DoxyReturn}
+\Hypertarget{class_trajectory_a64187385d8b96236a7aee2076b8fac05}\index{Trajectory@{Trajectory}!PositionFromDecartToLatLong@{PositionFromDecartToLatLong}}
+\index{PositionFromDecartToLatLong@{PositionFromDecartToLatLong}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{PositionFromDecartToLatLong()}{PositionFromDecartToLatLong()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_trajectory_a64187385d8b96236a7aee2076b8fac05} 
+\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}} Trajectory\+::\+Position\+From\+Decart\+To\+Lat\+Long (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_pos__f2}{Pos\+\_\+f2}}}]{pos}{}\end{DoxyParamCaption})}
+
+
+
+The function of converting pixel coordinates to coordinates in WGS84. 
+
+the pixel position of the point to translate x and y
+
+\begin{DoxyReturn}{Returns}
+WGS84 lat and long
+\end{DoxyReturn}
+\Hypertarget{class_trajectory_ae70b33fe8dbc622a1a32723c6dda889d}\index{Trajectory@{Trajectory}!updateDataFromAffineMatrix@{updateDataFromAffineMatrix}}
+\index{updateDataFromAffineMatrix@{updateDataFromAffineMatrix}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{updateDataFromAffineMatrix()}{updateDataFromAffineMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_trajectory_ae70b33fe8dbc622a1a32723c6dda889d} 
+bool Trajectory\+::update\+Data\+From\+Affine\+Matrix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_affine__params}{Affine\+\_\+params}} \&}]{params}{, }\item[{float}]{alt}{}\end{DoxyParamCaption})}
+
+
+
+The function of updating data by calculating the offset from the matrix of affine transformations between successive frames, taking into account camera parameters such as FoV, resolution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & OVO type parametrs about frame from affine matrix\\
+\hline
+{\em alt} & the height of the observer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool param, if the update was successful returned true
+\end{DoxyReturn}
+\Hypertarget{class_trajectory_aee967460ef76aec97f4d81c5d5df0c56}\index{Trajectory@{Trajectory}!updateDataFromAffineMatrix@{updateDataFromAffineMatrix}}
+\index{updateDataFromAffineMatrix@{updateDataFromAffineMatrix}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{updateDataFromAffineMatrix()}{updateDataFromAffineMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_trajectory_aee967460ef76aec97f4d81c5d5df0c56} 
+bool Trajectory\+::update\+Data\+From\+Affine\+Matrix (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{matrix2d}{, }\item[{float}]{alt}{}\end{DoxyParamCaption})}
+
+
+
+The function of updating data by calculating the offset from the matrix of affine transformations between successive frames, taking into account camera parameters such as FoV, resolution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrix2d} & 2D affine transformation (4 degrees of freedom) matrix or empty matrix if transformation could not be estimated.\\
+\hline
+{\em alt} & the height of the observer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool param, if the update was successful returned true
+\end{DoxyReturn}
+\Hypertarget{class_trajectory_acf908e70c1333a23dc2ebb43b7eb5d74}\index{Trajectory@{Trajectory}!updateDataFromPixelPoint@{updateDataFromPixelPoint}}
+\index{updateDataFromPixelPoint@{updateDataFromPixelPoint}!Trajectory@{Trajectory}}
+\doxysubsubsection{\texorpdfstring{updateDataFromPixelPoint()}{updateDataFromPixelPoint()}}
+{\footnotesize\ttfamily \label{class_trajectory_acf908e70c1333a23dc2ebb43b7eb5d74} 
+bool Trajectory\+::update\+Data\+From\+Pixel\+Point (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{float}]{angle}{, }\item[{float}]{alt}{, }\item[{float}]{scale}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+The function of updating data by calculating the offset from the custom parametrs between successive frames, taking into account camera parameters such as FoV, resolution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & delta on Ox between two frames\\
+\hline
+{\em y} & delta on Oy between two frames\\
+\hline
+{\em angle} & rotate observer between two frames on Oz \\
+\hline
+{\em alt} & the height of the observer \\
+\hline
+{\em scale} & scale between two frames\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool param, if the update was successful returned true
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Trajectory\+OVO.\+h\item 
+Trajectory\+OVO.\+cpp\end{DoxyCompactItemize}

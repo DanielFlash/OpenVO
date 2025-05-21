@@ -1,0 +1,90 @@
+\doxysection{Base\+Agent\+PPO Class Reference}
+\hypertarget{class_base_agent_p_p_o}{}\label{class_base_agent_p_p_o}\index{BaseAgentPPO@{BaseAgentPPO}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_agent_p_p_o_a43f0cee09e5de9ff0ecd93ce6e0418a7}{Base\+Agent\+PPO}} (\mbox{\hyperlink{class_base_model_p_p_o_actor}{Base\+Model\+PPOActor}} \texorpdfstring{$\ast$}{*}actor\+Model, \mbox{\hyperlink{class_base_model_p_p_o_value}{Base\+Model\+PPOValue}} \texorpdfstring{$\ast$}{*}value\+Model, \mbox{\hyperlink{class_base_trainer_p_p_o}{Base\+Trainer\+PPO}} \texorpdfstring{$\ast$}{*}trainer)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_agent_p_p_o_aeb2a57a5bcb6f4d42564fb5c0bba075f}{train\+Episode}} (std\+::vector$<$ \mbox{\hyperlink{struct_p_p_o_memory_cell}{PPOMemory\+Cell}} $>$ memory)
+\begin{DoxyCompactList}\small\item\em Method to train an episode. \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{class_base_agent_p_p_o_a8677d58cef04eaf5d8428399bd58991e}{act}} (std\+::vector$<$ int $>$ state) -\/$>$ std\+::tuple$<$ std\+::vector$<$ int $>$, std\+::vector$<$ float $>$, std\+::vector$<$ float $>$ $>$
+\begin{DoxyCompactList}\small\item\em Method to choose agent action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_agent_p_p_o_af9545980a916556d4912c31c7781b73d}\label{class_base_agent_p_p_o_af9545980a916556d4912c31c7781b73d} 
+int {\bfseries m\+\_\+n\+Episode} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em Base PPO agent class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_agent_p_p_o_aebb360d25d81847c090158c26425b2a4}\label{class_base_agent_p_p_o_aebb360d25d81847c090158c26425b2a4} 
+\mbox{\hyperlink{class_base_model_p_p_o_actor}{Base\+Model\+PPOActor}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Actor\+Model}
+\item 
+\Hypertarget{class_base_agent_p_p_o_a4e5aea8fd4a42aefd8b5e306ebb97fd5}\label{class_base_agent_p_p_o_a4e5aea8fd4a42aefd8b5e306ebb97fd5} 
+\mbox{\hyperlink{class_base_model_p_p_o_value}{Base\+Model\+PPOValue}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Value\+Model}
+\item 
+\Hypertarget{class_base_agent_p_p_o_a29f9a61a4553b8df35dd230b1ed41d8a}\label{class_base_agent_p_p_o_a29f9a61a4553b8df35dd230b1ed41d8a} 
+\mbox{\hyperlink{class_base_trainer_p_p_o}{Base\+Trainer\+PPO}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Trainer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_agent_p_p_o_a43f0cee09e5de9ff0ecd93ce6e0418a7}\index{BaseAgentPPO@{BaseAgentPPO}!BaseAgentPPO@{BaseAgentPPO}}
+\index{BaseAgentPPO@{BaseAgentPPO}!BaseAgentPPO@{BaseAgentPPO}}
+\doxysubsubsection{\texorpdfstring{BaseAgentPPO()}{BaseAgentPPO()}}
+{\footnotesize\ttfamily \label{class_base_agent_p_p_o_a43f0cee09e5de9ff0ecd93ce6e0418a7} 
+Base\+Agent\+PPO\+::\+Base\+Agent\+PPO (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_model_p_p_o_actor}{Base\+Model\+PPOActor}} \texorpdfstring{$\ast$}{*}}]{actor\+Model}{, }\item[{\mbox{\hyperlink{class_base_model_p_p_o_value}{Base\+Model\+PPOValue}} \texorpdfstring{$\ast$}{*}}]{value\+Model}{, }\item[{\mbox{\hyperlink{class_base_trainer_p_p_o}{Base\+Trainer\+PPO}} \texorpdfstring{$\ast$}{*}}]{trainer}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actor\+Model} & NN actor model\\
+\hline
+{\em value\+Model} & NN value model\\
+\hline
+{\em trainer} & trainer module\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_agent_p_p_o_a8677d58cef04eaf5d8428399bd58991e}\index{BaseAgentPPO@{BaseAgentPPO}!act@{act}}
+\index{act@{act}!BaseAgentPPO@{BaseAgentPPO}}
+\doxysubsubsection{\texorpdfstring{act()}{act()}}
+{\footnotesize\ttfamily \label{class_base_agent_p_p_o_a8677d58cef04eaf5d8428399bd58991e} 
+auto Base\+Agent\+PPO\+::act (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{state}{}\end{DoxyParamCaption}) -\/$>$ std\+::tuple$<$std\+::vector$<$int$>$, std\+::vector$<$float$>$, std\+::vector$<$float$>$$>$}
+
+
+
+Method to choose agent action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & environment state\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+chosen action, logits, log-\/probs
+\end{DoxyReturn}
+\Hypertarget{class_base_agent_p_p_o_aeb2a57a5bcb6f4d42564fb5c0bba075f}\index{BaseAgentPPO@{BaseAgentPPO}!trainEpisode@{trainEpisode}}
+\index{trainEpisode@{trainEpisode}!BaseAgentPPO@{BaseAgentPPO}}
+\doxysubsubsection{\texorpdfstring{trainEpisode()}{trainEpisode()}}
+{\footnotesize\ttfamily \label{class_base_agent_p_p_o_aeb2a57a5bcb6f4d42564fb5c0bba075f} 
+void Base\+Agent\+PPO\+::train\+Episode (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_p_p_o_memory_cell}{PPOMemory\+Cell}} $>$}]{memory}{}\end{DoxyParamCaption})}
+
+
+
+Method to train an episode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em memory} & episode memory\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Agent\+PPO.\+h\item 
+Base\+Agent\+PPO.\+cpp\end{DoxyCompactItemize}

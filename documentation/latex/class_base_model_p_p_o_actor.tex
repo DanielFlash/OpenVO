@@ -1,0 +1,79 @@
+\doxysection{Base\+Model\+PPOActor Class Reference}
+\hypertarget{class_base_model_p_p_o_actor}{}\label{class_base_model_p_p_o_actor}\index{BaseModelPPOActor@{BaseModelPPOActor}}
+Inheritance diagram for Base\+Model\+PPOActor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_base_model_p_p_o_actor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_model_p_p_o_actor_ae89a55ba86162241bb6f1fe9462c807e}{Base\+Model\+PPOActor}} (const int64\+\_\+t input\+Size, const std\+::vector$<$ int64\+\_\+t $>$ \&hidden\+Sizes, const int64\+\_\+t num\+Classes)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+torch\+::\+Tensor \mbox{\hyperlink{class_base_model_p_p_o_actor_aa558d0f044622644c7a0f8f03871af14}{forward}} (torch\+::\+Tensor x)
+\begin{DoxyCompactList}\small\item\em Model feedforward method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_model_p_p_o_actor_a6be1f9875934f23e53cb0be6db1c8318}\label{class_base_model_p_p_o_actor_a6be1f9875934f23e53cb0be6db1c8318} 
+std\+::vector$<$ int64\+\_\+t $>$ {\bfseries m\+\_\+hidden\+Sizes}
+\begin{DoxyCompactList}\small\item\em Base PPO NN actor model class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_model_p_p_o_actor_aedff721eba1e3f2623f3bd864e60daf9}\label{class_base_model_p_p_o_actor_aedff721eba1e3f2623f3bd864e60daf9} 
+int64\+\_\+t {\bfseries m\+\_\+input\+Size}
+\item 
+\Hypertarget{class_base_model_p_p_o_actor_a0cf97a7e373e4d586a4f9e5492f50bf7}\label{class_base_model_p_p_o_actor_a0cf97a7e373e4d586a4f9e5492f50bf7} 
+int64\+\_\+t {\bfseries m\+\_\+num\+Classes}
+\item 
+\Hypertarget{class_base_model_p_p_o_actor_a3ebb2036572d407d12868bde96bf0b69}\label{class_base_model_p_p_o_actor_a3ebb2036572d407d12868bde96bf0b69} 
+std\+::vector$<$ torch\+::nn\+::\+Linear $>$ {\bfseries m\+\_\+fc\+Layers} \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_model_p_p_o_actor_ae89a55ba86162241bb6f1fe9462c807e}\index{BaseModelPPOActor@{BaseModelPPOActor}!BaseModelPPOActor@{BaseModelPPOActor}}
+\index{BaseModelPPOActor@{BaseModelPPOActor}!BaseModelPPOActor@{BaseModelPPOActor}}
+\doxysubsubsection{\texorpdfstring{BaseModelPPOActor()}{BaseModelPPOActor()}}
+{\footnotesize\ttfamily \label{class_base_model_p_p_o_actor_ae89a55ba86162241bb6f1fe9462c807e} 
+Base\+Model\+PPOActor\+::\+Base\+Model\+PPOActor (\begin{DoxyParamCaption}\item[{const int64\+\_\+t}]{input\+Size}{, }\item[{const std\+::vector$<$ int64\+\_\+t $>$ \&}]{hidden\+Sizes}{, }\item[{const int64\+\_\+t}]{num\+Classes}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Size} & input layer size\\
+\hline
+{\em hidden\+Sizes} & list of hidden layer sizes\\
+\hline
+{\em num\+Classes} & output layer size\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_model_p_p_o_actor_aa558d0f044622644c7a0f8f03871af14}\index{BaseModelPPOActor@{BaseModelPPOActor}!forward@{forward}}
+\index{forward@{forward}!BaseModelPPOActor@{BaseModelPPOActor}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{class_base_model_p_p_o_actor_aa558d0f044622644c7a0f8f03871af14} 
+torch\+::\+Tensor Base\+Model\+PPOActor\+::forward (\begin{DoxyParamCaption}\item[{torch\+::\+Tensor}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Model feedforward method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & input tensor\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+predicted result
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Model\+PPOActor.\+h\item 
+Base\+Model\+PPOActor.\+cpp\end{DoxyCompactItemize}

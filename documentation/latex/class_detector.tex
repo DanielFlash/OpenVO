@@ -1,0 +1,88 @@
+\doxysection{Detector Class Reference}
+\hypertarget{class_detector}{}\label{class_detector}\index{Detector@{Detector}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_detector_ab18f9a6596a5d8bedd9f662adaa73518}{Detector}} (const char \texorpdfstring{$\ast$}{*}labels\+File, const char \texorpdfstring{$\ast$}{*}model\+Path, bool cuda\+Enabled=true, int imgW=640, int imgH=640, const float score\+Thresh=0.\+45, const float nms\+Thresh=0.\+50, const int max\+Det=100)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+cv\+::\+Mat \mbox{\hyperlink{class_detector_ad17ec934cd38399d596865a31930aa60}{read\+Image}} (const char \texorpdfstring{$\ast$}{*}input\+File)
+\begin{DoxyCompactList}\small\item\em Method to read image. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ \mbox{\hyperlink{class_detector_a992af3da5475109632a2a46869341ab8}{detect}} (const cv\+::\+Mat \&image)
+\begin{DoxyCompactList}\small\item\em Method to detect objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_detector_ab18f9a6596a5d8bedd9f662adaa73518}\index{Detector@{Detector}!Detector@{Detector}}
+\index{Detector@{Detector}!Detector@{Detector}}
+\doxysubsubsection{\texorpdfstring{Detector()}{Detector()}}
+{\footnotesize\ttfamily \label{class_detector_ab18f9a6596a5d8bedd9f662adaa73518} 
+Detector\+::\+Detector (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{labels\+File}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{model\+Path}{, }\item[{bool}]{cuda\+Enabled}{ = {\ttfamily true}, }\item[{int}]{imgW}{ = {\ttfamily 640}, }\item[{int}]{imgH}{ = {\ttfamily 640}, }\item[{const float}]{score\+Thresh}{ = {\ttfamily 0.45}, }\item[{const float}]{nms\+Thresh}{ = {\ttfamily 0.50}, }\item[{const int}]{max\+Det}{ = {\ttfamily 100}}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em labels\+File} & txt file with object labels\\
+\hline
+{\em model\+Path} & NN model file\\
+\hline
+{\em cuda\+Enabled} & device\+: CPU or GPU\\
+\hline
+{\em imgW} & input image width\\
+\hline
+{\em imgH} & input image height\\
+\hline
+{\em score\+Thresh} & model score threshold\\
+\hline
+{\em nms\+Thresh} & model IoU threshold\\
+\hline
+{\em max\+Det} & max detections per image\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_detector_a992af3da5475109632a2a46869341ab8}\index{Detector@{Detector}!detect@{detect}}
+\index{detect@{detect}!Detector@{Detector}}
+\doxysubsubsection{\texorpdfstring{detect()}{detect()}}
+{\footnotesize\ttfamily \label{class_detector_a992af3da5475109632a2a46869341ab8} 
+std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ Detector\+::detect (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{image}{}\end{DoxyParamCaption})}
+
+
+
+Method to detect objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & input image\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+detection list
+\end{DoxyReturn}
+\Hypertarget{class_detector_ad17ec934cd38399d596865a31930aa60}\index{Detector@{Detector}!readImage@{readImage}}
+\index{readImage@{readImage}!Detector@{Detector}}
+\doxysubsubsection{\texorpdfstring{readImage()}{readImage()}}
+{\footnotesize\ttfamily \label{class_detector_ad17ec934cd38399d596865a31930aa60} 
+cv\+::\+Mat Detector\+::read\+Image (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{input\+File}{}\end{DoxyParamCaption})}
+
+
+
+Method to read image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+File} & image file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+loaded image
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Detector.\+h\item 
+Detector.\+cpp\end{DoxyCompactItemize}

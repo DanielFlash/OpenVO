@@ -1,0 +1,247 @@
+\doxysection{Video\+Processor\+OVO Class Reference}
+\hypertarget{class_video_processor_o_v_o}{}\label{class_video_processor_o_v_o}\index{VideoProcessorOVO@{VideoProcessorOVO}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_video_processor_o_v_o_aea8eac7aa3a1e62da54ea13616425c91}{Video\+Processor\+OVO}} (\mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} \&p, String filename, short SOURCE\+\_\+\+FLAG=OVO\+\_\+\+ANGLES\+\_\+\+FROM\+\_\+\+VIDEO, int max\+Points=100)
+\begin{DoxyCompactList}\small\item\em Video\+Processor class witch get and send to nex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_video_processor_o_v_o_ac1eabf605b4f985924f94c7bac98feb3}{Video\+Processor\+OVO}} (\mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} \&p, int index, int api\+Reference, \mbox{\hyperlink{struct_pos__i2}{Pos\+\_\+i2}} \mbox{\hyperlink{class_video_processor_o_v_o_a7901b0b9dbf54c0a22cc1c3e8a7b24de}{custom\+\_\+shape}}, short SOURCE\+\_\+\+FLAG=OVO\+\_\+\+ANGLES\+\_\+\+FROM\+\_\+\+VIDEO, int max\+Points=100)
+\begin{DoxyCompactList}\small\item\em Video\+Processor class witch get and send to nex. \end{DoxyCompactList}\item 
+cv\+::\+Mat \mbox{\hyperlink{class_video_processor_o_v_o_ad604a762750a4a247fea730efeb07e16}{get\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Function for get frame from device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_video_processor_o_v_o_ad0d4fe8ecdd0ef42da4d2ba532476dba}{set\+Custom\+Shape}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Function for set custom shape for frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_video_processor_o_v_o_ab0ccd391395fe5b227e7d7b36801418d}{set\+Custom\+Shape}} (\mbox{\hyperlink{struct_pos__i2}{Pos\+\_\+i2}} nshape)
+\begin{DoxyCompactList}\small\item\em Function for set custom shape from struct \doxylink{struct_pos__i2}{Pos\+\_\+i2}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_video_processor_o_v_o_abb9e3cb73a589bd915346c77ab85a61a}{set\+Data\+For\+One\+Iteration}} (float \mbox{\hyperlink{class_video_processor_o_v_o_a95b8c7c710203c8a31243b50beeffd3b}{alt}}, float pitch, float yaw, float row)
+\begin{DoxyCompactList}\small\item\em Function for set special data for calculate position in coordinate system for one iteration. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_video_processor_o_v_o_ac7cf9bdf110879178a443507f74c6cad}{set\+Data\+For\+One\+Iteration}} (float \mbox{\hyperlink{class_video_processor_o_v_o_a95b8c7c710203c8a31243b50beeffd3b}{alt}})
+\begin{DoxyCompactList}\small\item\em Function for set altitude witch actual for 1 iteration, wanna use before send frame to \doxylink{class_video_processor_o_v_o}{Video\+Processor\+OVO} class. \end{DoxyCompactList}\item 
+\Hypertarget{class_video_processor_o_v_o_a2c2a0117c7b8fd0684abba97f4f87039}\label{class_video_processor_o_v_o_a2c2a0117c7b8fd0684abba97f4f87039} 
+bool {\bfseries grab\+Frame\+And\+Data} ()
+\begin{DoxyCompactList}\small\item\em Function for grab frame and data witch set in functions Set\+Data\+For\+One\+Iteration. \end{DoxyCompactList}\item 
+\Hypertarget{class_video_processor_o_v_o_aa06f48c86e16b82e30f2e5b414fa3f8f}\label{class_video_processor_o_v_o_aa06f48c86e16b82e30f2e5b414fa3f8f} 
+bool {\bfseries search\+Affine\+Matrix} ()
+\begin{DoxyCompactList}\small\item\em Function calculate affine matrix, you can get result from Video\+Processor\+OVO-\/\texorpdfstring{$>$}{>}affine\+\_\+params. \end{DoxyCompactList}\item 
+\Hypertarget{class_video_processor_o_v_o_a3d83230d1797eb35bcb4667254ae89b3}\label{class_video_processor_o_v_o_a3d83230d1797eb35bcb4667254ae89b3} 
+void {\bfseries custom\+Set\+Angles} (float pitch, float yaw, float row)
+\begin{DoxyCompactList}\small\item\em Function for set custom angle before calculate affine matrix. \end{DoxyCompactList}\item 
+\Hypertarget{class_video_processor_o_v_o_a087b5440f0bbafac71a0c1d3b8d32c9d}\label{class_video_processor_o_v_o_a087b5440f0bbafac71a0c1d3b8d32c9d} 
+void {\bfseries reset} ()
+\begin{DoxyCompactList}\small\item\em Function for reset telemtry and feature searcher class. \end{DoxyCompactList}\item 
+cv\+::\+Mat \mbox{\hyperlink{class_video_processor_o_v_o_afc83252e9f889b2c8c7e728bec4d4be5}{check\+And\+Resize\+Frame}} (cv\+::\+Mat fr)
+\begin{DoxyCompactList}\small\item\em Function for checking frame and resize, resize params set in \doxylink{class_video_processor_o_v_o}{Video\+Processor\+OVO} class. \end{DoxyCompactList}\item 
+\Hypertarget{class_video_processor_o_v_o_a8d7aff1e51337b1469fb1c7ca6017918}\label{class_video_processor_o_v_o_a8d7aff1e51337b1469fb1c7ca6017918} 
+\mbox{\hyperlink{struct_affine__params}{Affine\+\_\+params}} {\bfseries get\+Affine\+Info} (int method=OVO\+\_\+\+RANSAC, float ratio\+\_\+thresh=0.\+8f)
+\begin{DoxyCompactList}\small\item\em Getter affine info, y can change ratio\+\_\+thresh for up scale params. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_video_processor_o_v_o_aaf7ddaf6086691cd1a3356f8ad1825d9}\label{class_video_processor_o_v_o_aaf7ddaf6086691cd1a3356f8ad1825d9} 
+\mbox{\hyperlink{class_trajectory}{Trajectory}} \texorpdfstring{$\ast$}{*} {\bfseries trajectory}
+\item 
+\Hypertarget{class_video_processor_o_v_o_ab9b0313a21a15fbb73b38736382ebf88}\label{class_video_processor_o_v_o_ab9b0313a21a15fbb73b38736382ebf88} 
+Ptr$<$ Descriptor\+Matcher $>$ {\bfseries matcher} = Descriptor\+Matcher\+::create(Descriptor\+Matcher\+::\+BRUTEFORCE\+\_\+\+HAMMING)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_video_processor_o_v_o_a79a5d2d264eda4343024afc78953f451}\label{class_video_processor_o_v_o_a79a5d2d264eda4343024afc78953f451} 
+cv\+::\+Video\+Capture \texorpdfstring{$\ast$}{*} {\bfseries cap}
+\item 
+\Hypertarget{class_video_processor_o_v_o_a3d313fec0023fe3809e118141718f8c7}\label{class_video_processor_o_v_o_a3d313fec0023fe3809e118141718f8c7} 
+cv\+::\+Mat {\bfseries frame}
+\item 
+\Hypertarget{class_video_processor_o_v_o_a966519d6b12f12483d03147c23ba0c16}\label{class_video_processor_o_v_o_a966519d6b12f12483d03147c23ba0c16} 
+cv\+::\+Mat {\bfseries prev\+\_\+frame}
+\item 
+\Hypertarget{class_video_processor_o_v_o_acd4ec99c7e918deea041db3e00f3f1a6}\label{class_video_processor_o_v_o_acd4ec99c7e918deea041db3e00f3f1a6} 
+Ptr$<$ ORB $>$ {\bfseries detector}
+\item 
+\Hypertarget{class_video_processor_o_v_o_a0c799d69d221cb3fea4cc8abab064abf}\label{class_video_processor_o_v_o_a0c799d69d221cb3fea4cc8abab064abf} 
+std\+::vector$<$ Key\+Point $>$ {\bfseries keypoints1}
+\item 
+\Hypertarget{class_video_processor_o_v_o_a41532511e98decad13129e7058abc28d}\label{class_video_processor_o_v_o_a41532511e98decad13129e7058abc28d} 
+std\+::vector$<$ Key\+Point $>$ {\bfseries keypoints2}
+\item 
+\Hypertarget{class_video_processor_o_v_o_abd96135c590b6029a22e04fc7ce77ffa}\label{class_video_processor_o_v_o_abd96135c590b6029a22e04fc7ce77ffa} 
+cv\+::\+Mat {\bfseries descriptor1}
+\item 
+\Hypertarget{class_video_processor_o_v_o_a23e35214b5a41870f1a9ad94e651ee98}\label{class_video_processor_o_v_o_a23e35214b5a41870f1a9ad94e651ee98} 
+cv\+::\+Mat {\bfseries descriptor2}
+\item 
+\Hypertarget{class_video_processor_o_v_o_ab2683a590f772f88ffb5a1e46863a8dd}\label{class_video_processor_o_v_o_ab2683a590f772f88ffb5a1e46863a8dd} 
+\mbox{\hyperlink{struct_affine__params}{Affine\+\_\+params}} {\bfseries affine\+\_\+params}
+\begin{DoxyCompactList}\small\item\em Struct for affine params, check \doxylink{_type_o_v_o_8h_source}{Type\+OVO.\+h}. \end{DoxyCompactList}\item 
+\Hypertarget{class_video_processor_o_v_o_abae9c6c4f3705b876433e33bc4f209a3}\label{class_video_processor_o_v_o_abae9c6c4f3705b876433e33bc4f209a3} 
+\mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} {\bfseries params}
+\begin{DoxyCompactList}\small\item\em Struct for camera params, check \doxylink{_type_o_v_o_8h_source}{Type\+OVO.\+h}. \end{DoxyCompactList}\item 
+\Hypertarget{class_video_processor_o_v_o_a6b87fcf9990a7dff9c0ad22746806514}\label{class_video_processor_o_v_o_a6b87fcf9990a7dff9c0ad22746806514} 
+\mbox{\hyperlink{struct_pos__angle}{Pos\+\_\+angle}} {\bfseries angles}
+\begin{DoxyCompactList}\small\item\em Struct with angle, , check \doxylink{_type_o_v_o_8h_source}{Type\+OVO.\+h}. \end{DoxyCompactList}\item 
+\Hypertarget{class_video_processor_o_v_o_a95b8c7c710203c8a31243b50beeffd3b}\label{class_video_processor_o_v_o_a95b8c7c710203c8a31243b50beeffd3b} 
+float {\bfseries alt}
+\begin{DoxyCompactList}\small\item\em Altitude. \end{DoxyCompactList}\item 
+\Hypertarget{class_video_processor_o_v_o_a12ca27678632b8a9c1629c95d4b9bd58}\label{class_video_processor_o_v_o_a12ca27678632b8a9c1629c95d4b9bd58} 
+bool {\bfseries angles\+\_\+from\+\_\+stream}
+\begin{DoxyCompactList}\small\item\em if True , function calcute affine use custom angle \end{DoxyCompactList}\item 
+\Hypertarget{class_video_processor_o_v_o_a7901b0b9dbf54c0a22cc1c3e8a7b24de}\label{class_video_processor_o_v_o_a7901b0b9dbf54c0a22cc1c3e8a7b24de} 
+\mbox{\hyperlink{struct_pos__i2}{Pos\+\_\+i2}} {\bfseries custom\+\_\+shape}
+\begin{DoxyCompactList}\small\item\em shape frame to resize \end{DoxyCompactList}\item 
+\Hypertarget{class_video_processor_o_v_o_aa45464229f2f2212349329a5fbced594}\label{class_video_processor_o_v_o_aa45464229f2f2212349329a5fbced594} 
+\mbox{\hyperlink{struct_pos__i2}{Pos\+\_\+i2}} {\bfseries shape}
+\begin{DoxyCompactList}\small\item\em shape input frame \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_video_processor_o_v_o_aea8eac7aa3a1e62da54ea13616425c91}\index{VideoProcessorOVO@{VideoProcessorOVO}!VideoProcessorOVO@{VideoProcessorOVO}}
+\index{VideoProcessorOVO@{VideoProcessorOVO}!VideoProcessorOVO@{VideoProcessorOVO}}
+\doxysubsubsection{\texorpdfstring{VideoProcessorOVO()}{VideoProcessorOVO()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_video_processor_o_v_o_aea8eac7aa3a1e62da54ea13616425c91} 
+Video\+Processor\+OVO\+::\+Video\+Processor\+OVO (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} \&}]{p}{, }\item[{String}]{filename}{, }\item[{short}]{SOURCE\+\_\+\+FLAG}{ = {\ttfamily OVO\+\_\+ANGLES\+\_\+FROM\+\_\+VIDEO}, }\item[{int}]{max\+Points}{ = {\ttfamily 100}}\end{DoxyParamCaption})}
+
+
+
+Video\+Processor class witch get and send to nex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \doxylink{struct_camera__params}{Camera\+\_\+params} \\
+\hline
+{\em filename} & string filename\\
+\hline
+{\em SOURCE\+\_\+\+FLAG} & short flag, will see on \doxylink{_type_o_v_o_8h_source}{Type\+OVO.\+h} \\
+\hline
+{\em max\+Points} & int number max points witch search on frame\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_video_processor_o_v_o_ac1eabf605b4f985924f94c7bac98feb3}\index{VideoProcessorOVO@{VideoProcessorOVO}!VideoProcessorOVO@{VideoProcessorOVO}}
+\index{VideoProcessorOVO@{VideoProcessorOVO}!VideoProcessorOVO@{VideoProcessorOVO}}
+\doxysubsubsection{\texorpdfstring{VideoProcessorOVO()}{VideoProcessorOVO()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_video_processor_o_v_o_ac1eabf605b4f985924f94c7bac98feb3} 
+Video\+Processor\+OVO\+::\+Video\+Processor\+OVO (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_camera__params}{Camera\+\_\+params}} \&}]{p}{, }\item[{int}]{index}{, }\item[{int}]{api\+Reference}{, }\item[{\mbox{\hyperlink{struct_pos__i2}{Pos\+\_\+i2}}}]{custom\+\_\+shape}{, }\item[{short}]{SOURCE\+\_\+\+FLAG}{ = {\ttfamily OVO\+\_\+ANGLES\+\_\+FROM\+\_\+VIDEO}, }\item[{int}]{max\+Points}{ = {\ttfamily 100}}\end{DoxyParamCaption})}
+
+
+
+Video\+Processor class witch get and send to nex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \doxylink{struct_camera__params}{Camera\+\_\+params} \\
+\hline
+{\em index} & index camera for backline Opencv \\
+\hline
+{\em api\+Reference} & \doxylink{struct_pos__i2}{Pos\+\_\+i2} (GSTREAMER, MJPEG or other)\\
+\hline
+{\em filename} & string filename\\
+\hline
+{\em SOURCE\+\_\+\+FLAG} & short flag, will see on \doxylink{_type_o_v_o_8h_source}{Type\+OVO.\+h} \\
+\hline
+{\em max\+Points} & int number max points witch search on frame\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_video_processor_o_v_o_afc83252e9f889b2c8c7e728bec4d4be5}\index{VideoProcessorOVO@{VideoProcessorOVO}!checkAndResizeFrame@{checkAndResizeFrame}}
+\index{checkAndResizeFrame@{checkAndResizeFrame}!VideoProcessorOVO@{VideoProcessorOVO}}
+\doxysubsubsection{\texorpdfstring{checkAndResizeFrame()}{checkAndResizeFrame()}}
+{\footnotesize\ttfamily \label{class_video_processor_o_v_o_afc83252e9f889b2c8c7e728bec4d4be5} 
+cv\+::\+Mat Video\+Processor\+OVO\+::check\+And\+Resize\+Frame (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{fr}{}\end{DoxyParamCaption})}
+
+
+
+Function for checking frame and resize, resize params set in \doxylink{class_video_processor_o_v_o}{Video\+Processor\+OVO} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fr} & cv\+::\+Mat matrix frame with BGR colormap \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_video_processor_o_v_o_ad604a762750a4a247fea730efeb07e16}\index{VideoProcessorOVO@{VideoProcessorOVO}!getFrame@{getFrame}}
+\index{getFrame@{getFrame}!VideoProcessorOVO@{VideoProcessorOVO}}
+\doxysubsubsection{\texorpdfstring{getFrame()}{getFrame()}}
+{\footnotesize\ttfamily \label{class_video_processor_o_v_o_ad604a762750a4a247fea730efeb07e16} 
+cv\+::\+Mat Video\+Processor\+OVO\+::get\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Function for get frame from device. 
+
+\begin{DoxyReturn}{Returns}
+frame cv\+::\+Mat 
+\end{DoxyReturn}
+\Hypertarget{class_video_processor_o_v_o_ad0d4fe8ecdd0ef42da4d2ba532476dba}\index{VideoProcessorOVO@{VideoProcessorOVO}!setCustomShape@{setCustomShape}}
+\index{setCustomShape@{setCustomShape}!VideoProcessorOVO@{VideoProcessorOVO}}
+\doxysubsubsection{\texorpdfstring{setCustomShape()}{setCustomShape()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_video_processor_o_v_o_ad0d4fe8ecdd0ef42da4d2ba532476dba} 
+void Video\+Processor\+OVO\+::set\+Custom\+Shape (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Function for set custom shape for frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & int width\\
+\hline
+{\em y} & int hight\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_video_processor_o_v_o_ab0ccd391395fe5b227e7d7b36801418d}\index{VideoProcessorOVO@{VideoProcessorOVO}!setCustomShape@{setCustomShape}}
+\index{setCustomShape@{setCustomShape}!VideoProcessorOVO@{VideoProcessorOVO}}
+\doxysubsubsection{\texorpdfstring{setCustomShape()}{setCustomShape()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_video_processor_o_v_o_ab0ccd391395fe5b227e7d7b36801418d} 
+void Video\+Processor\+OVO\+::set\+Custom\+Shape (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_pos__i2}{Pos\+\_\+i2}}}]{nshape}{}\end{DoxyParamCaption})}
+
+
+
+Function for set custom shape from struct \doxylink{struct_pos__i2}{Pos\+\_\+i2}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nshape} & \doxylink{struct_pos__i2}{Pos\+\_\+i2} struct\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_video_processor_o_v_o_ac7cf9bdf110879178a443507f74c6cad}\index{VideoProcessorOVO@{VideoProcessorOVO}!setDataForOneIteration@{setDataForOneIteration}}
+\index{setDataForOneIteration@{setDataForOneIteration}!VideoProcessorOVO@{VideoProcessorOVO}}
+\doxysubsubsection{\texorpdfstring{setDataForOneIteration()}{setDataForOneIteration()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_video_processor_o_v_o_ac7cf9bdf110879178a443507f74c6cad} 
+bool Video\+Processor\+OVO\+::set\+Data\+For\+One\+Iteration (\begin{DoxyParamCaption}\item[{float}]{alt}{}\end{DoxyParamCaption})}
+
+
+
+Function for set altitude witch actual for 1 iteration, wanna use before send frame to \doxylink{class_video_processor_o_v_o}{Video\+Processor\+OVO} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alt} & float alitude \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_video_processor_o_v_o_abb9e3cb73a589bd915346c77ab85a61a}\index{VideoProcessorOVO@{VideoProcessorOVO}!setDataForOneIteration@{setDataForOneIteration}}
+\index{setDataForOneIteration@{setDataForOneIteration}!VideoProcessorOVO@{VideoProcessorOVO}}
+\doxysubsubsection{\texorpdfstring{setDataForOneIteration()}{setDataForOneIteration()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_video_processor_o_v_o_abb9e3cb73a589bd915346c77ab85a61a} 
+bool Video\+Processor\+OVO\+::set\+Data\+For\+One\+Iteration (\begin{DoxyParamCaption}\item[{float}]{alt}{, }\item[{float}]{pitch}{, }\item[{float}]{yaw}{, }\item[{float}]{row}{}\end{DoxyParamCaption})}
+
+
+
+Function for set special data for calculate position in coordinate system for one iteration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alt} & float altitude object from telemetry info\\
+\hline
+{\em nshape} & \doxylink{struct_pos__i2}{Pos\+\_\+i2} float Pitch angle \\
+\hline
+{\em nshape} & \doxylink{struct_pos__i2}{Pos\+\_\+i2} float Yaw angle\\
+\hline
+{\em nshape} & \doxylink{struct_pos__i2}{Pos\+\_\+i2} float Row angle\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Video\+Processor\+OVO.\+h\item 
+Video\+Processor\+OVO.\+cpp\end{DoxyCompactItemize}

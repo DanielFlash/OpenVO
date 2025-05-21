@@ -1,0 +1,46 @@
+\doxysection{onnx\+Inferencer.\+h}
+\hypertarget{onnx_inferencer_8h_source}{}\label{onnx_inferencer_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*Copyright\ (c)\ <2024>\ <OOO\ "{}ORIS"{}>}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),}}
+\DoxyCodeLine{00003\ \textcolor{comment}{to\ deal\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,}}
+\DoxyCodeLine{00004\ \textcolor{comment}{and/or\ sell\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00007\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00008\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS}}
+\DoxyCodeLine{00009\ \textcolor{comment}{IN\ THE\ SOFTWARE.*/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <opencv2/imgproc.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <opencv2/dnn.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}baseInferencer.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_onnx_inference_a12365d34531c3b7a6842e72a53409633}{OnnxInference}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_base_inference}{BaseInference}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ cv::Mat\ formatToSquare(\textcolor{keyword}{const}\ cv::Mat\&\ source);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ std::string\ modelPath\{\};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{const}\ std::map<int,\ std::string>\&\ classes;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ cudaEnabled\{\};}
+\DoxyCodeLine{00032\ \ \ \ \ cv::Size2f\ modelShape\{\};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{float}\ modelScoreThreshold\{\ 0.45\ \};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{float}\ modelNMSThreshold\{\ 0.50\ \};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ modelMaxDet\{\ 100\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ letterBoxForSquare\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ cv::dnn::Net\ net;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_onnx_inference_a12365d34531c3b7a6842e72a53409633}{OnnxInference}}(\textcolor{keyword}{const}\ std::string\&\ onnxModelPath,\ \textcolor{keyword}{const}\ std::map<int,\ std::string>\&\ modelClasses,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ imgW\ =\ 640,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ imgH\ =\ 640,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\&\ runWithCuda\ =\ \textcolor{keyword}{true},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ scoreThresh\ =\ 0.45,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ nmsThresh\ =\ 0.50,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ maxDet\ =\ 100);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_onnx_inference_ad0a7a9a4fea7b0bfe9a30895e87a2fc8}{loadOnnxNetwork}}();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<Detection>\ \mbox{\hyperlink{class_onnx_inference_aa24877b8c0dd9bda61f30ed1d0a0d8df}{runInference}}(\textcolor{keyword}{const}\ cv::Mat\&\ input)\ \textcolor{keyword}{override}\ \textcolor{keyword}{final};}
+\DoxyCodeLine{00068\ \};}
+
+\end{DoxyCode}

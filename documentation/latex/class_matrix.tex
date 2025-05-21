@@ -1,0 +1,76 @@
+\doxysection{Matrix\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_matrix}{}\label{class_matrix}\index{Matrix$<$ T $>$@{Matrix$<$ T $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_matrix_a8e2e1e151116ffd30090a1d8f53a1e82}\label{class_matrix_a8e2e1e151116ffd30090a1d8f53a1e82} 
+{\bfseries Matrix} (size\+\_\+t row, size\+\_\+t column)
+\item 
+\Hypertarget{class_matrix_ab1e45b4bed0a7906862a28b578588604}\label{class_matrix_ab1e45b4bed0a7906862a28b578588604} 
+{\bfseries Matrix} (size\+\_\+t row, size\+\_\+t column, T value)
+\item 
+\Hypertarget{class_matrix_aadea7571aee3647462ce526bad2f0c9e}\label{class_matrix_aadea7571aee3647462ce526bad2f0c9e} 
+{\bfseries Matrix} (size\+\_\+t \texorpdfstring{$\ast$}{*}size)
+\item 
+\Hypertarget{class_matrix_a03283f560e9498abcfaf9a8a5d282e8f}\label{class_matrix_a03283f560e9498abcfaf9a8a5d282e8f} 
+void {\bfseries init\+Value} (T value)
+\item 
+\Hypertarget{class_matrix_af270b93d7ada6171c0fb1161757f92f9}\label{class_matrix_af270b93d7ada6171c0fb1161757f92f9} 
+void {\bfseries flush} ()
+\item 
+\Hypertarget{class_matrix_a2f5e41c292de71091444bfbb9a06120a}\label{class_matrix_a2f5e41c292de71091444bfbb9a06120a} 
+double {\bfseries get} (int number)
+\item 
+\Hypertarget{class_matrix_a0e974fd920e8ad8f468b3d44bd48174d}\label{class_matrix_a0e974fd920e8ad8f468b3d44bd48174d} 
+\mbox{\hyperlink{class_matrix}{Matrix}} {\bfseries operator\texorpdfstring{$\ast$}{*}} (double \&value)
+\item 
+\Hypertarget{class_matrix_ac376403f72c56dd97c0a61b1b98de95f}\label{class_matrix_ac376403f72c56dd97c0a61b1b98de95f} 
+\mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ {\bfseries operator\texorpdfstring{$\ast$}{*}} (\mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \&vector)
+\item 
+\Hypertarget{class_matrix_a6187bb4f05c569560a5d82fae56deff3}\label{class_matrix_a6187bb4f05c569560a5d82fae56deff3} 
+\mbox{\hyperlink{class_matrix}{Matrix}} {\bfseries operator\texorpdfstring{$\ast$}{*}} (\mbox{\hyperlink{class_matrix}{Matrix}} \&B)
+\item 
+\Hypertarget{class_matrix_acf82bce66df63ebf0281842abf8d5883}\label{class_matrix_acf82bce66df63ebf0281842abf8d5883} 
+double \& {\bfseries operator()} (int r, int c)
+\item 
+\Hypertarget{class_matrix_a0dbe62cc6498ffa920e7e401f78e9a7f}\label{class_matrix_a0dbe62cc6498ffa920e7e401f78e9a7f} 
+double {\bfseries operator()} (int r, int c) const
+\item 
+\Hypertarget{class_matrix_af8e1238467771d50d7cd64154f1fdcc7}\label{class_matrix_af8e1238467771d50d7cd64154f1fdcc7} 
+\mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+t row)
+\item 
+\Hypertarget{class_matrix_a09caef1ed1b8bf722c005c013b9a1e6a}\label{class_matrix_a09caef1ed1b8bf722c005c013b9a1e6a} 
+const \mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+t row) const
+\item 
+\Hypertarget{class_matrix_a83eba87991b5cd32522b586a51e418d4}\label{class_matrix_a83eba87991b5cd32522b586a51e418d4} 
+void {\bfseries resize} (size\+\_\+t row, size\+\_\+t column)
+\item 
+\Hypertarget{class_matrix_a1596fa5fb063b97c1f2a13d50637a097}\label{class_matrix_a1596fa5fb063b97c1f2a13d50637a097} 
+void {\bfseries resize} (size\+\_\+t row, size\+\_\+t column, T init\+Val)
+\item 
+\Hypertarget{class_matrix_a2df83b7bce2cacd358f956217293fb9d}\label{class_matrix_a2df83b7bce2cacd358f956217293fb9d} 
+\mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ {\bfseries get\+Vector} (size\+\_\+t number\+Row)
+\item 
+\Hypertarget{class_matrix_a4e8764aa8bb9dfb90b71d82e2b811bb9}\label{class_matrix_a4e8764aa8bb9dfb90b71d82e2b811bb9} 
+void {\bfseries set\+Vector} (\mbox{\hyperlink{class_vector}{Vector}}$<$ T $>$ row, int number\+Row)
+\item 
+\Hypertarget{class_matrix_a8e6280f450df5e3a1ac6901993451be5}\label{class_matrix_a8e6280f450df5e3a1ac6901993451be5} 
+void {\bfseries resize\+Column} (size\+\_\+t number\+Row, size\+\_\+t count)
+\item 
+\Hypertarget{class_matrix_a34ed69157283653109466fb93aaa81b3}\label{class_matrix_a34ed69157283653109466fb93aaa81b3} 
+void {\bfseries resize\+Row} (size\+\_\+t count)
+\item 
+\Hypertarget{class_matrix_a248e17c97996c3c58dd58f8e21f7086d}\label{class_matrix_a248e17c97996c3c58dd58f8e21f7086d} 
+size\+\_\+t {\bfseries size\+Row} ()
+\item 
+\Hypertarget{class_matrix_ae1ef81c4ef13706d5984fa7d9c4344ca}\label{class_matrix_ae1ef81c4ef13706d5984fa7d9c4344ca} 
+size\+\_\+t {\bfseries size\+Column} ()
+\item 
+\Hypertarget{class_matrix_a9c47e5b90a1b9d3c188907b5dd7bbc4f}\label{class_matrix_a9c47e5b90a1b9d3c188907b5dd7bbc4f} 
+void {\bfseries identity} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Extend\+Matrix.\+h\end{DoxyCompactItemize}

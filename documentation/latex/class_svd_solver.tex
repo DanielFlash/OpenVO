@@ -1,0 +1,73 @@
+\doxysection{Svd\+Solver Class Reference}
+\hypertarget{class_svd_solver}{}\label{class_svd_solver}\index{SvdSolver@{SvdSolver}}
+
+
+Class of SLAE solution using SVD algorithm.  
+
+
+
+
+{\ttfamily \#include $<$Solver\+Linear\+Equations.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_svd_solver_a890065d87b2258b4bb611cb1b3c84b57}{solve\+Homogeneous}} (size\+\_\+t rows, size\+\_\+t cols, std\+::vector$<$ double $>$ A)
+\begin{DoxyCompactList}\small\item\em Solution of SLAE for homogeneous formulation A\texorpdfstring{$\ast$}{*}h=0. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_svd_solver_a01b16f9992a136222184d6dc09915e3a}{solve\+Direct\+Linear}} (size\+\_\+t rows, size\+\_\+t cols, pair$<$ std\+::vector$<$ std\+::vector$<$ double $>$ $>$, vector$<$ double $>$ $>$ A\+\_\+)
+\begin{DoxyCompactList}\small\item\em Solution of SLAE via direct linear equation A\texorpdfstring{$\ast$}{*}p = b. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class of SLAE solution using SVD algorithm. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_svd_solver_a01b16f9992a136222184d6dc09915e3a}\index{SvdSolver@{SvdSolver}!solveDirectLinear@{solveDirectLinear}}
+\index{solveDirectLinear@{solveDirectLinear}!SvdSolver@{SvdSolver}}
+\doxysubsubsection{\texorpdfstring{solveDirectLinear()}{solveDirectLinear()}}
+{\footnotesize\ttfamily \label{class_svd_solver_a01b16f9992a136222184d6dc09915e3a} 
+std\+::vector$<$ double $>$ Svd\+Solver\+::solve\+Direct\+Linear (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{rows}{, }\item[{size\+\_\+t}]{cols}{, }\item[{pair$<$ std\+::vector$<$ std\+::vector$<$ double $>$ $>$, vector$<$ double $>$ $>$}]{A\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Solution of SLAE via direct linear equation A\texorpdfstring{$\ast$}{*}p = b. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & Number of rows in matrix A\\
+\hline
+{\em cols} & Number of columns in matrix A\\
+\hline
+{\em A\+\_\+} & \doxylink{class_matrix}{Matrix} of equation A\texorpdfstring{$\ast$}{*}p\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_vector}{Vector} of SLAE solution result
+\end{DoxyReturn}
+\Hypertarget{class_svd_solver_a890065d87b2258b4bb611cb1b3c84b57}\index{SvdSolver@{SvdSolver}!solveHomogeneous@{solveHomogeneous}}
+\index{solveHomogeneous@{solveHomogeneous}!SvdSolver@{SvdSolver}}
+\doxysubsubsection{\texorpdfstring{solveHomogeneous()}{solveHomogeneous()}}
+{\footnotesize\ttfamily \label{class_svd_solver_a890065d87b2258b4bb611cb1b3c84b57} 
+std\+::vector$<$ double $>$ Svd\+Solver\+::solve\+Homogeneous (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{rows}{, }\item[{size\+\_\+t}]{cols}{, }\item[{std\+::vector$<$ double $>$}]{A}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Solution of SLAE for homogeneous formulation A\texorpdfstring{$\ast$}{*}h=0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & Number of rows in equation\\
+\hline
+{\em cols} & Number of columns in equation\\
+\hline
+{\em A} & \doxylink{class_matrix}{Matrix} in one row of equation A\texorpdfstring{$\ast$}{*}h\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_vector}{Vector} of SLAE solution
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Solver\+Linear\+Equations.\+h\end{DoxyCompactItemize}

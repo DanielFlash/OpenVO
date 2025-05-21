@@ -1,0 +1,2 @@
+0, building
+1, road

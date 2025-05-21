@@ -1,0 +1,31 @@
+\doxysection{Coord\+Calculator.\+h}
+\hypertarget{_coord_calculator_8h_source}{}\label{_coord_calculator_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*Copyright\ (c)\ <2024>\ <OOO\ "{}ORIS"{}>}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),}}
+\DoxyCodeLine{00003\ \textcolor{comment}{to\ deal\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,}}
+\DoxyCodeLine{00004\ \textcolor{comment}{and/or\ sell\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00007\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00008\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS}}
+\DoxyCodeLine{00009\ \textcolor{comment}{IN\ THE\ SOFTWARE.*/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Detector.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TypeOVO.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_coord_calculator}{CoordCalculator}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<SurfaceData>\ \mbox{\hyperlink{class_coord_calculator_a9b8d0689706ea8a56e1b79e24c5e9bac}{calcObjCoords}}(\textcolor{keyword}{const}\ std::vector<SurfaceObjData>\&\ surfaceObjDataList);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00035\ \ \ \ \ std::vector<SurfaceData>\ \mbox{\hyperlink{class_coord_calculator_a5d90a2ba7ed9f0326f36686421a5dec2}{detectAndCalcObjCoords}}(\textcolor{keyword}{const}\ std::vector<SurfaceImgData>\&\ surfaceImgDataList,\ \mbox{\hyperlink{class_detector}{Detector}}\&\ detector,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ imgFolder);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{struct_map_edges}{MapEdges}}\ \mbox{\hyperlink{class_coord_calculator_a9037e5965744892de73747fb85bffebe}{calcMapEdges}}(\textcolor{keyword}{const}\ std::vector<SurfaceData>\&\ surfaceDataList);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00054\ \ \ \ \ std::vector<LocalData>\ \mbox{\hyperlink{class_coord_calculator_aaa2413164fdec351a09dd71c973a9f25}{calcLocalObjCoords}}(\textcolor{keyword}{const}\ std::vector<Detection>\&\ detections,\ \textcolor{keyword}{const}\ cv::Size2f\&\ imgShape,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_camera__params}{Camera\_params}}\&\ cam\_params,\ \mbox{\hyperlink{struct_pos__angle}{Pos\_angle}}\&\ curr\_angles,\ \mbox{\hyperlink{struct_pos__d3}{Pos\_d3}}\&\ curr\_offset,\ \mbox{\hyperlink{struct_pos__f2}{Pos\_f2}}\&\ meter\_in\_pixel);}
+\DoxyCodeLine{00056\ \};}
+
+\end{DoxyCode}

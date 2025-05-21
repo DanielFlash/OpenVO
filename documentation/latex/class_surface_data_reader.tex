@@ -1,0 +1,83 @@
+\doxysection{Surface\+Data\+Reader Class Reference}
+\hypertarget{class_surface_data_reader}{}\label{class_surface_data_reader}\index{SurfaceDataReader@{SurfaceDataReader}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_surface_data_reader_a677c41efbc63f6e507225ba2ae2b62b6}{Surface\+Data\+Reader}} (const char \texorpdfstring{$\ast$}{*}input\+File, const char \texorpdfstring{$\ast$}{*}img\+Folder, const char \texorpdfstring{$\ast$}{*}output\+File)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_surface_data}{Surface\+Data}} $>$ \mbox{\hyperlink{class_surface_data_reader_ae328b323feb8f5929fb2513e3db12364}{read\+Processed\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Method to read processed satellite map image objects. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_surface_obj_data}{Surface\+Obj\+Data}} $>$ \mbox{\hyperlink{class_surface_data_reader_addd64c7ac5ea39cfcece6a5b58eb75e3}{read\+Raw\+Labeled\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Method to read labeled satellite map images objects. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_surface_img_data}{Surface\+Img\+Data}} $>$ \mbox{\hyperlink{class_surface_data_reader_af95cbb4ec6e645767b98104e30c1a995}{read\+Raw\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Method to read unlabeled satellite map images objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_surface_data_reader_a677c41efbc63f6e507225ba2ae2b62b6}\index{SurfaceDataReader@{SurfaceDataReader}!SurfaceDataReader@{SurfaceDataReader}}
+\index{SurfaceDataReader@{SurfaceDataReader}!SurfaceDataReader@{SurfaceDataReader}}
+\doxysubsubsection{\texorpdfstring{SurfaceDataReader()}{SurfaceDataReader()}}
+{\footnotesize\ttfamily \label{class_surface_data_reader_a677c41efbc63f6e507225ba2ae2b62b6} 
+Surface\+Data\+Reader\+::\+Surface\+Data\+Reader (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{input\+File}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{img\+Folder}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+File}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+File} & txt file with saved satellite map data\\
+\hline
+{\em img\+Folder} & image folder\\
+\hline
+{\em output\+File} & txt file with saved processed satellite map image objects\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_surface_data_reader_ae328b323feb8f5929fb2513e3db12364}\index{SurfaceDataReader@{SurfaceDataReader}!readProcessedData@{readProcessedData}}
+\index{readProcessedData@{readProcessedData}!SurfaceDataReader@{SurfaceDataReader}}
+\doxysubsubsection{\texorpdfstring{readProcessedData()}{readProcessedData()}}
+{\footnotesize\ttfamily \label{class_surface_data_reader_ae328b323feb8f5929fb2513e3db12364} 
+std\+::vector$<$ \mbox{\hyperlink{struct_surface_data}{Surface\+Data}} $>$ Surface\+Data\+Reader\+::read\+Processed\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method to read processed satellite map image objects. 
+
+\begin{DoxyReturn}{Returns}
+processed satellite map images objects list
+\end{DoxyReturn}
+\Hypertarget{class_surface_data_reader_af95cbb4ec6e645767b98104e30c1a995}\index{SurfaceDataReader@{SurfaceDataReader}!readRawData@{readRawData}}
+\index{readRawData@{readRawData}!SurfaceDataReader@{SurfaceDataReader}}
+\doxysubsubsection{\texorpdfstring{readRawData()}{readRawData()}}
+{\footnotesize\ttfamily \label{class_surface_data_reader_af95cbb4ec6e645767b98104e30c1a995} 
+std\+::vector$<$ \mbox{\hyperlink{struct_surface_img_data}{Surface\+Img\+Data}} $>$ Surface\+Data\+Reader\+::read\+Raw\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method to read unlabeled satellite map images objects. 
+
+\begin{DoxyReturn}{Returns}
+unlabeled satellite map images objects
+\end{DoxyReturn}
+\Hypertarget{class_surface_data_reader_addd64c7ac5ea39cfcece6a5b58eb75e3}\index{SurfaceDataReader@{SurfaceDataReader}!readRawLabeledData@{readRawLabeledData}}
+\index{readRawLabeledData@{readRawLabeledData}!SurfaceDataReader@{SurfaceDataReader}}
+\doxysubsubsection{\texorpdfstring{readRawLabeledData()}{readRawLabeledData()}}
+{\footnotesize\ttfamily \label{class_surface_data_reader_addd64c7ac5ea39cfcece6a5b58eb75e3} 
+std\+::vector$<$ \mbox{\hyperlink{struct_surface_obj_data}{Surface\+Obj\+Data}} $>$ Surface\+Data\+Reader\+::read\+Raw\+Labeled\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Method to read labeled satellite map images objects. 
+
+\begin{DoxyReturn}{Returns}
+satellite map images objects
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Surface\+Data\+Reader.\+h\item 
+Surface\+Data\+Reader.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,48 @@
+\doxysection{Detector.\+h}
+\hypertarget{_detector_8h_source}{}\label{_detector_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*Copyright\ (c)\ <2024>\ <OOO\ "{}ORIS"{}>}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),}}
+\DoxyCodeLine{00003\ \textcolor{comment}{to\ deal\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,}}
+\DoxyCodeLine{00004\ \textcolor{comment}{and/or\ sell\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00007\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00008\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS}}
+\DoxyCodeLine{00009\ \textcolor{comment}{IN\ THE\ SOFTWARE.*/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <torch/script.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}onnxInferencer.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}torchInferencer.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_detector_ab18f9a6596a5d8bedd9f662adaa73518}{Detector}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m\_labelsFile\{\};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m\_modelPath\{\};}
+\DoxyCodeLine{00025\ \ \ \ \ std::map<int,\ std::string>\ m\_labels\{\};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_cudaEnabled\{\};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_imgW\{\};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_imgH\{\};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isOnnxModel\{\};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_scoreThresh\{\ 0.45\ \};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_nmsThresh\{\ 0.50\ \};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_maxDet\{\ 100\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_base_inference}{BaseInference}}*\ inferencer\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_onnx_inference}{OnnxInference}}\ onnxInferencer;}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_torch_inference}{TorchInference}}\ torchInferencer;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_detector_ab18f9a6596a5d8bedd9f662adaa73518}{Detector}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ labelsFile,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ modelPath,\ \textcolor{keywordtype}{bool}\ cudaEnabled\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{int}\ imgW\ =\ 640,\ \textcolor{keywordtype}{int}\ imgH\ =\ 640,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ scoreThresh\ =\ 0.45,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ nmsThresh\ =\ 0.50,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ maxDet\ =\ 100);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ cv::Mat\ \mbox{\hyperlink{class_detector_ad17ec934cd38399d596865a31930aa60}{readImage}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ inputFile);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \ \ \ \ std::vector<Detection>\ \mbox{\hyperlink{class_detector_a992af3da5475109632a2a46869341ab8}{detect}}(\textcolor{keyword}{const}\ cv::Mat\&\ image);}
+\DoxyCodeLine{00067\ \};}
+
+\end{DoxyCode}

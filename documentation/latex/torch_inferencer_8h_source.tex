@@ -1,0 +1,60 @@
+\doxysection{torch\+Inferencer.\+h}
+\hypertarget{torch_inferencer_8h_source}{}\label{torch_inferencer_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*Copyright\ (c)\ <2024>\ <OOO\ "{}ORIS"{}>}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),}}
+\DoxyCodeLine{00003\ \textcolor{comment}{to\ deal\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,}}
+\DoxyCodeLine{00004\ \textcolor{comment}{and/or\ sell\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00007\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00008\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS}}
+\DoxyCodeLine{00009\ \textcolor{comment}{IN\ THE\ SOFTWARE.*/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <opencv2/imgproc.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <torch/torch.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <torch/script.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}baseInferencer.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ }torch::indexing::Slice;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ }torch::indexing::None;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_torch_inference_ad9dd62dfd7654283ca2d6d5420237834}{TorchInference}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_base_inference}{BaseInference}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ cv::Mat\ formatToSquare(\textcolor{keyword}{const}\ cv::Mat\&\ source);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{float}\ generateScale(\textcolor{keyword}{const}\ cv::Mat\&\ image);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00045\ \ \ \ \ torch::Tensor\ xywh2xyxy(\textcolor{keyword}{const}\ torch::Tensor\&\ x);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00054\ \ \ \ \ torch::Tensor\ scaleBoxes(\textcolor{keyword}{const}\ std::vector<int>\&\ img1\_shape,\ torch::Tensor\&\ boxes,\ \textcolor{keyword}{const}\ std::vector<int>\&\ img0\_shape);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ torch::Tensor\ nonMaxSuppression(torch::Tensor\&\ prediction);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00070\ \ \ \ \ torch::Tensor\ nms(\textcolor{keyword}{const}\ torch::Tensor\&\ bboxes,\ \textcolor{keyword}{const}\ torch::Tensor\&\ scores,\ \textcolor{keywordtype}{float}\ iou\_threshold);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ std::string\ modelPath\{\};}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{const}\ std::map<int,\ std::string>\&\ classes;}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ cudaEnabled\{\};}
+\DoxyCodeLine{00075\ \ \ \ \ cv::Size2f\ modelShape\{\};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{float}\ modelScoreThreshold\{\ 0.45\ \};}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{float}\ modelNMSThreshold\{\ 0.50\ \};}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ modelMaxDet\{\ 100\ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ letterBoxForSquare\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ torch::jit::script::Module\ net;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{class_torch_inference_ad9dd62dfd7654283ca2d6d5420237834}{TorchInference}}(\textcolor{keyword}{const}\ std::string\&\ torchModelPath,\ \textcolor{keyword}{const}\ std::map<int,\ std::string>\&\ modelClasses,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ imgW\ =\ 640,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ imgH\ =\ 640,}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\&\ runWithCuda\ =\ \textcolor{keyword}{true},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ scoreThresh\ =\ 0.45,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ nmsThresh\ =\ 0.50,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ maxDet\ =\ 100);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_torch_inference_a51d5a592982866f1fc1040ec422f6440}{loadTorchNetwork}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<Detection>\ \mbox{\hyperlink{class_torch_inference_a38d39820b46089da49c7cb3709ff5911}{runInference}}(\textcolor{keyword}{const}\ cv::Mat\&\ input)\ \textcolor{keyword}{override}\ \textcolor{keyword}{final};}
+\DoxyCodeLine{00111\ \};}
+
+\end{DoxyCode}

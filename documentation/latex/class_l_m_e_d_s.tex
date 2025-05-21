@@ -1,0 +1,109 @@
+\doxysection{LMEDS Class Reference}
+\hypertarget{class_l_m_e_d_s}{}\label{class_l_m_e_d_s}\index{LMEDS@{LMEDS}}
+
+
+Class implementing \doxylink{class_l_m_e_d_s}{LMEDS} filter.  
+
+
+
+
+{\ttfamily \#include $<$Lmeds.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_l_m_e_d_s_a93a9a509d9af460965946513dda9914b}\label{class_l_m_e_d_s_a93a9a509d9af460965946513dda9914b} 
+{\bfseries LMEDS} (int max\+Iterations, int count\+Rand\+Points)
+\item 
+void \mbox{\hyperlink{class_l_m_e_d_s_a8e34a6c53e431fbf066056c694de7841}{set}} (int max\+Iterations, int count\+Rand\+Points)
+\begin{DoxyCompactList}\small\item\em Set filter parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrix}{Matrix}} \mbox{\hyperlink{class_l_m_e_d_s_ae6d7659be65f1e50300545d00d7258ef}{calc}} (std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ src, std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ dst, Find\+Tranform\+Matrix\+Func get\+Transform, Calc\+Delta\+Tranformed\+Point\+Func get\+Delta)
+\begin{DoxyCompactList}\small\item\em Finding the best transformation matrix. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrix}{Matrix}} \mbox{\hyperlink{class_l_m_e_d_s_aec1af130ab9c5e863da5290b4e641143}{calc}} (std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ src, std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ dst, std\+::vector$<$ \mbox{\hyperlink{struct_match}{Match}} $>$ matches, Find\+Tranform\+Matrix\+Func get\+Transform, Calc\+Delta\+Tranformed\+Point\+No\+Sort\+Func get\+Delta)
+\begin{DoxyCompactList}\small\item\em Finding the best transformation matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class implementing \doxylink{class_l_m_e_d_s}{LMEDS} filter. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_l_m_e_d_s_ae6d7659be65f1e50300545d00d7258ef}\index{LMEDS@{LMEDS}!calc@{calc}}
+\index{calc@{calc}!LMEDS@{LMEDS}}
+\doxysubsubsection{\texorpdfstring{calc()}{calc()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_l_m_e_d_s_ae6d7659be65f1e50300545d00d7258ef} 
+\mbox{\hyperlink{class_matrix}{Matrix}} LMEDS\+::calc (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$}]{src}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$}]{dst}{, }\item[{Find\+Tranform\+Matrix\+Func}]{get\+Transform}{, }\item[{Calc\+Delta\+Tranformed\+Point\+Func}]{get\+Delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Finding the best transformation matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & Unsorted vector of source keypoints\\
+\hline
+{\em dst} & Unsorted vector of target keypoints\\
+\hline
+{\em matches} & \doxylink{struct_match}{Match} vector\\
+\hline
+{\em get\+Transform} & Method for calculating the transformation matrix\\
+\hline
+{\em get\+Delta} & Method for calculating the error value of the resulting transformation matrix\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_matrix}{Matrix} best transformation matrix. Zero if an error occurred
+\end{DoxyReturn}
+Generate count\+Rand\+Points random matches
+
+We calculate the transformation matrix
+
+We calculate the delta by applying the transformation matrix to the original image
+
+We apply the filtration method\Hypertarget{class_l_m_e_d_s_aec1af130ab9c5e863da5290b4e641143}\index{LMEDS@{LMEDS}!calc@{calc}}
+\index{calc@{calc}!LMEDS@{LMEDS}}
+\doxysubsubsection{\texorpdfstring{calc()}{calc()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_l_m_e_d_s_aec1af130ab9c5e863da5290b4e641143} 
+\mbox{\hyperlink{class_matrix}{Matrix}} LMEDS\+::calc (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$}]{src}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $>$}]{dst}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_match}{Match}} $>$}]{matches}{, }\item[{Find\+Tranform\+Matrix\+Func}]{get\+Transform}{, }\item[{Calc\+Delta\+Tranformed\+Point\+No\+Sort\+Func}]{get\+Delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Finding the best transformation matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & Unsorted vector of source keypoints\\
+\hline
+{\em dst} & Unsorted vector of target keypoints\\
+\hline
+{\em matches} & \doxylink{struct_match}{Match} vector\\
+\hline
+{\em get\+Transform} & Method for calculating the transformation matrix\\
+\hline
+{\em get\+Delta} & Method for calculating the error value of the resulting transformation matrix\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_matrix}{Matrix} best transformation matrix. Zero if an error occurred
+\end{DoxyReturn}
+Generate count\+Rand\+Points random matches\Hypertarget{class_l_m_e_d_s_a8e34a6c53e431fbf066056c694de7841}\index{LMEDS@{LMEDS}!set@{set}}
+\index{set@{set}!LMEDS@{LMEDS}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily \label{class_l_m_e_d_s_a8e34a6c53e431fbf066056c694de7841} 
+void LMEDS\+::set (\begin{DoxyParamCaption}\item[{int}]{max\+Iterations}{, }\item[{int}]{count\+Rand\+Points}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set filter parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Iterations} & Maximum number of iterations\\
+\hline
+{\em count\+Rand\+Points} & Number of pairs for calculating transformation matrices\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Lmeds.\+h\end{DoxyCompactItemize}

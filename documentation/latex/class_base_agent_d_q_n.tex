@@ -1,0 +1,131 @@
+\doxysection{Base\+Agent\+DQN Class Reference}
+\hypertarget{class_base_agent_d_q_n}{}\label{class_base_agent_d_q_n}\index{BaseAgentDQN@{BaseAgentDQN}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_agent_d_q_n_a230aaecef6db04161b701f8fc7b70a86}{Base\+Agent\+DQN}} (const int max\+Memory, const int batch\+Size, const int rand\+Coef, const int rand\+Range, \mbox{\hyperlink{class_base_model_d_q_n}{Base\+Model\+DQN}} \texorpdfstring{$\ast$}{*}model, \mbox{\hyperlink{class_base_trainer_d_q_n}{Base\+Trainer\+DQN}} \texorpdfstring{$\ast$}{*}trainer)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_agent_d_q_n_af85d0f348db3c30338ede5f0151da394}{remember}} (\mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}} memory\+Cell)
+\begin{DoxyCompactList}\small\item\em Method to remember memory cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_agent_d_q_n_a8dfee70ebeb895e153bfe3469483528b}{train\+Short\+Memory}} (\mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}} memory\+Cell)
+\begin{DoxyCompactList}\small\item\em Method to train short-\/term memory. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_agent_d_q_n_a47d4b1c2e2f2f54ebbab1ff07924b0c2}\label{class_base_agent_d_q_n_a47d4b1c2e2f2f54ebbab1ff07924b0c2} 
+void {\bfseries train\+Long\+Memory} ()
+\begin{DoxyCompactList}\small\item\em Method to train long-\/term memory. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_base_agent_d_q_n_af5ee3ecc368cd020b0ed555306d3ba12}{act}} (std\+::vector$<$ int $>$ state)
+\begin{DoxyCompactList}\small\item\em Method to choose agent action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_agent_d_q_n_a9ae20ef548dd3a58d4ed4a406af0a5ce}\label{class_base_agent_d_q_n_a9ae20ef548dd3a58d4ed4a406af0a5ce} 
+int {\bfseries m\+\_\+n\+Episode} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em Base DQN agent class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_agent_d_q_n_a714513f63655a66a89051255a4fe96a8}\label{class_base_agent_d_q_n_a714513f63655a66a89051255a4fe96a8} 
+int {\bfseries m\+\_\+epsilon} \{ 0 \}
+\item 
+\Hypertarget{class_base_agent_d_q_n_abf0b01398959017feb068d703c180017}\label{class_base_agent_d_q_n_abf0b01398959017feb068d703c180017} 
+int {\bfseries m\+\_\+max\+Memory} \{\}
+\item 
+\Hypertarget{class_base_agent_d_q_n_af6d4713ed2d3f85cc6939e20fd1c6019}\label{class_base_agent_d_q_n_af6d4713ed2d3f85cc6939e20fd1c6019} 
+int {\bfseries m\+\_\+batch\+Size} \{\}
+\item 
+\Hypertarget{class_base_agent_d_q_n_a0fb981a0fb14a5fdc5dd4acdd65ef864}\label{class_base_agent_d_q_n_a0fb981a0fb14a5fdc5dd4acdd65ef864} 
+int {\bfseries m\+\_\+rand\+Coef} \{\}
+\item 
+\Hypertarget{class_base_agent_d_q_n_a0230fe620c92a94560f374e833c126d1}\label{class_base_agent_d_q_n_a0230fe620c92a94560f374e833c126d1} 
+int {\bfseries m\+\_\+rand\+Range} \{\}
+\item 
+\Hypertarget{class_base_agent_d_q_n_a64ad434978143d4193ffca62ef3bed56}\label{class_base_agent_d_q_n_a64ad434978143d4193ffca62ef3bed56} 
+std\+::deque$<$ \mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}} $>$ {\bfseries m\+\_\+memory} \{\}
+\item 
+\Hypertarget{class_base_agent_d_q_n_a1e8895a477e23244aa0ab7af9035ada6}\label{class_base_agent_d_q_n_a1e8895a477e23244aa0ab7af9035ada6} 
+\mbox{\hyperlink{class_base_model_d_q_n}{Base\+Model\+DQN}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Model}
+\item 
+\Hypertarget{class_base_agent_d_q_n_a2003a5de4c5f89810529f925429ceee6}\label{class_base_agent_d_q_n_a2003a5de4c5f89810529f925429ceee6} 
+\mbox{\hyperlink{class_base_trainer_d_q_n}{Base\+Trainer\+DQN}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Trainer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_agent_d_q_n_a230aaecef6db04161b701f8fc7b70a86}\index{BaseAgentDQN@{BaseAgentDQN}!BaseAgentDQN@{BaseAgentDQN}}
+\index{BaseAgentDQN@{BaseAgentDQN}!BaseAgentDQN@{BaseAgentDQN}}
+\doxysubsubsection{\texorpdfstring{BaseAgentDQN()}{BaseAgentDQN()}}
+{\footnotesize\ttfamily \label{class_base_agent_d_q_n_a230aaecef6db04161b701f8fc7b70a86} 
+Base\+Agent\+DQN\+::\+Base\+Agent\+DQN (\begin{DoxyParamCaption}\item[{const int}]{max\+Memory}{, }\item[{const int}]{batch\+Size}{, }\item[{const int}]{rand\+Coef}{, }\item[{const int}]{rand\+Range}{, }\item[{\mbox{\hyperlink{class_base_model_d_q_n}{Base\+Model\+DQN}} \texorpdfstring{$\ast$}{*}}]{model}{, }\item[{\mbox{\hyperlink{class_base_trainer_d_q_n}{Base\+Trainer\+DQN}} \texorpdfstring{$\ast$}{*}}]{trainer}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Memory} & max memory size\\
+\hline
+{\em batch\+Size} & batch size\\
+\hline
+{\em rand\+Coef} & random actions threshold\\
+\hline
+{\em rand\+Range} & random action ranage; if rand(0, rand\+Range) \texorpdfstring{$<$}{<} (rand\+Coef -\/ num\+\_\+episode) =\texorpdfstring{$>$}{>} create a random action\\
+\hline
+{\em model} & NN model\\
+\hline
+{\em trainer} & trainer module\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_agent_d_q_n_af5ee3ecc368cd020b0ed555306d3ba12}\index{BaseAgentDQN@{BaseAgentDQN}!act@{act}}
+\index{act@{act}!BaseAgentDQN@{BaseAgentDQN}}
+\doxysubsubsection{\texorpdfstring{act()}{act()}}
+{\footnotesize\ttfamily \label{class_base_agent_d_q_n_af5ee3ecc368cd020b0ed555306d3ba12} 
+std\+::vector$<$ int $>$ Base\+Agent\+DQN\+::act (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Method to choose agent action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & environment state\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+chosen action
+\end{DoxyReturn}
+\Hypertarget{class_base_agent_d_q_n_af85d0f348db3c30338ede5f0151da394}\index{BaseAgentDQN@{BaseAgentDQN}!remember@{remember}}
+\index{remember@{remember}!BaseAgentDQN@{BaseAgentDQN}}
+\doxysubsubsection{\texorpdfstring{remember()}{remember()}}
+{\footnotesize\ttfamily \label{class_base_agent_d_q_n_af85d0f348db3c30338ede5f0151da394} 
+void Base\+Agent\+DQN\+::remember (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}}}]{memory\+Cell}{}\end{DoxyParamCaption})}
+
+
+
+Method to remember memory cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em memory\+Cell} & memory cell\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_base_agent_d_q_n_a8dfee70ebeb895e153bfe3469483528b}\index{BaseAgentDQN@{BaseAgentDQN}!trainShortMemory@{trainShortMemory}}
+\index{trainShortMemory@{trainShortMemory}!BaseAgentDQN@{BaseAgentDQN}}
+\doxysubsubsection{\texorpdfstring{trainShortMemory()}{trainShortMemory()}}
+{\footnotesize\ttfamily \label{class_base_agent_d_q_n_a8dfee70ebeb895e153bfe3469483528b} 
+void Base\+Agent\+DQN\+::train\+Short\+Memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}}}]{memory\+Cell}{}\end{DoxyParamCaption})}
+
+
+
+Method to train short-\/term memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em memory\+Cell} & memory cell\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Agent\+DQN.\+h\item 
+Base\+Agent\+DQN.\+cpp\end{DoxyCompactItemize}

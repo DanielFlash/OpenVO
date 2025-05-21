@@ -1,0 +1,85 @@
+\doxysection{Base\+Agent\+PG Class Reference}
+\hypertarget{class_base_agent_p_g}{}\label{class_base_agent_p_g}\index{BaseAgentPG@{BaseAgentPG}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_agent_p_g_a35aa5c544b10d6aa1ccbdfd7ae876a27}{Base\+Agent\+PG}} (\mbox{\hyperlink{class_base_model_p_g}{Base\+Model\+PG}} \texorpdfstring{$\ast$}{*}model, \mbox{\hyperlink{class_base_trainer_p_g}{Base\+Trainer\+PG}} \texorpdfstring{$\ast$}{*}trainer)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_agent_p_g_a62ed186c57b45be220a106c307d581d6}{train\+Episode}} (std\+::vector$<$ \mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}} $>$ memory)
+\begin{DoxyCompactList}\small\item\em Method to train an episode. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_base_agent_p_g_aeb0d48879bf23493d123ea2dee2098a0}{act}} (std\+::vector$<$ int $>$ state)
+\begin{DoxyCompactList}\small\item\em Method to choose agent action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_agent_p_g_a69aa6a740737023ca7bfa8da2196faaa}\label{class_base_agent_p_g_a69aa6a740737023ca7bfa8da2196faaa} 
+int {\bfseries m\+\_\+n\+Episode} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em Base PG agent class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_agent_p_g_aa40686a7822bfb1dc206b994fb2df4db}\label{class_base_agent_p_g_aa40686a7822bfb1dc206b994fb2df4db} 
+\mbox{\hyperlink{class_base_model_p_g}{Base\+Model\+PG}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Model}
+\item 
+\Hypertarget{class_base_agent_p_g_ac6d9637738ac914637dd1a840c5fef6a}\label{class_base_agent_p_g_ac6d9637738ac914637dd1a840c5fef6a} 
+\mbox{\hyperlink{class_base_trainer_p_g}{Base\+Trainer\+PG}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Trainer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_agent_p_g_a35aa5c544b10d6aa1ccbdfd7ae876a27}\index{BaseAgentPG@{BaseAgentPG}!BaseAgentPG@{BaseAgentPG}}
+\index{BaseAgentPG@{BaseAgentPG}!BaseAgentPG@{BaseAgentPG}}
+\doxysubsubsection{\texorpdfstring{BaseAgentPG()}{BaseAgentPG()}}
+{\footnotesize\ttfamily \label{class_base_agent_p_g_a35aa5c544b10d6aa1ccbdfd7ae876a27} 
+Base\+Agent\+PG\+::\+Base\+Agent\+PG (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_model_p_g}{Base\+Model\+PG}} \texorpdfstring{$\ast$}{*}}]{model}{, }\item[{\mbox{\hyperlink{class_base_trainer_p_g}{Base\+Trainer\+PG}} \texorpdfstring{$\ast$}{*}}]{trainer}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & NN model\\
+\hline
+{\em trainer} & trainer module\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_agent_p_g_aeb0d48879bf23493d123ea2dee2098a0}\index{BaseAgentPG@{BaseAgentPG}!act@{act}}
+\index{act@{act}!BaseAgentPG@{BaseAgentPG}}
+\doxysubsubsection{\texorpdfstring{act()}{act()}}
+{\footnotesize\ttfamily \label{class_base_agent_p_g_aeb0d48879bf23493d123ea2dee2098a0} 
+std\+::vector$<$ int $>$ Base\+Agent\+PG\+::act (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Method to choose agent action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & environment state\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+chosen action
+\end{DoxyReturn}
+\Hypertarget{class_base_agent_p_g_a62ed186c57b45be220a106c307d581d6}\index{BaseAgentPG@{BaseAgentPG}!trainEpisode@{trainEpisode}}
+\index{trainEpisode@{trainEpisode}!BaseAgentPG@{BaseAgentPG}}
+\doxysubsubsection{\texorpdfstring{trainEpisode()}{trainEpisode()}}
+{\footnotesize\ttfamily \label{class_base_agent_p_g_a62ed186c57b45be220a106c307d581d6} 
+void Base\+Agent\+PG\+::train\+Episode (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}} $>$}]{memory}{}\end{DoxyParamCaption})}
+
+
+
+Method to train an episode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em memory} & episode memory\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Agent\+PG.\+h\item 
+Base\+Agent\+PG.\+cpp\end{DoxyCompactItemize}

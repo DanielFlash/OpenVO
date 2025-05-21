@@ -1,0 +1,188 @@
+\doxysection{Image\+Handler.\+h}
+\hypertarget{_image_handler_8h_source}{}\label{_image_handler_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{comment}{//Разработка на будущее}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//struct\ Size}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ \ \ size\_t\ rows;}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ size\_t\ cols;}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\};}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//class\ Image}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//private:}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ \ \ \ enum\ class\ Type\ \{\ GRAY,\ COLOR\ \};}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ \ \ \ //Хранение\ данных}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//public:}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ \ \ \ Type\ type;}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ \ \ \ Tensor<uint8\_t>\ data;}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\#pragma\ region\ Work\ Opencv}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ \ \ \ ///\ <summary>}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ \ \ \ ///\ Из\ opencv\ в свое}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ \ \ \ ///\ Серое изображение}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ \ \ \ ///\ </summary>}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ \ \ \ ///\ <param\ name="{}image"{}></param>}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ \ \ \ void\ setOpencvGray(const\ cv::Mat\&\ image)}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ \ \ \ \ \ \ \ type\ =\ Type::GRAY;}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ \ \ \ \ \ \ \ data.resize(image.cols,\ image.rows,\ 1);}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ \ \ \ \ \ \ \ for\ (size\_t\ y\ =\ 0;\ y\ <\ image.rows;\ y++)}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ const\ uchar*\ row\ =\ image.ptr<uchar>(y);}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ for\ (size\_t\ x\ =\ 0;\ x\ <\ image.cols;\ x++)}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[0][y][x]\ =\ row[x];}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ \ \ \ ///\ <summary>}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ \ \ \ ///\ Из\ opencv\ в свое}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ \ \ \ ///\ Цветное изображение}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ \ \ \ ///\ </summary>}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ \ \ \ ///\ <param\ name="{}image"{}></param>}}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ \ \ \ void\ setOpencvColor(const\ cv::Mat\&\ image)}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ \ \ \ \ \ \ \ type\ =\ Type::COLOR;}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ \ \ \ \ \ \ \ data.resize(image.rows,\ image.cols,\ 3);}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ \ \ \ \ \ \ \ for\ (size\_t\ y\ =\ 0;\ y\ <\ image.rows;\ y++)}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ const\ cv::Vec3b*\ row\ =\ image.ptr<cv::Vec3b>(y);}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ for\ (size\_t\ x\ =\ 0;\ x\ <\ image.cols;\ x++)}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[0][y][x]\ =\ row[x][0];}}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[1][y][x]\ =\ row[x][1];}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[2][y][x]\ =\ row[x][2];}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ \ \ \ ///\ <summary>}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ \ \ \ ///\ Из\ своего в opencv\ изображение}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ \ \ \ ///\ Серое изображение}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ \ \ \ ///\ </summary>}}
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ \ \ \ ///\ <returns></returns>}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ \ \ \ cv::Mat\ getOpencvGray()}}
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ \ \ \ \ \ \ \ cv::Mat\ mat(data.rows(),\ data.cols(),\ CV\_8UC1);}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ \ \ \ \ \ \ \ for\ (int\ y\ =\ 0;\ y\ <\ data.rows();\ ++y)}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ uchar*\ row\ =\ mat.ptr<uchar>(y);}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ for\ (size\_t\ x\ =\ 0;\ x\ <\ data.cols();\ x++)}}
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ row[0]\ =\ data[0][y][x];}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00078\ \textcolor{comment}{//}}
+\DoxyCodeLine{00079\ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ mat;}}
+\DoxyCodeLine{00080\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00081\ \textcolor{comment}{//}}
+\DoxyCodeLine{00082\ \textcolor{comment}{//\ \ \ \ ///\ <summary>}}
+\DoxyCodeLine{00083\ \textcolor{comment}{//\ \ \ \ ///\ Из\ своего в opencv}}
+\DoxyCodeLine{00084\ \textcolor{comment}{//\ \ \ \ ///\ Цветное изображение}}
+\DoxyCodeLine{00085\ \textcolor{comment}{//\ \ \ \ ///\ </summary>}}
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ \ \ \ ///\ <returns></returns>}}
+\DoxyCodeLine{00087\ \textcolor{comment}{//\ \ \ \ cv::Mat\ getOpencvColor()}}
+\DoxyCodeLine{00088\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ \ \ \ \ \ \ \ cv::Mat\ mat(data.rows(),\ data.cols(),\ CV\_8UC3);}}
+\DoxyCodeLine{00090\ \textcolor{comment}{//}}
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ \ \ \ \ \ \ \ for\ (int\ y\ =\ 0;\ y\ <\ data.rows();\ ++y)}}
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00093\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ cv::Vec3b*\ row\ =\ mat.ptr<cv::Vec3b>(y);}}
+\DoxyCodeLine{00094\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ for\ (size\_t\ x\ =\ 0;\ x\ <\ data.cols();\ x++)}}
+\DoxyCodeLine{00095\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ row[0][0]\ =\ data[0][y][x];}}
+\DoxyCodeLine{00097\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ row[1][0]\ =\ data[1][y][x];}}
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ row[2][0]\ =\ data[2][y][x];}}
+\DoxyCodeLine{00099\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00101\ \textcolor{comment}{//}}
+\DoxyCodeLine{00102\ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ mat;}}
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00104\ \textcolor{comment}{//}}
+\DoxyCodeLine{00105\ \textcolor{comment}{//\#pragma\ endregion}}
+\DoxyCodeLine{00106\ \textcolor{comment}{//}}
+\DoxyCodeLine{00107\ \textcolor{comment}{//}}
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ \ \ \ //Публичные\ методы\ класса}}
+\DoxyCodeLine{00109\ \textcolor{comment}{//public:}}
+\DoxyCodeLine{00110\ \textcolor{comment}{//\ \ \ \ Image()\ =\ default;}}
+\DoxyCodeLine{00111\ \textcolor{comment}{//}}
+\DoxyCodeLine{00112\ \textcolor{comment}{//\ \ \ \ Image(size\_t\ height,\ size\_t\ width,\ size\_t\ depth)}}
+\DoxyCodeLine{00113\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00114\ \textcolor{comment}{//\ \ \ \ \ \ \ \ data.resize(height,\ width,\ depth);}}
+\DoxyCodeLine{00115\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00116\ \textcolor{comment}{//}}
+\DoxyCodeLine{00117\ \textcolor{comment}{//\ \ \ \ Image(Size\ size,\ size\_t\ depth)}}
+\DoxyCodeLine{00118\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00119\ \textcolor{comment}{//\ \ \ \ \ \ \ \ data.resize(size.rows,\ size.cols,\ depth);}}
+\DoxyCodeLine{00120\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00121\ \textcolor{comment}{//}}
+\DoxyCodeLine{00122\ \textcolor{comment}{//\ \ \ \ Image(const\ cv::Mat\&\ image)}}
+\DoxyCodeLine{00123\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00124\ \textcolor{comment}{//\ \ \ \ \ \ \ \ switch\ (image.type())}}
+\DoxyCodeLine{00125\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00126\ \textcolor{comment}{//\ \ \ \ \ \ \ \ case\ CV\_8UC1:}}
+\DoxyCodeLine{00127\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ setOpencvGray(image);}}
+\DoxyCodeLine{00128\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{00129\ \textcolor{comment}{//\ \ \ \ \ \ \ \ case\ CV\_8UC3:}}
+\DoxyCodeLine{00130\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ setOpencvColor(image);}}
+\DoxyCodeLine{00131\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ \ \ \ \ \ \ \ default:}}
+\DoxyCodeLine{00133\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}Error\ convert\ opencv\ image.\ Type\ image\ is\ not\ supported"{};}}
+\DoxyCodeLine{00134\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{00135\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00136\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00137\ \textcolor{comment}{//}}
+\DoxyCodeLine{00138\ \textcolor{comment}{//\ \ \ \ size\_t\ colors()}}
+\DoxyCodeLine{00139\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00140\ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ data.depth();}}
+\DoxyCodeLine{00141\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00142\ \textcolor{comment}{//}}
+\DoxyCodeLine{00143\ \textcolor{comment}{//\ \ \ \ size\_t\ height()}}
+\DoxyCodeLine{00144\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00145\ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ data.rows();}}
+\DoxyCodeLine{00146\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00147\ \textcolor{comment}{//}}
+\DoxyCodeLine{00148\ \textcolor{comment}{//\ \ \ \ size\_t\ width()}}
+\DoxyCodeLine{00149\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00150\ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ data.cols();}}
+\DoxyCodeLine{00151\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00152\ \textcolor{comment}{//}}
+\DoxyCodeLine{00153\ \textcolor{comment}{//\ \ \ \ Size\ size()}}
+\DoxyCodeLine{00154\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00155\ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ Size\{\ data.rows(),\ data.cols()\ \};}}
+\DoxyCodeLine{00156\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00157\ \textcolor{comment}{//}}
+\DoxyCodeLine{00158\ \textcolor{comment}{//\ \ \ \ Matrix<uint8\_t>\ operator[](size\_t\ pos)}}
+\DoxyCodeLine{00159\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00160\ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ data[pos];}}
+\DoxyCodeLine{00161\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00162\ \textcolor{comment}{//}}
+\DoxyCodeLine{00163\ \textcolor{comment}{//\#pragma\ region\ Work\ Opencv}}
+\DoxyCodeLine{00164\ \textcolor{comment}{//\ \ \ \ cv::Mat\ exportToOpencv()}}
+\DoxyCodeLine{00165\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00166\ \textcolor{comment}{//\ \ \ \ \ \ \ \ switch\ (type)}}
+\DoxyCodeLine{00167\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00168\ \textcolor{comment}{//\ \ \ \ \ \ \ \ case\ Type::GRAY:}}
+\DoxyCodeLine{00169\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ return\ getOpencvGray();}}
+\DoxyCodeLine{00170\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{00171\ \textcolor{comment}{//\ \ \ \ \ \ \ \ case\ Type::COLOR:}}
+\DoxyCodeLine{00172\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ return\ getOpencvColor();}}
+\DoxyCodeLine{00173\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{00174\ \textcolor{comment}{//\ \ \ \ \ \ \ \ default:}}
+\DoxyCodeLine{00175\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}Error\ convert\ opencv\ image.\ Type\ image\ is\ not\ supported"{};}}
+\DoxyCodeLine{00176\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ return\ cv::Mat();}}
+\DoxyCodeLine{00177\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{00178\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00179\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00180\ \textcolor{comment}{//}}
+\DoxyCodeLine{00181\ \textcolor{comment}{//\#pragma\ endregion}}
+\DoxyCodeLine{00182\ \textcolor{comment}{//}}
+\DoxyCodeLine{00183\ \textcolor{comment}{//\};}}
+
+\end{DoxyCode}

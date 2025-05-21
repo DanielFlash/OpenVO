@@ -1,0 +1,90 @@
+\doxysection{Base\+Agent\+A2C Class Reference}
+\hypertarget{class_base_agent_a2_c}{}\label{class_base_agent_a2_c}\index{BaseAgentA2C@{BaseAgentA2C}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_agent_a2_c_a832a2af8bdcdaf3ea1d86043d2a82441}{Base\+Agent\+A2C}} (\mbox{\hyperlink{class_base_model_a2_c_actor}{Base\+Model\+A2\+CActor}} \texorpdfstring{$\ast$}{*}actor\+Model, \mbox{\hyperlink{class_base_model_a2_c_value}{Base\+Model\+A2\+CValue}} \texorpdfstring{$\ast$}{*}value\+Model, \mbox{\hyperlink{class_base_trainer_a2_c}{Base\+Trainer\+A2C}} \texorpdfstring{$\ast$}{*}trainer)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_agent_a2_c_a8a13919c125c60b7ebb51a24b3f0307a}{train\+Episode}} (std\+::vector$<$ \mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}} $>$ memory)
+\begin{DoxyCompactList}\small\item\em Method to train an episode. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_base_agent_a2_c_a523d793624eba99173cae8f7ed8e8e33}{act}} (std\+::vector$<$ int $>$ state)
+\begin{DoxyCompactList}\small\item\em Method to choose agent action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_agent_a2_c_af79c9dd39f2543f3191d8d18103c3f26}\label{class_base_agent_a2_c_af79c9dd39f2543f3191d8d18103c3f26} 
+int {\bfseries m\+\_\+n\+Episode} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em Base A2C agent class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_agent_a2_c_ac897f7b716a72f83bd531b47bbb7252c}\label{class_base_agent_a2_c_ac897f7b716a72f83bd531b47bbb7252c} 
+\mbox{\hyperlink{class_base_model_a2_c_actor}{Base\+Model\+A2\+CActor}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Actor\+Model}
+\item 
+\Hypertarget{class_base_agent_a2_c_a192c86a808d618777be36df050b1bfb6}\label{class_base_agent_a2_c_a192c86a808d618777be36df050b1bfb6} 
+\mbox{\hyperlink{class_base_model_a2_c_value}{Base\+Model\+A2\+CValue}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Value\+Model}
+\item 
+\Hypertarget{class_base_agent_a2_c_a4ab7085ea31574825ea4284fd1bd1fe7}\label{class_base_agent_a2_c_a4ab7085ea31574825ea4284fd1bd1fe7} 
+\mbox{\hyperlink{class_base_trainer_a2_c}{Base\+Trainer\+A2C}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Trainer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_agent_a2_c_a832a2af8bdcdaf3ea1d86043d2a82441}\index{BaseAgentA2C@{BaseAgentA2C}!BaseAgentA2C@{BaseAgentA2C}}
+\index{BaseAgentA2C@{BaseAgentA2C}!BaseAgentA2C@{BaseAgentA2C}}
+\doxysubsubsection{\texorpdfstring{BaseAgentA2C()}{BaseAgentA2C()}}
+{\footnotesize\ttfamily \label{class_base_agent_a2_c_a832a2af8bdcdaf3ea1d86043d2a82441} 
+Base\+Agent\+A2\+C\+::\+Base\+Agent\+A2C (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_model_a2_c_actor}{Base\+Model\+A2\+CActor}} \texorpdfstring{$\ast$}{*}}]{actor\+Model}{, }\item[{\mbox{\hyperlink{class_base_model_a2_c_value}{Base\+Model\+A2\+CValue}} \texorpdfstring{$\ast$}{*}}]{value\+Model}{, }\item[{\mbox{\hyperlink{class_base_trainer_a2_c}{Base\+Trainer\+A2C}} \texorpdfstring{$\ast$}{*}}]{trainer}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actor\+Model} & NN actor model\\
+\hline
+{\em value\+Model} & NN value model\\
+\hline
+{\em trainer} & trainer module\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_agent_a2_c_a523d793624eba99173cae8f7ed8e8e33}\index{BaseAgentA2C@{BaseAgentA2C}!act@{act}}
+\index{act@{act}!BaseAgentA2C@{BaseAgentA2C}}
+\doxysubsubsection{\texorpdfstring{act()}{act()}}
+{\footnotesize\ttfamily \label{class_base_agent_a2_c_a523d793624eba99173cae8f7ed8e8e33} 
+std\+::vector$<$ int $>$ Base\+Agent\+A2\+C\+::act (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Method to choose agent action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & environment state\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+chosen action
+\end{DoxyReturn}
+\Hypertarget{class_base_agent_a2_c_a8a13919c125c60b7ebb51a24b3f0307a}\index{BaseAgentA2C@{BaseAgentA2C}!trainEpisode@{trainEpisode}}
+\index{trainEpisode@{trainEpisode}!BaseAgentA2C@{BaseAgentA2C}}
+\doxysubsubsection{\texorpdfstring{trainEpisode()}{trainEpisode()}}
+{\footnotesize\ttfamily \label{class_base_agent_a2_c_a8a13919c125c60b7ebb51a24b3f0307a} 
+void Base\+Agent\+A2\+C\+::train\+Episode (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_memory_cell}{Memory\+Cell}} $>$}]{memory}{}\end{DoxyParamCaption})}
+
+
+
+Method to train an episode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em memory} & episode memory\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Agent\+A2\+C.\+h\item 
+Base\+Agent\+A2\+C.\+cpp\end{DoxyCompactItemize}

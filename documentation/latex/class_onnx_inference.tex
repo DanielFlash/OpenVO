@@ -1,0 +1,81 @@
+\doxysection{Onnx\+Inference Class Reference}
+\hypertarget{class_onnx_inference}{}\label{class_onnx_inference}\index{OnnxInference@{OnnxInference}}
+Inheritance diagram for Onnx\+Inference\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_onnx_inference}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_onnx_inference_a12365d34531c3b7a6842e72a53409633}{Onnx\+Inference}} (const std\+::string \&onnx\+Model\+Path, const std\+::map$<$ int, std\+::string $>$ \&model\+Classes, const int imgW=640, const int imgH=640, const bool \&run\+With\+Cuda=true, const float score\+Thresh=0.\+45, const float nms\+Thresh=0.\+50, const int max\+Det=100)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+\Hypertarget{class_onnx_inference_ad0a7a9a4fea7b0bfe9a30895e87a2fc8}\label{class_onnx_inference_ad0a7a9a4fea7b0bfe9a30895e87a2fc8} 
+void {\bfseries load\+Onnx\+Network} ()
+\begin{DoxyCompactList}\small\item\em Method to load model. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ \mbox{\hyperlink{class_onnx_inference_aa24877b8c0dd9bda61f30ed1d0a0d8df}{run\+Inference}} (const cv\+::\+Mat \&input) override final
+\begin{DoxyCompactList}\small\item\em Method to run inference. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_onnx_inference_a12365d34531c3b7a6842e72a53409633}\index{OnnxInference@{OnnxInference}!OnnxInference@{OnnxInference}}
+\index{OnnxInference@{OnnxInference}!OnnxInference@{OnnxInference}}
+\doxysubsubsection{\texorpdfstring{OnnxInference()}{OnnxInference()}}
+{\footnotesize\ttfamily \label{class_onnx_inference_a12365d34531c3b7a6842e72a53409633} 
+Onnx\+Inference\+::\+Onnx\+Inference (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{onnx\+Model\+Path}{, }\item[{const std\+::map$<$ int, std\+::string $>$ \&}]{model\+Classes}{, }\item[{const int}]{imgW}{ = {\ttfamily 640}, }\item[{const int}]{imgH}{ = {\ttfamily 640}, }\item[{const bool \&}]{run\+With\+Cuda}{ = {\ttfamily true}, }\item[{const float}]{score\+Thresh}{ = {\ttfamily 0.45}, }\item[{const float}]{nms\+Thresh}{ = {\ttfamily 0.50}, }\item[{const int}]{max\+Det}{ = {\ttfamily 100}}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em onnx\+Model\+Path} & onnx model file\\
+\hline
+{\em model\+Classes} & txt file with object labels\\
+\hline
+{\em imgW} & input image width\\
+\hline
+{\em imgH} & input image height\\
+\hline
+{\em run\+With\+Cuda} & device\+: CPU or GPU\\
+\hline
+{\em score\+Thresh} & model score threshold\\
+\hline
+{\em nms\+Thresh} & model IoU threshold\\
+\hline
+{\em max\+Det} & max detections per image\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_onnx_inference_aa24877b8c0dd9bda61f30ed1d0a0d8df}\index{OnnxInference@{OnnxInference}!runInference@{runInference}}
+\index{runInference@{runInference}!OnnxInference@{OnnxInference}}
+\doxysubsubsection{\texorpdfstring{runInference()}{runInference()}}
+{\footnotesize\ttfamily \label{class_onnx_inference_aa24877b8c0dd9bda61f30ed1d0a0d8df} 
+std\+::vector$<$ \mbox{\hyperlink{struct_detection}{Detection}} $>$ Onnx\+Inference\+::run\+Inference (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{input}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Method to run inference. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & input frame\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+detection list
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_base_inference_ad9d4cc62db82d1316ab6dad9945cdadc}{Base\+Inference}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+onnx\+Inferencer.\+h\item 
+onnx\+Inferencer.\+cpp\end{DoxyCompactItemize}

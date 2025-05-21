@@ -1,0 +1,84 @@
+\doxysection{Base\+Trainer\+A2C Class Reference}
+\hypertarget{class_base_trainer_a2_c}{}\label{class_base_trainer_a2_c}\index{BaseTrainerA2C@{BaseTrainerA2C}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_trainer_a2_c_a5378312681432038471967b0f6247ab7}{Base\+Trainer\+A2C}} (\mbox{\hyperlink{class_base_model_a2_c_actor}{Base\+Model\+A2\+CActor}} \texorpdfstring{$\ast$}{*}actor\+Model, \mbox{\hyperlink{class_base_model_a2_c_value}{Base\+Model\+A2\+CValue}} \texorpdfstring{$\ast$}{*}value\+Model, torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*}optimizer\+Adam\+Actor, torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*}optimizer\+Adam\+Value, torch\+::\+Device \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_trainer_a2_c_adc0fe18c72c675137a4fa23d3dc58dd6}{train\+Step}} (std\+::vector$<$ std\+::vector$<$ int $>$ $>$ state, std\+::vector$<$ std\+::vector$<$ int $>$ $>$ action, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ reward)
+\begin{DoxyCompactList}\small\item\em Train iteration method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_trainer_a2_c_a24fdfaa876032a54142bc13ad28050ed}\label{class_base_trainer_a2_c_a24fdfaa876032a54142bc13ad28050ed} 
+torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+optimizer\+Adam\+Actor}
+\begin{DoxyCompactList}\small\item\em Base A2C trainer class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_trainer_a2_c_a6557d2e88c476345ecea675ececc5ce7}\label{class_base_trainer_a2_c_a6557d2e88c476345ecea675ececc5ce7} 
+torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+optimizer\+Adam\+Value}
+\item 
+\Hypertarget{class_base_trainer_a2_c_ac5d3cbf816cfe440af8b2e5145fe41fa}\label{class_base_trainer_a2_c_ac5d3cbf816cfe440af8b2e5145fe41fa} 
+\mbox{\hyperlink{class_base_model_a2_c_actor}{Base\+Model\+A2\+CActor}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Actor\+Model}
+\item 
+\Hypertarget{class_base_trainer_a2_c_a7974c1800f82d10a9be1db5b52ede9f9}\label{class_base_trainer_a2_c_a7974c1800f82d10a9be1db5b52ede9f9} 
+\mbox{\hyperlink{class_base_model_a2_c_value}{Base\+Model\+A2\+CValue}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Value\+Model}
+\item 
+\Hypertarget{class_base_trainer_a2_c_a50bd82cc96791cbfaa50a26d2115c330}\label{class_base_trainer_a2_c_a50bd82cc96791cbfaa50a26d2115c330} 
+torch\+::\+Device \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+device}
+\item 
+\Hypertarget{class_base_trainer_a2_c_a5a7b0f48974f80135069f6bc365ca5c8}\label{class_base_trainer_a2_c_a5a7b0f48974f80135069f6bc365ca5c8} 
+bool {\bfseries m\+\_\+cuda\+Enabled}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_trainer_a2_c_a5378312681432038471967b0f6247ab7}\index{BaseTrainerA2C@{BaseTrainerA2C}!BaseTrainerA2C@{BaseTrainerA2C}}
+\index{BaseTrainerA2C@{BaseTrainerA2C}!BaseTrainerA2C@{BaseTrainerA2C}}
+\doxysubsubsection{\texorpdfstring{BaseTrainerA2C()}{BaseTrainerA2C()}}
+{\footnotesize\ttfamily \label{class_base_trainer_a2_c_a5378312681432038471967b0f6247ab7} 
+Base\+Trainer\+A2\+C\+::\+Base\+Trainer\+A2C (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_model_a2_c_actor}{Base\+Model\+A2\+CActor}} \texorpdfstring{$\ast$}{*}}]{actor\+Model}{, }\item[{\mbox{\hyperlink{class_base_model_a2_c_value}{Base\+Model\+A2\+CValue}} \texorpdfstring{$\ast$}{*}}]{value\+Model}{, }\item[{torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*}}]{optimizer\+Adam\+Actor}{, }\item[{torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*}}]{optimizer\+Adam\+Value}{, }\item[{torch\+::\+Device \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actor\+Model} & NN actor model\\
+\hline
+{\em value\+Model} & NN value model\\
+\hline
+{\em optimizer\+Adam\+Actor} & actor optimizer\\
+\hline
+{\em optimizer\+Adam\+Value} & value optimizer\\
+\hline
+{\em device} & device\+: CPU or GPU\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_trainer_a2_c_adc0fe18c72c675137a4fa23d3dc58dd6}\index{BaseTrainerA2C@{BaseTrainerA2C}!trainStep@{trainStep}}
+\index{trainStep@{trainStep}!BaseTrainerA2C@{BaseTrainerA2C}}
+\doxysubsubsection{\texorpdfstring{trainStep()}{trainStep()}}
+{\footnotesize\ttfamily \label{class_base_trainer_a2_c_adc0fe18c72c675137a4fa23d3dc58dd6} 
+void Base\+Trainer\+A2\+C\+::train\+Step (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{state}{, }\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{action}{, }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$}]{reward}{}\end{DoxyParamCaption})}
+
+
+
+Train iteration method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & state\\
+\hline
+{\em action} & action\\
+\hline
+{\em reward} & reward (is cummulative rewards here)\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Trainer\+A2\+C.\+h\item 
+Base\+Trainer\+A2\+C.\+cpp\end{DoxyCompactItemize}

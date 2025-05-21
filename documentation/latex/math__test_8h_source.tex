@@ -1,0 +1,488 @@
+\doxysection{math\+\_\+test.\+h}
+\hypertarget{math__test_8h_source}{}\label{math__test_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*Copyright\ (c)\ <2024>\ <OOO\ "{}ORIS"{}>}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),}}
+\DoxyCodeLine{00003\ \textcolor{comment}{to\ deal\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,}}
+\DoxyCodeLine{00004\ \textcolor{comment}{and/or\ sell\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00007\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00008\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS}}
+\DoxyCodeLine{00009\ \textcolor{comment}{IN\ THE\ SOFTWARE.*/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <opencv2/opencv.hpp>}\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}ExtendMatrix.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}TypeVOext.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}GeneratePair.h"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ EPSILON\ =\ 1e-\/12;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_data_matches}{DataMatches}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<cv::KeyPoint>\ keypoints1,\ keypoints2;}
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<cv::DMatch>\ matches;}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{static}\ cv::Mat\ getDescriptionPoints(\textcolor{keywordtype}{string}\ nameFile)}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ cv::Mat\ img1\ =\ cv::imread(nameFile,\ cv::IMREAD\_GRAYSCALE);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ Initializing\ the\ ORB\ detector\ object}}
+\DoxyCodeLine{00038\ \ \ \ \ cv::Ptr<cv::ORB>\ orb\ =\ cv::ORB::create();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Finding\ Keypoints\ and\ Descriptors}}
+\DoxyCodeLine{00041\ \ \ \ \ std::vector<cv::KeyPoint>\ keypoints1;}
+\DoxyCodeLine{00042\ \ \ \ \ cv::Mat\ descriptors1;}
+\DoxyCodeLine{00043\ \ \ \ \ orb-\/>detectAndCompute(img1,\ cv::noArray(),\ keypoints1,\ descriptors1);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{return}\ descriptors1;}
+\DoxyCodeLine{00046\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{static}\ vector<Point>\ convertCvKeypointToPoint(std::vector<cv::KeyPoint>\ keypoints)}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ vector<Point>\ points;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ keypoints.size();\ i++)}
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_point}{Point}}\ point;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ point.x\ =\ keypoints[i].pt.x;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ point.y\ =\ keypoints[i].pt.y;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ point.w\ =\ 1.0;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ points.push\_back(point);}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{return}\ points;}
+\DoxyCodeLine{00061\ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ writeToFile(\textcolor{keywordtype}{string}\ absolutePath,\ Points\&\ points)}
+\DoxyCodeLine{00064\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ std::ofstream\ outFile(absolutePath,\ std::ios::binary);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (!outFile)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ open\ file\ for\ writing.\(\backslash\)n"{}};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ You\ can\ write\ the\ vector\ size\ first\ if\ needed\ when\ reading.}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ count\ =\ points.size();}
+\DoxyCodeLine{00073\ \ \ \ \ outFile.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&count),\ \textcolor{keyword}{sizeof}(count));}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ Writing\ an\ array\ of\ structures\ to\ a\ file}}
+\DoxyCodeLine{00076\ \ \ \ \ outFile.write(}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(points.data()),\ points.size()\ *\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_point}{Point}}));}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ outFile.close();}
+\DoxyCodeLine{00080\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Data\ successfully\ written\ to\ points.bin\ file"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00082\ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_data_matches}{DataMatches}}\ getMatchesSort(vector<Point>\&\ src,\ vector<Point>\&\ dst,\ Matches\&\ v\_matches)}
+\DoxyCodeLine{00085\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{struct_data_matches}{DataMatches}}\ testData;}
+\DoxyCodeLine{00087\ \ \ \ \ cv::Mat\ img1\ =\ cv::imread(\textcolor{stringliteral}{"{}image/transform/image1.jpg"{}},\ cv::IMREAD\_GRAYSCALE);}
+\DoxyCodeLine{00088\ \ \ \ \ cv::Mat\ img2\ =\ cv::imread(\textcolor{stringliteral}{"{}image/transform/image2.jpg"{}},\ cv::IMREAD\_GRAYSCALE);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ Initializing\ the\ ORB\ detector\ object}}
+\DoxyCodeLine{00091\ \ \ \ \ cv::Ptr<cv::ORB>\ orb\ =\ cv::ORB::create();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ Finding\ Keypoints\ and\ Descriptors}}
+\DoxyCodeLine{00094\ \ \ \ \ std::vector<cv::KeyPoint>\ keypoints1,\ keypoints2;}
+\DoxyCodeLine{00095\ \ \ \ \ cv::Mat\ descriptors1,\ descriptors2;}
+\DoxyCodeLine{00096\ \ \ \ \ orb-\/>detectAndCompute(img1,\ cv::noArray(),\ keypoints1,\ descriptors1);}
+\DoxyCodeLine{00097\ \ \ \ \ orb-\/>detectAndCompute(img2,\ cv::noArray(),\ keypoints2,\ descriptors2);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ Matching\ Descriptors\ Using\ BFMatcher}}
+\DoxyCodeLine{00101\ \ \ \ \ cv::BFMatcher\ matcher(cv::NORM\_HAMMING);}
+\DoxyCodeLine{00102\ \ \ \ \ std::vector<cv::DMatch>\ matches;}
+\DoxyCodeLine{00103\ \ \ \ \ matcher.match(descriptors1,\ descriptors2,\ matches);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//Sort\ matches\ by\ distance}}
+\DoxyCodeLine{00106\ \ \ \ \ std::sort(matches.begin(),\ matches.end(),\ [](\textcolor{keyword}{const}\ cv::DMatch\&\ a,\ \textcolor{keyword}{const}\ cv::DMatch\&\ b)\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ return\ a.distance\ <\ b.distance;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ We\ leave\ only\ the\ best\ matches}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ numGoodMatches\ =\ 25;}
+\DoxyCodeLine{00112\ \ \ \ \ matches.resize(numGoodMatches);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//std::vector<cv::KeyPoint>\ bestKeypoints1,\ bestKeypoints2;}}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//std::set<int>\ keypoints1\_indices,\ keypoints2\_indices;}}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//for\ (const\ auto\&\ match\ :\ matches)\ \{}}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ \ \ \ keypoints1\_indices.insert(match.queryIdx);}}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{//\ \ \ \ keypoints2\_indices.insert(match.trainIdx);}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//for\ (int\ i\ =\ 0;\ i\ <\ keypoints1.size();\ ++i)\ \{}}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (keypoints1\_indices.count(i)\ >\ 0)\ \{}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ bestKeypoints1.push\_back(keypoints1[i]);}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{//for\ (int\ i\ =\ 0;\ i\ <\ keypoints2.size();\ ++i)\ \{}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (keypoints2\_indices.count(i)\ >\ 0)\ \{}}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ bestKeypoints2.push\_back(keypoints2[i]);}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ testData.keypoints1\ =\ keypoints1;}
+\DoxyCodeLine{00135\ \ \ \ \ testData.keypoints2\ =\ keypoints2;}
+\DoxyCodeLine{00136\ \ \ \ \ testData.matches\ =\ matches;}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//Matches\ v\_matches;}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ matches.size();\ i++)}
+\DoxyCodeLine{00140\ \ \ \ \ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_match}{Match}}\ match;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ match.src\ =\ matches[i].queryIdx;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ match.dst\ =\ matches[i].trainIdx;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ match.distance\ =\ matches[i].distance;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ v\_matches.push\_back(match);}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ src\ =\ convertCvKeypointToPoint(keypoints1);}
+\DoxyCodeLine{00149\ \ \ \ \ dst\ =\ convertCvKeypointToPoint(keypoints2);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ Points\ nSrc,\ nDst;}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ matches.size();\ i++)}
+\DoxyCodeLine{00153\ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ nSrc.push\_back(src[matches[i].queryIdx]);}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ nDst.push\_back(dst[matches[i].trainIdx]);}
+\DoxyCodeLine{00156\ \ \ \ \ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ src\ =\ nSrc;}
+\DoxyCodeLine{00159\ \ \ \ \ dst\ =\ nDst;}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{//writeToFile("{}srcPoints.bin"{},\ src);}}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{comment}{//writeToFile("{}dstPoints.bin"{},\ dst);}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{//std::vector<cv::DMatch>\ treeMatch;}}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{comment}{//treeMatch.push\_back(matches[0]);}}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{comment}{//treeMatch.push\_back(matches[1]);}}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{comment}{//treeMatch.push\_back(matches[2]);}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ cv::Mat\ img\_matches;}
+\DoxyCodeLine{00170\ \ \ \ \ cv::drawMatches(img1,\ keypoints1,\ img2,\ keypoints2,\ matches,\ img\_matches,\ cv::Scalar::all(-\/1),}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ cv::Scalar::all(-\/1),\ std::vector<char>(),\ cv::DrawMatchesFlags::NOT\_DRAW\_SINGLE\_POINTS);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00174\ \ \ \ \ cv::imshow(\textcolor{stringliteral}{"{}Good\ Matches"{}},\ img\_matches);}
+\DoxyCodeLine{00175\ \ \ \ \ cv::waitKey(0);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordflow}{return}\ testData;}
+\DoxyCodeLine{00178\ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_data_matches}{DataMatches}}\ getMatches(vector<Point>\ \&src,\ vector<Point>\ \&dst,\ Matches\ \&v\_matches)}
+\DoxyCodeLine{00181\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{struct_data_matches}{DataMatches}}\ testData;}
+\DoxyCodeLine{00183\ \ \ \ \ cv::Mat\ img1\ =\ cv::imread(\textcolor{stringliteral}{"{}image1.jpg"{}},\ cv::IMREAD\_GRAYSCALE);}
+\DoxyCodeLine{00184\ \ \ \ \ cv::Mat\ img2\ =\ cv::imread(\textcolor{stringliteral}{"{}image2.jpg"{}},\ cv::IMREAD\_GRAYSCALE);}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00187\ \ \ \ \ cv::Ptr<cv::ORB>\ orb\ =\ cv::ORB::create();}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{comment}{//\ Finding\ Keypoints\ and\ Descriptors}}
+\DoxyCodeLine{00190\ \ \ \ \ std::vector<cv::KeyPoint>\ keypoints1,\ keypoints2;}
+\DoxyCodeLine{00191\ \ \ \ \ cv::Mat\ descriptors1,\ descriptors2;}
+\DoxyCodeLine{00192\ \ \ \ \ orb-\/>detectAndCompute(img1,\ cv::noArray(),\ keypoints1,\ descriptors1);}
+\DoxyCodeLine{00193\ \ \ \ \ orb-\/>detectAndCompute(img2,\ cv::noArray(),\ keypoints2,\ descriptors2);}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ }
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{comment}{//\ Matching\ Descriptors\ Using\ BFMatcher}}
+\DoxyCodeLine{00198\ \ \ \ \ cv::BFMatcher\ matcher(cv::NORM\_HAMMING);}
+\DoxyCodeLine{00199\ \ \ \ \ std::vector<cv::DMatch>\ matches;}
+\DoxyCodeLine{00200\ \ \ \ \ matcher.match(descriptors1,\ descriptors2,\ matches);}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{comment}{//\ Sort\ matches\ by\ distance}}
+\DoxyCodeLine{00203\ \ \ \ \ std::sort(matches.begin(),\ matches.end(),\ [](\textcolor{keyword}{const}\ cv::DMatch\&\ a,\ \textcolor{keyword}{const}\ cv::DMatch\&\ b)\ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ return\ a.distance\ <\ b.distance;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{comment}{//\ We\ leave\ only\ the\ best\ matches}}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ numGoodMatches\ =\ 50;}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{comment}{//matches.resize(numGoodMatches);}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{comment}{//std::vector<cv::KeyPoint>\ bestKeypoints1,\ bestKeypoints2;}}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{comment}{//std::set<int>\ keypoints1\_indices,\ keypoints2\_indices;}}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{//for\ (const\ auto\&\ match\ :\ matches)\ \{}}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{comment}{//\ \ \ \ keypoints1\_indices.insert(match.queryIdx);}}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{comment}{//\ \ \ \ keypoints2\_indices.insert(match.trainIdx);}}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{comment}{//for\ (int\ i\ =\ 0;\ i\ <\ keypoints1.size();\ ++i)\ \{}}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (keypoints1\_indices.count(i)\ >\ 0)\ \{}}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ bestKeypoints1.push\_back(keypoints1[i]);}}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{comment}{//for\ (int\ i\ =\ 0;\ i\ <\ keypoints2.size();\ ++i)\ \{}}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (keypoints2\_indices.count(i)\ >\ 0)\ \{}}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ bestKeypoints2.push\_back(keypoints2[i]);}}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \ \ \ \ testData.keypoints1\ =\ keypoints1;}
+\DoxyCodeLine{00232\ \ \ \ \ testData.keypoints2\ =\ keypoints2;}
+\DoxyCodeLine{00233\ \ \ \ \ testData.matches\ =\ matches;}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{comment}{//Matches\ v\_matches;}}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ matches.size();\ i++)}
+\DoxyCodeLine{00237\ \ \ \ \ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_match}{Match}}\ match;}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ match.src\ =\ matches[i].queryIdx;}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ match.dst\ =\ matches[i].trainIdx;}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ match.distance\ =\ matches[i].distance;}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ v\_matches.push\_back(match);}
+\DoxyCodeLine{00243\ \ \ \ \ \}}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \ \ src\ =\ convertCvKeypointToPoint(keypoints1);}
+\DoxyCodeLine{00246\ \ \ \ \ dst\ =\ convertCvKeypointToPoint(keypoints2);}
+\DoxyCodeLine{00247\ \ \ \ \ }
+\DoxyCodeLine{00248\ \ }
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{comment}{//std::vector<cv::DMatch>\ treeMatch;}}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{comment}{//treeMatch.push\_back(matches[0]);}}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{comment}{//treeMatch.push\_back(matches[1]);}}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{comment}{//treeMatch.push\_back(matches[2]);}}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \ \ \ \ cv::Mat\ img\_matches;}
+\DoxyCodeLine{00255\ \ \ \ \ cv::drawMatches(img1,\ keypoints1,\ img2,\ keypoints2,\ matches,\ img\_matches,\ cv::Scalar::all(-\/1),}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ cv::Scalar::all(-\/1),\ std::vector<char>(),\ cv::DrawMatchesFlags::NOT\_DRAW\_SINGLE\_POINTS);}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00259\ \ \ \ \ cv::imshow(\textcolor{stringliteral}{"{}Good\ Matches"{}},\ img\_matches);}
+\DoxyCodeLine{00260\ \ \ \ \ cv::waitKey(0);}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keywordflow}{return}\ testData;}
+\DoxyCodeLine{00263\ \}}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ showKeypoints(\mbox{\hyperlink{struct_data_matches}{DataMatches}}\ data,\ Matches\ matches)}
+\DoxyCodeLine{00266\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ cv::Mat\ img1\ =\ cv::imread(\textcolor{stringliteral}{"{}image1.jpg"{}},\ cv::IMREAD\_GRAYSCALE);}
+\DoxyCodeLine{00268\ \ \ \ \ cv::Mat\ img2\ =\ cv::imread(\textcolor{stringliteral}{"{}image2.jpg"{}},\ cv::IMREAD\_GRAYSCALE);}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \ \ \ \ std::vector<cv::DMatch>\ treeMatch;}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{struct_match}{Match}}\ match\ :\ matches)}
+\DoxyCodeLine{00272\ \ \ \ \ \{}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ data.matches.size();\ i++)}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (match.src\ ==\ data.matches[i].queryIdx\ \&\&\ match.dst\ ==\ data.matches[i].trainIdx)}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ treeMatch.push\_back(data.matches[i]);}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00278\ \ \ \ \ \}}
+\DoxyCodeLine{00279\ \ \ \ \ }
+\DoxyCodeLine{00280\ \ \ \ \ cv::Mat\ img\_matches;}
+\DoxyCodeLine{00281\ \ \ \ \ cv::drawMatches(img1,\ data.keypoints1,\ img2,\ data.keypoints2,\ treeMatch,\ img\_matches,\ cv::Scalar::all(-\/1),}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ cv::Scalar::all(-\/1),\ std::vector<char>(),\ cv::DrawMatchesFlags::NOT\_DRAW\_SINGLE\_POINTS);}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00285\ \ \ \ \ cv::imshow(\textcolor{stringliteral}{"{}RandMatches"{}},\ img\_matches);}
+\DoxyCodeLine{00286\ \ \ \ \ cv::waitKey(0);}
+\DoxyCodeLine{00287\ \}}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ getDescription(Descriptions\ \&desc1,\ Descriptions\ \&desc2)}
+\DoxyCodeLine{00290\ \{}
+\DoxyCodeLine{00291\ \ \ \ \ \mbox{\hyperlink{struct_description}{Description}}\ d1;}
+\DoxyCodeLine{00292\ \ \ \ \ d1.numbers\ =\ \{\ 0,2,0,0.25\ \};}
+\DoxyCodeLine{00293\ \ \ \ \ \mbox{\hyperlink{struct_description}{Description}}\ d2;}
+\DoxyCodeLine{00294\ \ \ \ \ d2.numbers\ =\ \{\ 1,5,10,0.45\ \};}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \mbox{\hyperlink{struct_description}{Description}}\ d11;}
+\DoxyCodeLine{00297\ \ \ \ \ d11.numbers\ =\ \{\ 6,1,6,2.25\ \};}
+\DoxyCodeLine{00298\ \ \ \ \ \mbox{\hyperlink{struct_description}{Description}}\ d22;}
+\DoxyCodeLine{00299\ \ \ \ \ d22.numbers\ =\ \{\ 0,3,6,1.45\ \};}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \ \ \ \ \mbox{\hyperlink{struct_description}{Description}}\ d111;}
+\DoxyCodeLine{00302\ \ \ \ \ d111.numbers\ =\ \{\ 1,1,1,1.25\ \};}
+\DoxyCodeLine{00303\ \ \ \ \ \mbox{\hyperlink{struct_description}{Description}}\ d222;}
+\DoxyCodeLine{00304\ \ \ \ \ d222.numbers\ =\ \{\ 2,3,7,2.45\ \};}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00306\ \ \ \ \ desc1.push\_back(d1);}
+\DoxyCodeLine{00307\ \ \ \ \ desc1.push\_back(d11);}
+\DoxyCodeLine{00308\ \ \ \ \ desc1.push\_back(d111);}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00310\ \ \ \ \ desc2.push\_back(d2);}
+\DoxyCodeLine{00311\ \ \ \ \ desc2.push\_back(d22);}
+\DoxyCodeLine{00312\ \ \ \ \ desc2.push\_back(d222);}
+\DoxyCodeLine{00313\ \}}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \textcolor{keyword}{static}\ cv::Mat\ MatrixToMat(vector<vector<double>>\ src)}
+\DoxyCodeLine{00316\ \{}
+\DoxyCodeLine{00317\ \ \ \ \ cv::Mat\ dst(src.size(),\ src[0].size(),\ CV\_64F);}
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ src.size();\ i++)}
+\DoxyCodeLine{00319\ \ \ \ \ \{}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ src[0].size();\ j++)}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ dst.at<\textcolor{keywordtype}{double}>(i,\ j)\ =\ src[i][j];}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00324\ \ \ \ \ \}}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordflow}{return}\ dst;}
+\DoxyCodeLine{00327\ \}}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \textcolor{keyword}{static}\ cv::Mat\ MatrixToMat(\mbox{\hyperlink{class_matrix}{Matrix<>}}\ src)}
+\DoxyCodeLine{00331\ \{}
+\DoxyCodeLine{00332\ \ \ \ \ cv::Mat\ dst(src.sizeRow(),\ src.sizeColumn(),\ CV\_64F);}
+\DoxyCodeLine{00333\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ src.sizeRow();\ i++)}
+\DoxyCodeLine{00334\ \ \ \ \ \{}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ src.sizeColumn();\ j++)}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ dst.at<\textcolor{keywordtype}{double}>(i,\ j)\ =\ src[i][j];}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00339\ \ \ \ \ \}}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keywordflow}{return}\ dst;}
+\DoxyCodeLine{00342\ \}}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \textcolor{keyword}{static}\ cv::Mat\ loadImage(\textcolor{keywordtype}{string}\ nameFile)}
+\DoxyCodeLine{00345\ \{}
+\DoxyCodeLine{00346\ \ \ \ \ cv::Mat\ image\ =\ cv::imread(nameFile);}
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keywordflow}{if}\ (image.empty())\ \{}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ load\ image!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00349\ \ \ \ \ \}}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keywordflow}{return}\ image;}
+\DoxyCodeLine{00352\ \}}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00354\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_math}{Math}}}
+\DoxyCodeLine{00355\ \{}
+\DoxyCodeLine{00356\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00358\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00359\ \ \ \ \ }
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00361\ \ \ \ \ \textcolor{comment}{//Function\ to\ perform\ full\ pivoted\ LU\ factorization}}
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{keywordtype}{bool}\ luDecompositionFullPivot(\textcolor{keyword}{const}\ vector<vector<double>>\&\ A\_input,}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ vector<vector<double>>\&\ L,}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ vector<vector<double>>\&\ U,}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ vector<int>\&\ row\_perm,}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ vector<int>\&\ col\_perm)\ \{}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ A\_input.size();}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ vector<vector<double>>\ A\ =\ A\_input;\ \textcolor{comment}{//\ Copy\ matrix\ A}}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialization\ of\ permutations}}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ row\_perm.resize(n);}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ col\_perm.resize(n);}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ row\_perm[i]\ =\ i;}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ col\_perm[i]\ =\ i;}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00377\ }
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ L.assign(n,\ vector<double>(n,\ 0.0));}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ U.assign(n,\ vector<double>(n,\ 0.0));}
+\DoxyCodeLine{00380\ }
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ n;\ ++k)\ \{}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Finding\ the\ maximum\ element\ for\ a\ complete\ permutation}}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ max\_val\ =\ 0.0;}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ max\_row\ =\ k,\ max\_col\ =\ k;}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ k;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ k;\ j\ <\ n;\ ++j)\ \{}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fabs(A[i][j])\ >\ fabs(max\_val))\ \{}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_val\ =\ A[i][j];}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_row\ =\ i;}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_col\ =\ j;}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Test\ for\ degeneracy}}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fabs(max\_val)\ <\ EPSILON)\ \{}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Matrix\ is\ singular\ or\ nearly\ singular."{}}\ <<\ endl;}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00400\ }
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Row\ permutation}}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ swap(A[k],\ A[max\_row]);}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ swap(row\_perm[k],\ row\_perm[max\_row]);}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rearrange\ columns}}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ swap(A[i][k],\ A[i][max\_col]);}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ swap(col\_perm[k],\ col\_perm[max\_col]);}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Filling\ L\ and\ U}}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ U[k][k]\ =\ A[k][k];}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ k\ +\ 1;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ L[i][k]\ =\ A[i][k]\ /\ U[k][k];}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ U[k][i]\ =\ A[k][i];}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ L[k][k]\ =\ 1.0;}
+\DoxyCodeLine{00417\ }
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Updating\ the\ rest\ of\ the\ matrix\ A}}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ k\ +\ 1;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ k\ +\ 1;\ j\ <\ n;\ ++j)\ \{}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ A[i][j]\ -\/=\ L[i][k]\ *\ U[k][j];}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00426\ \ \ \ \ \}}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \ \ \ \ \textcolor{comment}{//\ Function\ for\ solving\ the\ system\ Ax\ =\ b\ using\ LU\ decomposition}}
+\DoxyCodeLine{00429\ \ \ \ \ vector<double>\ solveWithLU(\textcolor{keyword}{const}\ vector<vector<double>>\&\ L,}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<vector<double>>\&\ U,}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<int>\&\ row\_perm,}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<int>\&\ col\_perm,}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<double>\&\ b)\ \{}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ L.size();}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ vector<double>\ x(n);}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ vector<double>\ y(n);}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ vector<double>\ b\_permuted(n);}
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Apply\ row\ permutation\ to\ vector\ b}}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ b\_permuted[i]\ =\ b[row\_perm[i]];}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Direct\ move\ (solve\ L\ y\ =\ b\_permuted)}}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ y[i]\ =\ b\_permuted[i];}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ i;\ ++j)\ \{}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y[i]\ -\/=\ L[i][j]\ *\ y[j];}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Since\ L[i][i]\ =\ 1,\ we\ do\ not\ need\ to\ divide\ by\ the\ diagonal\ element.}}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reverse\ move\ (we\ solve\ U\ z\ =\ y)}}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ vector<double>\ z(n);}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ n\ -\/\ 1;\ i\ >=\ 0;\ -\/-\/i)\ \{}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ z[i]\ =\ y[i];}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ i\ +\ 1;\ j\ <\ n;\ ++j)\ \{}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z[i]\ -\/=\ U[i][j]\ *\ z[j];}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ \ \ z[i]\ /=\ U[i][i];}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Apply\ the\ inverse\ column\ permutation\ to\ the\ vector\ z\ to\ obtain\ x}}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ x[col\_perm[i]]\ =\ z[i];}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00467\ }
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00469\ \ \ \ \ \}}
+\DoxyCodeLine{00470\ }
+\DoxyCodeLine{00471\ \ \ \ \ \textcolor{comment}{//\ Function\ for\ outputting\ a\ matrix}}
+\DoxyCodeLine{00472\ \ \ \ \ \textcolor{keywordtype}{void}\ printMatrix(\textcolor{keyword}{const}\ vector<vector<double>>\&\ A)\ \{}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ row\ :\ A)\ \{}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{double}\ elem\ :\ row)\ \{}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ elem\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}};}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ endl;}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00479\ \ \ \ \ \}}
+\DoxyCodeLine{00480\ }
+\DoxyCodeLine{00481\ \ \ \ \ \textcolor{comment}{//\ Function\ to\ output\ a\ vector}}
+\DoxyCodeLine{00482\ \ \ \ \ \textcolor{keywordtype}{void}\ printVector(\textcolor{keyword}{const}\ vector<double>\&\ v)\ \{}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{double}\ elem\ :\ v)\ \{}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ elem\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}};}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ cout\ <<\ endl;}
+\DoxyCodeLine{00487\ \ \ \ \ \}}
+\DoxyCodeLine{00488\ }
+\DoxyCodeLine{00489\ }
+\DoxyCodeLine{00490\ \};}
+
+\end{DoxyCode}

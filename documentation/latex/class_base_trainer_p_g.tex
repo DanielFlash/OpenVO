@@ -1,0 +1,74 @@
+\doxysection{Base\+Trainer\+PG Class Reference}
+\hypertarget{class_base_trainer_p_g}{}\label{class_base_trainer_p_g}\index{BaseTrainerPG@{BaseTrainerPG}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_trainer_p_g_a7b85c673cf5fb7e5d5d932c24bd4607d}{Base\+Trainer\+PG}} (\mbox{\hyperlink{class_base_model_p_g}{Base\+Model\+PG}} \texorpdfstring{$\ast$}{*}model, torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*}optimizer\+Adam, torch\+::\+Device \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Class initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_trainer_p_g_a1b8e492510cec964172f6094b033ad68}{train\+Step}} (std\+::vector$<$ std\+::vector$<$ int $>$ $>$ state, std\+::vector$<$ std\+::vector$<$ int $>$ $>$ action, std\+::vector$<$ std\+::vector$<$ double $>$ $>$ reward)
+\begin{DoxyCompactList}\small\item\em Train iteration method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_base_trainer_p_g_a96578758ddce7b8955a5e5e70372d1d5}\label{class_base_trainer_p_g_a96578758ddce7b8955a5e5e70372d1d5} 
+torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+optimizer\+Adam}
+\begin{DoxyCompactList}\small\item\em Base PG trainer class. \end{DoxyCompactList}\item 
+\Hypertarget{class_base_trainer_p_g_aa120a0f2c70ff84a408b6beed9faef06}\label{class_base_trainer_p_g_aa120a0f2c70ff84a408b6beed9faef06} 
+\mbox{\hyperlink{class_base_model_p_g}{Base\+Model\+PG}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+\+Model}
+\item 
+\Hypertarget{class_base_trainer_p_g_ab9d13b2577d3238434bb7510f66aa0f9}\label{class_base_trainer_p_g_ab9d13b2577d3238434bb7510f66aa0f9} 
+torch\+::\+Device \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+device}
+\item 
+\Hypertarget{class_base_trainer_p_g_a8e1cdaaaa71613b26a5d3f82bbd65373}\label{class_base_trainer_p_g_a8e1cdaaaa71613b26a5d3f82bbd65373} 
+bool {\bfseries m\+\_\+cuda\+Enabled}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_base_trainer_p_g_a7b85c673cf5fb7e5d5d932c24bd4607d}\index{BaseTrainerPG@{BaseTrainerPG}!BaseTrainerPG@{BaseTrainerPG}}
+\index{BaseTrainerPG@{BaseTrainerPG}!BaseTrainerPG@{BaseTrainerPG}}
+\doxysubsubsection{\texorpdfstring{BaseTrainerPG()}{BaseTrainerPG()}}
+{\footnotesize\ttfamily \label{class_base_trainer_p_g_a7b85c673cf5fb7e5d5d932c24bd4607d} 
+Base\+Trainer\+PG\+::\+Base\+Trainer\+PG (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_model_p_g}{Base\+Model\+PG}} \texorpdfstring{$\ast$}{*}}]{model}{, }\item[{torch\+::optim\+::\+Adam \texorpdfstring{$\ast$}{*}}]{optimizer\+Adam}{, }\item[{torch\+::\+Device \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Class initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & NN model\\
+\hline
+{\em optimizer\+Adam} & optimizer\\
+\hline
+{\em device} & device\+: CPU or GPU\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_base_trainer_p_g_a1b8e492510cec964172f6094b033ad68}\index{BaseTrainerPG@{BaseTrainerPG}!trainStep@{trainStep}}
+\index{trainStep@{trainStep}!BaseTrainerPG@{BaseTrainerPG}}
+\doxysubsubsection{\texorpdfstring{trainStep()}{trainStep()}}
+{\footnotesize\ttfamily \label{class_base_trainer_p_g_a1b8e492510cec964172f6094b033ad68} 
+void Base\+Trainer\+PG\+::train\+Step (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{state}{, }\item[{std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{action}{, }\item[{std\+::vector$<$ std\+::vector$<$ double $>$ $>$}]{reward}{}\end{DoxyParamCaption})}
+
+
+
+Train iteration method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & state\\
+\hline
+{\em action} & action\\
+\hline
+{\em reward} & reward (is cummulative rewards here)\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Base\+Trainer\+PG.\+h\item 
+Base\+Trainer\+PG.\+cpp\end{DoxyCompactItemize}
