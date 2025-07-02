@@ -1,0 +1,10 @@
+path: dataset_4  # dataset root dir
+train: train/images  # train images
+val: val/images  # val images
+test: test/images  # test images
+
+# Classes
+names:
+  0: crossroad
+  1: building
+  2: highway
